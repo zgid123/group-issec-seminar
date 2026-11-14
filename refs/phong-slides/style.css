@@ -1,0 +1,155 @@
+/* Deck-specific compositions; typography and colors inherit Alpha's themes. */
+.case-box {
+  padding: 1.2rem 1.6rem;
+  margin-top: 1.7rem;
+  background: #f1f5f9;
+  border-left: 5px solid var(--alpha-foreground-accent);
+}
+
+.eyebrow {
+  margin: 0 0 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--alpha-foreground-accent);
+  letter-spacing: 0.12em;
+}
+
+.case-request,
+.research-question {
+  margin: 0;
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.takeaway {
+  padding-top: 0.8rem;
+  margin-top: 1.8rem;
+  font-weight: 600;
+  color: var(--alpha-foreground-accent);
+  border-top: 2px solid #cbd5e1;
+}
+
+.paper-heading {
+  margin-top: 2rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.surface-group {
+  padding: 1rem 1.4rem;
+  background: #f8fafc;
+  border-left: 3px solid var(--alpha-foreground-accent);
+}
+
+.surface-group li {
+  margin-bottom: 0.5rem;
+}
+
+.incident-chain {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.incident-chain > div {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  gap: 1rem;
+  padding: 0.8rem 1.2rem;
+  background: #f1f5f9;
+  border-left: 4px solid var(--alpha-foreground-accent);
+}
+
+.closing-points {
+  margin-top: 2.5rem;
+}
+
+.closing-points p {
+  display: flex;
+  gap: 1.5rem;
+  align-items: baseline;
+  margin-bottom: 1.8rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.closing-points p > b {
+  font-size: 2rem;
+  color: var(--alpha-foreground-accent);
+}
+
+/* Readable prose and tables on the 980px Slidev canvas. */
+:root {
+  --alpha-font-size-base: 1.25rem;
+}
+
+.slidev-layout.shifting-intro-layout table {
+  width: 100%;
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  border-collapse: collapse;
+}
+
+.slidev-layout.shifting-intro-layout th,
+.slidev-layout.shifting-intro-layout td {
+  padding: 0.65rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.slidev-layout.shifting-intro-layout th {
+  background: #e2e8f0;
+}
+
+.slidev-layout.shifting-intro-layout ul {
+  padding-left: 1.3rem;
+  margin-top: 1rem;
+  list-style-type: disc;
+}
+
+.slidev-layout.shifting-intro-layout li {
+  margin-bottom: 0.65rem;
+}
+
+.parallel-cards {
+  height: 18rem;
+}
+
+.parallel-cards .alpha-vertical-card-content {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.parallel-cards .alpha-vertical-card-title {
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.slidev-layout .alpha-speaker {
+  color: #173046;
+}
+
+/* Import the section asset through Vite; the addon receives background as a string. */
+.slidev-layout.alpha-bg-center {
+  /* biome-ignore lint/complexity/noImportantStyles: Override the addon's inline URL with the asset bundled by Vite. */
+  background-image: url('./assets/heading.png') !important;
+}
+
+.slidev-layout.alpha-academic-cover {
+  /* biome-ignore lint/complexity/noImportantStyles: Override the addon's inline URL with the asset bundled by Vite. */
+  background-image: url('./assets/main.png') !important;
+}
+
+.attack-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.attack-pair blockquote {
+  margin: 0.9rem 0 0;
+  line-height: 1.5;
+}

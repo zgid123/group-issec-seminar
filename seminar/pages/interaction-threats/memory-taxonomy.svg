@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 520" role="img" aria-labelledby="title desc">
+  <title id="title">Agent2Memory taxonomy</title>
+  <desc id="desc">Vertical hierarchy of Agent2Memory security threats. Categories follow the supplied survey taxonomy; section and citation numbers are omitted.</desc>
+  <defs>
+    <marker id="memory-arrow" markerWidth="7" markerHeight="7" refX="7" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#667085"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#98A2B3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M720 118 V205 H450 V300" marker-end="url(#memory-arrow)"/>
+    <path d="M720 205 H990 V300" marker-end="url(#memory-arrow)"/>
+  </g>
+  <rect x="520" y="28" width="400" height="90" rx="18" fill="#E8EDF4" stroke="#667085" stroke-width="3"/>
+  <text x="720" y="82.45" text-anchor="middle" font-family="Roboto, Arial, sans-serif" font-size="27" font-weight="700" fill="#172033">Agent2Memory</text>
+  <rect x="250" y="300" width="400" height="160" rx="14" fill="#F4D1A8" stroke="#E8B97F" stroke-width="2"/>
+  <text x="450" y="387.7" text-anchor="middle" font-family="Roboto, Arial, sans-serif" font-size="22" font-weight="700" fill="#172033">Long-term Memory Threat</text>
+  <rect x="790" y="300" width="400" height="160" rx="14" fill="#F4D1A8" stroke="#E8B97F" stroke-width="2"/>
+  <text x="990" y="387.7" text-anchor="middle" font-family="Roboto, Arial, sans-serif" font-size="22" font-weight="700" fill="#172033">Short-term Memory Threat</text>
+</svg>

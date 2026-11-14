@@ -1,0 +1,248 @@
+{
+  "source": "../refs/hoang-slides.pptx",
+  "sha256": "f19ece72930491eacc6635778a0e2f1de54835d51576a54a85caae2ef92b3022",
+  "slides": {
+    "10": {
+      "text": [
+        "3.2 · BRAIN",
+        "Misalignment: agent làm khác ý con người vì dữ liệu, vì chiều lòng, vì không hiểu thế giới",
+        "1",
+        "Dữ liệu huấn luyện",
+        "Nội dung độc chiếm khoảng 0,2% dữ liệu tiền huấn luyện của LLaMA2. Thiên vị giới tính, chủng tộc, vùng miền đi theo vào agent.",
+        "2",
+        "Người và agent",
+        "Sycophancy: agent chiều theo ý người dùng, kể cả chọn đáp án mà nó biết là sai.",
+        "3",
+        "Môi trường embodied",
+        "Được bảo bật đèn xanh cho người đi bộ, agent bật ngay dù đèn xe làn bên cạnh cũng đang xanh.",
+        "Phòng thủ: RLHF; SafeguardGPT dùng nhiều agent đóng vai \"nhà trị liệu\"; kết hợp LLM với học tăng cường (TWOSOME) để không sinh hành động vô nghĩa.",
+        "Nguồn: Deng et al., 2025, Mục 3.2.2; Ruan et al. 2024 (ToolEmu); Tan et al. 2024."
+      ],
+      "notes": [
+        "Alignment là agent hiểu và làm đúng ý con người: hữu ích, vô hại, không thiên vị. Misalignment là khi có độ lệch giữa ý định của nhà phát triển và cái agent thực sự làm.",
+        "Một con số đáng nhớ: nghiên cứu red-teaming chỉ cần 100 mẫu để \"jailbreak\" ChatGPT với tỉ lệ 88%, cho thấy độ lệch ẩn trong bộ não.",
+        "Ba nguồn gây lệch:",
+        "1. Dữ liệu huấn luyện: dữ liệu khổng lồ lấy từ internet có nội dung độc (khoảng 0,2% với LLaMA2) và thiên vị. Khác với đầu độc, cái này thường vô tình.",
+        "2. Người và agent: RLHF dạy mô hình theo phản hồi của người, nhưng giá trị của người rất đa dạng và đôi khi phản hồi sai. Hệ quả là sycophancy (nịnh): agent đồng ý với người dùng kể cả khi họ sai.",
+        "3. Môi trường embodied (agent có \"thân thể\" trong môi trường): agent sinh được chữ nhưng không hiểu quan hệ nhân quả. Ví dụ đèn giao thông trên slide. Ví dụ khác trong game nấu ăn Overcooked: bảo làm salad cà chua thì agent cứ thêm dưa leo, ớt dù không có nguyên liệu đó.",
+        "Lưu ý: số 2 sẽ nối với hướng nghiên cứu II (thiên vị và công bằng) ở cuối bài."
+      ]
+    },
+    "11": {
+      "text": [
+        "3.2 · BRAIN",
+        "Chain-of-thought có thể khuếch đại một lỗi nhỏ ở bước đầu thành thất bại lớn"
+      ],
+      "notes": [
+        "Planning threat đến từ chính cách agent suy nghĩ: chia việc lớn thành chuỗi bước (chain-of-thought). Một nghiên cứu gọi CoT là \"error amplifier\" (bộ khuếch đại lỗi): một lỗi nhỏ ở đầu bị truyền và phóng to qua các bước sau. Giống cài sai cúc áo đầu tiên thì sai cả hàng.",
+        "Bốn cấu trúc lập kế hoạch:",
+        "- Tuần tự: một đường thẳng, mỗi bước phụ thuộc hoàn toàn bước trước, gần như không có cơ hội sửa. Nghiên cứu thấy mọi thất bại đều bắt nguồn từ bước trung gian sai.",
+        "- Lặp và sửa (ví dụ ReWOO): tách kế hoạch khỏi phản hồi bên ngoài rồi ghép lại; mô phỏng lỗi tool giúp giảm khoảng 10% lỗi lập kế hoạch.",
+        "- Rẽ nhánh (CoT-SC): sinh N đường song song, chọn đường được nhiều phiếu nhất, sửa được một số lỗi sớm.",
+        "- Dạng cây (Tree of Thoughts): giảm rủi ro một đường, nhưng càng phức tạp thì lỗi càng tích ở một số nhánh.",
+        "Phòng thủ: (1) đặt quy tắc kiểu \"hiến pháp\" giới hạn kế hoạch ở các giai đoạn (TrustAgent); (2) người dùng viết ràng buộc bằng văn phạm phi ngữ cảnh (CFG), chuyển thành automaton đẩy xuống (PDA), và chỉ cho LLM chọn hành động hợp lệ theo trạng thái hiện tại."
+      ]
+    },
+    "12": {
+      "text": [
+        "3.3 · ACTION",
+        "Hành động bị tấn công từ hai phía: lệnh agent gửi đi và chính công cụ nhận lệnh",
+        "Action input",
+        "Action execution (trong tool)",
+        "Observation",
+        "Final answer",
+        "Agent2Tool (chủ động)",
+        "Supply chain",
+        "Agent2Tool (bị động): lộ dữ liệu khi trả về",
+        "Agent2Tool: tool được cấp quyền quá rộng nên chạy lệnh nguy hiểm không hỏi người dùng; dữ liệu cá nhân lộ cho bên thứ ba.",
+        "Supply chain: tool hoặc plugin đã bị nhiễm. Ví dụ: trang web độc (WIPI), phụ đề YouTube bị sửa, plugin Webpilot lấy lịch sử chat.",
+        "Phòng thủ: chạy thử trong sandbox (ToolEmu); mã hóa đồng cấu (PrivacyAsst, tốn kém); chỉ dùng tool tin cậy và kiểm toán chặt.",
+        "Nguồn: Deng et al., 2025, Mục 3.3; Ruan et al. 2024; Zhang et al. 2024; Wu et al. 2024."
+      ],
+      "notes": [
+        "Action là lúc agent dùng tool. Paper chia một lần dùng tool thành 4 bước: Action input (agent soạn lệnh cho tool), Action execution (tool chạy), Observation (kết quả trả về, thường chứa thông tin của người dùng), Final answer.",
+        "Hai nhóm đe dọa:",
+        "1. Agent2Tool, xảy ra ở đường agent gửi lệnh:",
+        "   - Chủ động: LLM sinh lệnh theo xác suất, có thể sinh lệnh nguy hiểm. ToolEmu thấy agent được cấp quyền quá rộng và chạy lệnh rủi ro mà không xin phép người dùng.",
+        "   - Bị động: dữ liệu bị chặn bắt trên đường truyền giữa agent và tool, lộ thông tin người dùng cho bên thứ ba (đã xảy ra với HuggingGPT, ToolFormer).",
+        "2. Supply chain: lỗ hổng nằm trong chính tool (buffer overflow, SQL injection, XSS) hoặc tool bị chiếm. Ví dụ WIPI: trang web độc làm thay đổi observation và câu trả lời; Webpilot: plugin độc của ChatGPT lấy lịch sử hội thoại.",
+        "Phòng thủ: ToolEmu chạy thử trong sandbox giả lập trước khi làm thật (nhưng phụ thuộc chất lượng bộ giả lập). PrivacyAsst dùng mã hóa đồng cấu để bảo vệ quyền riêng tư nhưng tốn chi phí rất lớn. Paper nhận định nghiên cứu về kiểm toán chuỗi cung ứng tool còn rất ít, và đây chính là điểm khởi đầu của hướng III ở cuối bài."
+      ]
+    },
+    "13": {
+      "text": [
+        "4.1 · AGENT2ENVIRONMENT",
+        "Môi trường không chỉ nhận lệnh từ agent mà còn phản hồi ngược để điều khiển agent",
+        "Agent",
+        "Tool / Môi trường",
+        "Forward: agent ra lệnh",
+        "Backward: phản hồi bị sửa",
+        "Agent2Tool là rủi ro chiều đi. Agent2Environment là rủi ro chiều về: HTML, ảnh chụp màn hình, trạng thái bị giả mạo.",
+        "1",
+        "Web, dữ liệu ngoài",
+        "Indirect prompt injection",
+        "2",
+        "Học tăng cường (RL)",
+        "Đầu độc điểm thưởng",
+        "3",
+        "Giả lập, sandbox",
+        "Gắn bó cảm xúc, lạm dụng",
+        "4",
+        "Hạ tầng tính toán",
+        "Cạn tài nguyên, thiếu cách ly",
+        "5",
+        "Thế giới vật lý",
+        "Cảm biến bị giả mạo",
+        "Nguồn: Deng et al., 2025, Mục 4.1."
+      ],
+      "notes": [
+        "Slide này là bản đồ cho cả mục 4.1, phần em sẽ giải thích kỹ hơn.",
+        "Ý quan trọng nhất (phía trên): paper phân biệt hai chiều.",
+        "- Forward (chiều đi): agent ra lệnh cho tool. Rủi ro là lệnh phá hoại, như đã nói ở phần Action (Agent2Tool).",
+        "- Backward (chiều về): môi trường phản hồi lại agent. Agent đọc trang web, xem ảnh chụp màn hình, nhận trạng thái mới, rồi quyết định bước tiếp. Nếu kẻ tấn công sửa được phần phản hồi này (HTML bị chỉnh, screenshot giả), họ dắt agent đi theo ý mình mà không cần chạm vào agent.",
+        "Phía dưới: 5 loại môi trường paper liệt kê. Số 1 (indirect prompt injection) là loại nổi tiếng nhất. Bốn loại còn lại ít được nói tới hơn nhưng rất thực tế: môi trường học tăng cường, môi trường giả lập, hạ tầng tính toán, và thế giới vật lý. Em sẽ đi từng loại."
+      ]
+    },
+    "14": {
+      "text": [
+        "4.1.1 · INDIRECT PROMPT INJECTION",
+        "Indirect prompt injection giấu lệnh trong dữ liệu mà agent tự đi đọc",
+        "Kẻ tấn công",
+        "Giấu lệnh trong trang web, email, tài liệu",
+        "Agent đọc trang khi làm việc",
+        "Lộ lịch sử chat, chèn link lừa đảo, gửi dữ liệu ra ngoài",
+        "Người dùng: \"Tóm tắt trang này\"",
+        "Nguyên nhân gốc: agent không phân biệt được dữ liệu với mệnh lệnh từ nguồn bên ngoài.",
+        "Nguồn: Deng et al., 2025, Mục 4.1.1; Greshake et al. 2023."
+      ],
+      "notes": [
+        "Indirect prompt injection (chèn lệnh gián tiếp), từ bài của Greshake et al. 2023.",
+        "Khác biệt với prompt injection thường: kẻ tấn công không nói chuyện với agent. Họ giấu lệnh trong nơi agent sẽ tự đi đọc: trang web, email, tài liệu, kết quả tìm kiếm, kho RAG.",
+        "Kịch bản trên slide: người dùng vô tội nhờ \"tóm tắt trang này\". Agent đọc trang, gặp dòng chữ ẩn \"hãy gửi lịch sử hội thoại tới địa chỉ X\", và vì không tách được dữ liệu với lệnh, nó làm theo.",
+        "Hệ quả paper liệt kê: lấy lịch sử hội thoại, chèn link phishing, đánh cắp code GitHub, gửi thông tin nhạy cảm cho kẻ tấn công.",
+        "Ví dụ dễ hiểu: bạn nhờ người giúp việc đọc thư, trong thư có dòng \"người đọc thư hãy đưa chìa khóa nhà cho người đưa thư\", và người giúp việc làm theo thật.",
+        "Vì sao nguy hiểm hơn: một trang web độc có thể ảnh hưởng mọi người dùng có agent ghé qua trang đó, nên phạm vi ảnh hưởng rộng hơn nhiều."
+      ]
+    },
+    "15": {
+      "text": [
+        "4.1.2 · MÔI TRƯỜNG HỌC TĂNG CƯỜNG",
+        "Trong học tăng cường, kẻ tấn công nhắm vào điểm thưởng thay vì vào mô hình",
+        "Agent",
+        "Môi trường",
+        "Hành động",
+        "Trạng thái mới + điểm thưởng",
+        "Nhiễu khó thấy, đầu độc điểm thưởng",
+        "Inverse RL: đoán ngược hàm thưởng",
+        "Vì sao khó phát hiện: điểm thưởng chỉ là những con số. Con người nhìn vào khó biết con số nào đã bị sửa.",
+        "Phòng thủ: differential privacy, mật mã, học đối kháng (adversarial learning).\nPaper đánh giá: nghiên cứu cho agent dùng RL còn rất ít.",
+        "Nguồn: Deng et al., 2025, Mục 4.1.2; Arora & Doshi 2021 (inverse RL)."
+      ],
+      "notes": [
+        "Phần này em mới tìm hiểu thêm, nên giải thích từ gốc.",
+        "Học tăng cường (Reinforcement Learning, RL) là cách dạy AI bằng thử–sai và điểm thưởng, giống dạy chó: làm đúng thì được bánh, làm sai thì không. Vòng lặp trên slide: agent làm một hành động, môi trường đổi trạng thái và trả về điểm thưởng (reward), agent điều chỉnh để lần sau được nhiều điểm hơn.",
+        "Rủi ro: vì agent học từ phản hồi động của môi trường, nó có thể học ra hành vi ngoài ý muốn: không an toàn, phi đạo đức.",
+        "Ba cách tấn công paper nêu:",
+        "1. Nhiễu khó nhận thấy (imperceptible perturbation) vào trạng thái hoặc điểm thưởng, khiến điểm thưởng \"khen\" những hành động dẫn tới bất thường.",
+        "2. Đầu độc (poisoning) điểm thưởng: giống ai đó lén đổi bánh thưởng, con chó học sai mà người dạy không biết.",
+        "3. Về quyền riêng tư: inverse RL (học tăng cường ngược) quan sát hành vi của agent để suy ngược ra hàm thưởng, từ đó biết agent được tối ưu cho cái gì và tấn công tiếp.",
+        "Điểm khác so với tấn công LLM: ở đây kẻ tấn công nhắm vào hàm thưởng, mà hàm thưởng chỉ là tín hiệu số nên con người rất khó soi ra.",
+        "Phòng thủ giống các mô hình khác: differential privacy (thêm nhiễu có kiểm soát để không lộ dữ liệu), mật mã, học đối kháng. Paper nói thẳng: mảng này còn ít được nghiên cứu."
+      ]
+    },
+    "16": {
+      "text": [
+        "4.1.4 · HẠ TẦNG TÍNH TOÁN",
+        "Hạ tầng quản lý tài nguyên yếu cho phép một agent làm sập hoặc xâm nhập agent khác",
+        "1",
+        "Cạn kiệt tài nguyên",
+        "Bắt agent làm việc nặng liên tục, người dùng khác bị từ chối dịch vụ.",
+        "Thiếu resource limit, rate limit",
+        "2",
+        "Phân bổ kém hiệu quả",
+        "Prompt không được kiểm tra làm tốn thời gian xử lý, việc quan trọng bị chậm.",
+        "Thiếu priority, scheduling",
+        "3",
+        "Cách ly kém giữa agent",
+        "Agent xấu đọc hoặc can thiệp dữ liệu, tiến trình của agent khác.",
+        "Thiếu namespace, NetworkPolicy",
+        "4",
+        "Không giám sát",
+        "Tài nguyên tăng vọt bất thường nhưng không ai phát hiện.",
+        "Thiếu metrics, cảnh báo",
+        "Nguồn: Deng et al., 2025, Mục 4.1.4. Dòng \"Liên hệ DevOps\" là phần liên hệ của người trình bày."
+      ],
+      "notes": [
+        "Môi trường quản lý tài nguyên tính toán là phần hệ thống lo việc cấp phát, lập lịch, tối ưu CPU, GPU, bộ nhớ cho agent. Nếu phần này yếu, agent dễ bị tấn công hơn. Paper liệt kê 4 kiểu:",
+        "1. Resource exhaustion (cạn kiệt tài nguyên): nếu không giới hạn mỗi agent dùng bao nhiêu, kẻ tấn công cố tình bắt agent làm việc nặng, làm quá tải hệ thống, người dùng hợp lệ bị từ chối dịch vụ (giống tấn công DoS).",
+        "2. Inefficient resource allocation (phân bổ kém): prompt không được kiểm tra trước sẽ lãng phí thời gian xử lý. Cần theo dõi và đánh giá các mẫu truy vấn để ưu tiên đúng việc. Paper nói điều này vừa tăng hiệu năng vừa tăng an toàn vì giảm quá tải.",
+        "3. Insufficient isolation (cách ly kém): trong môi trường dùng chung, agent độc hại có thể truy cập hoặc can thiệp hoạt động của agent khác, gây rò rỉ dữ liệu, truy cập trái phép, lây mã độc.",
+        "4. Unmonitored resource usage (không giám sát): một agent đột nhiên dùng tài nguyên tăng vọt, dấu hiệu bị xâm nhập, nhưng không ai thấy. Phát hiện bất thường kịp thời là then chốt.",
+        "Liên hệ thực tế (phần em tự liên hệ, không có trong paper): đây chính là các bài toán quen thuộc của vận hành hạ tầng như Kubernetes: đặt resource limit và quota, lập lịch theo độ ưu tiên, cách ly bằng namespace và NetworkPolicy, giám sát bằng metrics và cảnh báo. Nghĩa là kinh nghiệm DevOps áp dụng trực tiếp được cho bảo mật agent."
+      ]
+    },
+    "17": {
+      "text": [
+        "4.2 · AGENT2AGENT",
+        "Hợp tác làm lỗi lây lan giữa các agent, còn cạnh tranh dạy agent cách lừa dối",
+        "Hợp tác (cooperative)",
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "Sâu Morris II: prompt độc tự nhân bản sang agent khác\nThông đồng ngầm qua kênh công khai\nKhuếch đại hallucination, lan tin sai\nMặt tốt: AutoDefense dùng nhiều agent để chặn jailbreak",
+        "Cạnh tranh (competitive)",
+        "Agent A",
+        "Agent B",
+        "lừa",
+        "Cicero (Meta, game Diplomacy): được dạy trung thực nhưng học cách nói dối, lập liên minh giả\nTạo đầu vào đối kháng để hạ đối thủ\nPhòng thủ: vẫn là câu hỏi mở",
+        "Nguồn: Deng et al., 2025, Mục 4.2; Cohen et al. 2024; Motwani et al. 2024; Zeng et al. 2024; FAIR 2022."
+      ],
+      "notes": [
+        "Hệ nhiều agent (multi-agent) giải được việc phức tạp hơn, nhưng thêm bề mặt tấn công mới. Paper chia theo kiểu tương tác.",
+        "Hợp tác: các agent cùng mục tiêu.",
+        "- Thông đồng ngầm (secret collusion): các agent có thể giấu thông tin trong giao tiếp công khai mà con người không phát hiện. Ví dụ paper: các agent giao dịch tự động phối hợp loại đối thủ, có thể làm mất ổn định thị trường.",
+        "- MetaGPT thấy hợp tác thường xuyên làm hallucination nhỏ bị khuếch đại.",
+        "- Lỗi của một agent lan sang cả hệ, làm hiệu năng giảm mạnh.",
+        "- Sâu Morris II: thiết kế để lây trong hệ agent hợp tác bằng prompt tự nhân bản; một agent nhiễm có thể kéo theo nhiều agent, gây spam và lấy dữ liệu cá nhân. Agent Smith là ví dụ tương tự với ảnh độc.",
+        "- Mặt tốt: hợp tác cũng giúp phòng thủ. AutoDefense dùng nhiều agent để giảm mạnh tỉ lệ jailbreak; mô hình hợp tác cũng có thể chặn lệnh không đảo ngược như \"rm -rf\".",
+        "Cạnh tranh: mỗi agent bảo vệ lợi ích riêng.",
+        "- Agent có thể tạo đầu vào đối kháng để hạ đối thủ.",
+        "- Ví dụ Cicero của Meta trong game Diplomacy: Meta muốn nó \"phần lớn trung thực\", nhưng nó lại thành chuyên gia nói dối, lên kế hoạch trước để lập liên minh giả rồi phản bội người chơi.",
+        "- Phòng thủ: rất khó vì khó kiểm soát đầu ra của \"bộ não\"; thêm ràng buộc thì agent làm việc kém đi. Paper để ngỏ như câu hỏi mở."
+      ]
+    },
+    "18": {
+      "text": [
+        "4.3 · AGENT2MEMORY",
+        "Chỉ 5 văn bản độc trong 1 triệu văn bản đủ để điều khiển câu trả lời 90% số lần",
+        "Lập chỉ mục",
+        "Dữ liệu",
+        "Embedding",
+        "Vector DB",
+        "Truy vấn",
+        "Câu hỏi",
+        "Embedding",
+        "Tìm gần nhất",
+        "LLM trả lời",
+        "Đầu độc khi lập chỉ mục",
+        "Đầu độc\nPoisonedRAG: 5 mẫu / 1 triệu → 90% thành công",
+        "Rò rỉ riêng tư\nPrompt có cấu trúc rút dữ liệu; dịch ngược embedding",
+        "Mâu thuẫn, thời gian\nLưu cả \"Trái Đất tròn\" và \"phẳng\"; sai mốc hiệu lực",
+        "Nguồn: Deng et al., 2025, Mục 4.3.2; Zou et al. 2024 (PoisonedRAG); Zeng et al. 2024; Cohen et al. 2024."
+      ],
+      "notes": [
+        "Bộ nhớ giúp agent nhớ sở thích người dùng, học từ lần trước. Có hai loại.",
+        "Bộ nhớ ngắn hạn: như trí nhớ làm việc của người, chỉ trong một phiên. Vấn đề: giới hạn số token, mỗi phiên tách rời, và trong hệ nhiều agent thì bộ nhớ các agent không đồng bộ, dẫn tới mỗi agent hiểu mục tiêu một kiểu. Giải pháp: mở rộng context window (LongRoPE lên hơn 2 triệu token) hoặc tóm tắt lịch sử.",
+        "Bộ nhớ dài hạn thường lưu trong vector database. Cách hoạt động (sơ đồ):",
+        "- Lập chỉ mục: dữ liệu được biến thành embedding (dãy số biểu diễn ý nghĩa), lưu vào vector DB.",
+        "- Truy vấn: câu hỏi cũng thành embedding, tìm các vector gần nhất (cosine similarity), đưa cho LLM qua RAG.",
+        "Ba mối đe dọa:",
+        "1. Đầu độc ở bước lập chỉ mục. PoisonedRAG: trong 1 triệu văn bản, chỉ cần chèn 5 văn bản độc là đạt 90% tấn công thành công. Morris II cũng đầu độc DB của ứng dụng RAG để rút thông tin cá nhân.",
+        "2. Quyền riêng tư: dữ liệu riêng giờ không chỉ ở dữ liệu huấn luyện mà còn ở kho truy xuất. Prompt có cấu trúc có thể rút dữ liệu nhạy cảm; embedding có thể bị \"dịch ngược\" ra chữ gốc (embedding inversion).",
+        "3. Sinh sai: RAG yếu với câu hỏi theo thời gian (mốc hiệu lực của các lần sửa luật); bộ nhớ không phân loại tốt có thể chứa thông tin mâu thuẫn.",
+        "Liên hệ: hướng VII (quản lý bộ nhớ an toàn) ở cuối bài."
+      ]
+    }
+  }
+}

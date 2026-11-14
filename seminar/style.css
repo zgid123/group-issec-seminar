@@ -1,0 +1,439 @@
+/* Deck-specific compositions; typography and colors inherit Alpha's themes. */
+.case-box {
+  padding: 1.2rem 1.6rem;
+  margin-top: 1.7rem;
+  background: #f1f5f9;
+  border-left: 5px solid var(--alpha-foreground-accent);
+}
+
+.eyebrow {
+  margin: 0 0 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--alpha-foreground-accent);
+  letter-spacing: 0.12em;
+}
+
+.case-request,
+.research-question {
+  margin: 0;
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.takeaway {
+  padding-top: 0.8rem;
+  margin-top: 1.8rem;
+  font-weight: 600;
+  color: var(--alpha-foreground-accent);
+  border-top: 2px solid #cbd5e1;
+}
+
+.paper-heading {
+  margin-top: 2rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.surface-group {
+  padding: 1rem 1.4rem;
+  background: #f8fafc;
+  border-left: 3px solid var(--alpha-foreground-accent);
+}
+
+.surface-group li {
+  margin-bottom: 0.5rem;
+}
+
+.incident-chain {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.incident-chain > div {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  gap: 1rem;
+  padding: 0.8rem 1.2rem;
+  background: #f1f5f9;
+  border-left: 4px solid var(--alpha-foreground-accent);
+}
+
+.closing-points {
+  margin-top: 2.5rem;
+}
+
+.closing-points p {
+  display: flex;
+  gap: 1.5rem;
+  align-items: baseline;
+  margin-bottom: 1.8rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.closing-points p > b {
+  font-size: 2rem;
+  color: var(--alpha-foreground-accent);
+}
+
+/* Readable prose and tables on the 980px Slidev canvas. */
+:root {
+  --alpha-font-size-base: 1.25rem;
+}
+
+.slidev-layout.shifting-intro-layout table {
+  width: 100%;
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  border-collapse: collapse;
+}
+
+.slidev-layout.shifting-intro-layout th,
+.slidev-layout.shifting-intro-layout td {
+  padding: 0.65rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.slidev-layout.shifting-intro-layout th {
+  background: #e2e8f0;
+}
+
+.slidev-layout.shifting-intro-layout ul {
+  padding-left: 1.3rem;
+  margin-top: 1rem;
+  list-style-type: disc;
+}
+
+.slidev-layout.shifting-intro-layout li {
+  margin-bottom: 0.65rem;
+}
+
+.parallel-cards {
+  height: 18rem;
+}
+
+.parallel-cards .alpha-vertical-card-content {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.parallel-cards .alpha-vertical-card-title {
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.slidev-layout .alpha-speaker {
+  color: #173046;
+}
+
+/* Import the section asset through Vite; the addon receives background as a string. */
+.slidev-layout.alpha-bg-center {
+  /* biome-ignore lint/complexity/noImportantStyles: Override the addon's inline URL with the asset bundled by Vite. */
+  background-image: url('./assets/heading.png') !important;
+}
+
+.slidev-layout.alpha-academic-cover {
+  /* biome-ignore lint/complexity/noImportantStyles: Override the addon's inline URL with the asset bundled by Vite. */
+  background-image: url('./assets/main.png') !important;
+}
+
+.attack-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.attack-pair blockquote {
+  margin: 0.9rem 0 0;
+  line-height: 1.5;
+}
+
+.defense-citation {
+  display: block;
+  margin-top: 0.35em;
+  font-size: 0.7em;
+  font-weight: 400;
+  line-height: 1.3;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.jailbreak-overview {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+.jailbreak-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  font-family: Arial, sans-serif;
+  color: #25212b;
+}
+.jailbreak-card {
+  padding: 16px 14px;
+  border-radius: 12px;
+  background: #efe8f3;
+  font-size: 18px;
+  line-height: 1.25;
+}
+.jailbreak-card p {
+  margin: 0;
+  margin-top: 16px;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.backdoor-outcomes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+  font-family: Arial, sans-serif;
+  color: #25212b;
+}
+.backdoor-outcome {
+  padding: 18px 14px;
+  border-radius: 12px;
+  background: #efe8f3;
+  font-size: 18px;
+  line-height: 1.25;
+}
+.backdoor-outcome p {
+  margin: 16px 0 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Hoàng's source compositions: editable shapes, original grouping and palette. */
+.hoang-source {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.25;
+  color: #25212b;
+}
+
+.hoang-source .hoang-lead {
+  margin: 0 0 18px;
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.hoang-diagram {
+  position: relative;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.25;
+  color: #25212b;
+}
+
+.hoang-diagram svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hoang-node {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.hoang-core {
+  background: #765186;
+  color: white;
+  font-weight: 700;
+}
+
+.hoang-neutral {
+  background: #f1f1f3;
+}
+
+.hoang-danger {
+  background: #fbe8e3;
+  color: #c8553d;
+  font-weight: 700;
+}
+
+.hoang-two,
+.hoang-three,
+.hoang-five,
+.hoang-resource-grid,
+.hoang-interactions {
+  display: grid;
+  gap: 18px;
+}
+
+.hoang-two,
+.hoang-resource-grid,
+.hoang-interactions {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.hoang-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.hoang-five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.hoang-below {
+  margin-top: 22px;
+}
+
+.hoang-card,
+.hoang-interaction-panel {
+  padding: 16px 14px;
+  border-radius: 12px;
+  background: #efe8f3;
+}
+
+.hoang-gray {
+  background: #f1f1f3;
+}
+
+.hoang-peach {
+  background: #fbe8e3;
+}
+
+.hoang-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 24px;
+}
+
+.hoang-card-heading:has(.hoang-number) {
+  color: #765186;
+}
+
+.hoang-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #765186;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.hoang-card p {
+  margin: 16px 0 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.hoang-misalignment .hoang-card {
+  min-height: 236px;
+}
+
+.hoang-source .hoang-planning {
+  display: block;
+  width: 100%;
+  height: 340px;
+  object-fit: contain;
+}
+
+.hoang-environment-top {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.hoang-environment-top .hoang-card {
+  font-size: 16px;
+}
+
+.hoang-five .hoang-card {
+  padding: 12px;
+  font-size: 16px;
+}
+
+.hoang-five .hoang-card-heading {
+  display: block;
+  color: #25212b;
+}
+
+.hoang-five .hoang-number {
+  margin-bottom: 12px;
+}
+
+.hoang-five .hoang-card p {
+  color: #c8553d;
+}
+
+.hoang-cause {
+  padding: 12px;
+  border-radius: 12px;
+  background: #efe8f3;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.hoang-rl-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.hoang-rl-explanation {
+  padding: 24px 18px;
+  line-height: 1.4;
+}
+
+.hoang-card .hoang-operational {
+  color: #279574;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.hoang-resource-grid {
+  gap: 16px;
+}
+
+.hoang-resource-grid .hoang-card p {
+  margin-top: 12px;
+  font-size: 17px;
+}
+
+.hoang-interaction-panel h3 {
+  margin: 0 0 14px;
+  color: #765186;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.hoang-interaction-panel ul {
+  margin: 14px 0 0;
+  padding-left: 22px;
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.hoang-interaction-panel li {
+  margin-bottom: 8px;
+}

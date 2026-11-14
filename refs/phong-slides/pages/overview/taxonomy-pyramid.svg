@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 590" role="img" aria-labelledby="title desc">
+  <title id="title">Bản đồ an ninh AI Agent</title>
+  <desc id="desc">Sơ đồ hình kim tự tháp: An ninh AI Agent ở đỉnh, bên dưới là hai nhóm Xử lý bên trong agent và Tương tác của agent, rồi sáu nhóm rủi ro ở đáy.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#667085"/>
+    </marker>
+  </defs>
+
+  <!-- Pyramid hierarchy connectors -->
+  <g fill="none" stroke="#98A2B3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M720 118 V155 H370 V188" marker-end="url(#arrow)"/>
+    <path d="M720 155 H1070 V188" marker-end="url(#arrow)"/>
+    <path d="M370 286 V330 H137 V368" marker-end="url(#arrow)"/>
+    <path d="M370 330 V368" marker-end="url(#arrow)"/>
+    <path d="M370 330 H603 V368" marker-end="url(#arrow)"/>
+    <path d="M1070 286 V330 H837 V368" marker-end="url(#arrow)"/>
+    <path d="M1070 330 V368" marker-end="url(#arrow)"/>
+    <path d="M1070 330 H1303 V368" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Apex -->
+  <rect x="520" y="28" width="400" height="90" rx="18" fill="#E8EDF4" stroke="#667085" stroke-width="3"/>
+  <text x="720" y="67" text-anchor="middle" font-family="Roboto, Arial, sans-serif" font-size="27" font-weight="700" fill="#172033">An ninh</text>
+  <text x="720" y="99" text-anchor="middle" font-family="Roboto, Arial, sans-serif" font-size="27" font-weight="700" fill="#172033">AI Agent</text>
+
+  <!-- Two taxonomy branches -->
+  <rect x="175" y="190" width="390" height="96" rx="16" fill="#F0F2F7" stroke="#98A2B3" stroke-width="3"/>
+  <text x="370" y="248" text-anchor="middle" font-family="Roboto, Arial, sans-serif" font-size="24" font-weight="700" fill="#172033">Xử lý bên trong agent</text>
+  <rect x="875" y="190" width="390" height="96" rx="16" fill="#F0F2F7" stroke="#98A2B3" stroke-width="3"/>
+  <text x="1070" y="248" text-anchor="middle" font-family="Roboto, Arial, sans-serif" font-size="24" font-weight="700" fill="#172033">Tương tác của agent</text>
+
+  <!-- Six risk groups at the base -->
+  <g font-family="Roboto, Arial, sans-serif" fill="#172033" text-anchor="middle">
+    <rect x="30" y="370" width="215" height="160" rx="14" fill="#C9DEF6" stroke="#AFC9E7" stroke-width="2"/>
+    <text x="137.5" y="416" font-size="22" font-weight="700">Perception</text>
+    <text x="137.5" y="463" font-size="18">Tiếp nhận lệnh độc</text>
+
+    <rect x="263" y="370" width="215" height="160" rx="14" fill="#A4C9ED" stroke="#8FB9E4" stroke-width="2"/>
+    <text x="370.5" y="416" font-size="22" font-weight="700">Brain</text>
+    <text x="370.5" y="458" font-size="18">Suy luận hoặc lập</text>
+    <text x="370.5" y="483" font-size="18">kế hoạch sai</text>
+
+    <rect x="496" y="370" width="215" height="160" rx="14" fill="#79C9DC" stroke="#62B8CC" stroke-width="2"/>
+    <text x="603.5" y="416" font-size="22" font-weight="700">Action</text>
+    <text x="603.5" y="458" font-size="18">Gọi công cụ</text>
+    <text x="603.5" y="483" font-size="18">không an toàn</text>
+
+    <rect x="729" y="370" width="215" height="160" rx="14" fill="#DDF0D3" stroke="#BFDEB1" stroke-width="2"/>
+    <text x="836.5" y="413" font-size="17.5" font-weight="700">Agent2Environment</text>
+    <text x="836.5" y="458" font-size="18">Môi trường bị</text>
+    <text x="836.5" y="483" font-size="18">thao túng</text>
+
+    <rect x="962" y="370" width="215" height="160" rx="14" fill="#C7CFF0" stroke="#ADB7E1" stroke-width="2"/>
+    <text x="1069.5" y="416" font-size="20" font-weight="700">Agent2Agent</text>
+    <text x="1069.5" y="458" font-size="18">Truyền tin độc</text>
+    <text x="1069.5" y="483" font-size="18">giữa các agent</text>
+
+    <rect x="1195" y="370" width="215" height="160" rx="14" fill="#F4D1A8" stroke="#E8B97F" stroke-width="2"/>
+    <text x="1302.5" y="416" font-size="20" font-weight="700">Agent2Memory</text>
+    <text x="1302.5" y="463" font-size="18">Bộ nhớ bị đầu độc</text>
+  </g>
+</svg>

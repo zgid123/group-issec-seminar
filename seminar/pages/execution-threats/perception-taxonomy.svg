@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 660" role="img" aria-labelledby="title desc">
+  <title id="title">Perception attack taxonomy</title>
+  <desc id="desc">Vertical hierarchy: Perception leads to Adversarial Attack, which branches into Prompt Injection Attack and Jailbreak.</desc>
+  <defs>
+    <marker id="perception-arrow" markerWidth="7" markerHeight="7" refX="7" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#667085"/>
+    </marker>
+  </defs>
+
+  <!-- Vertical hierarchy connectors, matching taxonomy-pyramid.svg -->
+  <g fill="none" stroke="#98A2B3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M720 118 V220" marker-end="url(#perception-arrow)"/>
+    <path d="M720 316 V370 H450 V450" marker-end="url(#perception-arrow)"/>
+    <path d="M720 370 H990 V450" marker-end="url(#perception-arrow)"/>
+  </g>
+
+  <!-- Apex -->
+  <rect x="520" y="28" width="400" height="90" rx="18" fill="#E8EDF4" stroke="#667085" stroke-width="3"/>
+  <text x="720" y="82" text-anchor="middle" font-family="Roboto, Arial, sans-serif" font-size="27" font-weight="700" fill="#172033">Perception</text>
+
+  <!-- Attack family -->
+  <rect x="525" y="220" width="390" height="96" rx="16" fill="#F0F2F7" stroke="#98A2B3" stroke-width="3"/>
+  <text x="720" y="278" text-anchor="middle" font-family="Roboto, Arial, sans-serif" font-size="23" font-weight="700" fill="#172033">Adversarial Attack</text>
+
+  <!-- Two attack categories -->
+  <g font-family="Roboto, Arial, sans-serif" fill="#172033" text-anchor="middle">
+    <rect x="250" y="450" width="400" height="160" rx="14" fill="#C9DEF6" stroke="#AFC9E7" stroke-width="2"/>
+    <text x="450" y="538" font-size="22" font-weight="700">Prompt Injection Attack</text>
+    <rect x="790" y="450" width="400" height="160" rx="14" fill="#C9DEF6" stroke="#AFC9E7" stroke-width="2"/>
+    <text x="990" y="538" font-size="22" font-weight="700">Jailbreak</text>
+  </g>
+</svg>

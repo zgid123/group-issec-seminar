@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.slidev/
+.pnpm-store/
+slides-export/
+slides-exported.*
+.DS_Store
