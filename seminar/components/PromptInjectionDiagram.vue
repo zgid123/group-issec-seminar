@@ -1,5 +1,5 @@
 <template>
-  <div class="hoang-prompt-injection" role="group" aria-label="Cấu trúc prompt và lệnh độc đi qua Brain">
+  <div class="seminar-prompt-injection" role="group" aria-label="Cấu trúc prompt và lệnh độc đi qua Brain">
     <div class="prompt-flow">
       <div class="prompt-caption">Cấu trúc một prompt</div>
       <div class="prompt-stack">
@@ -18,13 +18,13 @@
 </template>
 
 <style scoped>
-.hoang-prompt-injection {
+.seminar-prompt-injection {
   width: 100%;
   font-family: Arial, sans-serif;
   color: #25212b;
 }
 
-.hoang-prompt-injection * {
+.seminar-prompt-injection * {
   box-sizing: border-box;
 }
 

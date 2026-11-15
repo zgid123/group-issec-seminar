@@ -1,5 +1,5 @@
 <template>
-  <div class="rl-threat hoang-diagram" role="group" aria-label="Vòng lặp RL; đầu độc nhắm vào đường trạng thái và điểm thưởng quay về agent">
+  <div class="rl-threat seminar-diagram" role="group" aria-label="Vòng lặp RL; đầu độc nhắm vào đường trạng thái và điểm thưởng quay về agent">
     <svg viewBox="0 0 500 320" aria-hidden="true">
       <path d="M150 42 H340" stroke="#765186" stroke-width="2" fill="none" />
       <path d="M340 37 L350 42 L340 47 Z" fill="#765186" />
@@ -8,12 +8,12 @@
       <path d="M250 210 V154" stroke="#c8553d" stroke-width="2" fill="none" />
       <path d="M245 154 L250 144 L255 154 Z" fill="#c8553d" />
     </svg>
-    <div class="hoang-node hoang-core rl-agent">Agent</div>
-    <div class="hoang-node hoang-neutral rl-environment">Môi trường</div>
+    <div class="seminar-node seminar-core rl-agent">Agent</div>
+    <div class="seminar-node seminar-neutral rl-environment">Môi trường</div>
     <div class="rl-action">Hành động</div>
     <div class="rl-reward">Trạng thái mới + điểm thưởng</div>
-    <div class="hoang-node hoang-danger rl-poison">Nhiễu khó thấy, đầu độc điểm thưởng</div>
-    <div class="hoang-node hoang-danger rl-inverse">Inverse RL: đoán ngược hàm thưởng</div>
+    <div class="seminar-node seminar-danger rl-poison">Nhiễu khó thấy, đầu độc điểm thưởng</div>
+    <div class="seminar-node seminar-danger rl-inverse">Inverse RL: đoán ngược hàm thưởng</div>
   </div>
 </template>
 

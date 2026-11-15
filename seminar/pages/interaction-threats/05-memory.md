@@ -6,7 +6,7 @@ transition: slide-left
 
 # Agent2Memory: lỗi được giữ lại
 
-![memory security threat taxonomy](./memory-taxonomy.svg)
+![memory security threat taxonomy](../../assets/memory-taxonomy.svg)
 
 <!--
 Nguồn: S1 §4.3. Thứ tự theo Hình 3: long-term trước short-term, dù phần văn bản survey trình bày ngược. Long-term gồm poisoning, privacy và dữ liệu cũ; short-term gồm giới hạn context, nén lịch sử và đồng bộ giữa agent. Lưu được và tìm thấy thông tin không chứng minh thông tin đúng hoặc được phép tiết lộ.
@@ -33,22 +33,19 @@ transition: slide-left
 
 # Long-term Memory
 
-<div v-if="$clicks < 2" class="hoang-source">
-  <p class="hoang-lead"><strong>Chỉ 5 văn bản độc trong 1 triệu văn bản đủ để điều khiển câu trả lời 90% số lần</strong></p>
+<div v-if="$clicks < 2" class="seminar-content">
+  <p class="seminar-lead"><strong>Chỉ 5 văn bản độc trong 1 triệu văn bản đủ để điều khiển câu trả lời 90% số lần</strong></p>
   <MemoryThreatDiagram />
-  <div class="hoang-three hoang-below">
-    <div class="hoang-card hoang-peach">
-      <div class="hoang-card-heading"><strong>Đầu độc</strong></div>
+  <div class="seminar-three seminar-below">
+    <ContentCard title="Đầu độc" tone="peach">
       <p>PoisonedRAG: 5 mẫu / 1 triệu → 90% thành công</p>
-    </div>
-    <div class="hoang-card hoang-peach">
-      <div class="hoang-card-heading"><strong>Rò rỉ riêng tư</strong></div>
+    </ContentCard>
+    <ContentCard title="Rò rỉ riêng tư" tone="peach">
       <p>Prompt có cấu trúc rút dữ liệu; dịch ngược embedding</p>
-    </div>
-    <div class="hoang-card hoang-peach">
-      <div class="hoang-card-heading"><strong>Mâu thuẫn, thời gian</strong></div>
+    </ContentCard>
+    <ContentCard title="Mâu thuẫn, thời gian" tone="peach">
       <p>Lưu cả "Trái Đất tròn" và "phẳng"; sai mốc hiệu lực</p>
-    </div>
+    </ContentCard>
   </div>
 </div>
 <div v-else>
@@ -116,17 +113,15 @@ transition: slide-left
 
 # Short-term Memory
 
-<div v-if="$clicks < 2" class="hoang-source">
-  <p class="hoang-lead"><strong>Bộ nhớ ngắn hạn: như trí nhớ làm việc của người, chỉ trong một phiên.</strong></p>
-  <div class="hoang-two">
-    <div class="hoang-card ">
-      <div class="hoang-card-heading"><strong>Giới hạn ngữ cảnh</strong></div>
+<div v-if="$clicks < 2" class="seminar-content">
+  <p class="seminar-lead"><strong>Bộ nhớ ngắn hạn: như trí nhớ làm việc của người, chỉ trong một phiên.</strong></p>
+  <div class="seminar-two">
+    <ContentCard title="Giới hạn ngữ cảnh">
       <p>Giới hạn số token, mỗi phiên tách rời.</p>
-    </div>
-    <div class="hoang-card ">
-      <div class="hoang-card-heading"><strong>Bộ nhớ không đồng bộ</strong></div>
+    </ContentCard>
+    <ContentCard title="Bộ nhớ không đồng bộ">
       <p>Trong hệ nhiều agent thì bộ nhớ các agent không đồng bộ, dẫn tới mỗi agent hiểu mục tiêu một kiểu.</p>
-    </div>
+    </ContentCard>
   </div>
 </div>
 <div v-else>

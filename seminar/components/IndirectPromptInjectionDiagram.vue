@@ -1,5 +1,5 @@
 <template>
-  <div class="indirect-prompt hoang-diagram" role="group" aria-label="Kẻ tấn công giấu lệnh trong dữ liệu; người dùng nhờ agent đọc trang">
+  <div class="indirect-prompt seminar-diagram" role="group" aria-label="Kẻ tấn công giấu lệnh trong dữ liệu; người dùng nhờ agent đọc trang">
     <svg viewBox="0 0 900 198" aria-hidden="true">
       <path d="M155 48 H190" stroke="#c8553d" stroke-width="2" fill="none" />
       <path d="M190 43 L200 48 L190 53 Z" fill="#c8553d" />
@@ -10,12 +10,12 @@
       <path d="M522.5 128 V104" stroke="#6b6475" stroke-width="2" fill="none" />
       <path d="M517.5 104 L522.5 94 L527.5 104 Z" fill="#6b6475" />
     </svg>
-    <div class="hoang-node indirect-attacker">Kẻ tấn công</div>
-    <div class="hoang-node indirect-data">Giấu lệnh trong trang web, email, tài liệu</div>
-    <div class="hoang-node hoang-core indirect-agent">Agent đọc trang khi làm việc</div>
-    <div class="hoang-node hoang-danger indirect-result">Lộ lịch sử chat, chèn link lừa đảo, gửi dữ liệu ra ngoài</div>
+    <div class="seminar-node indirect-attacker">Kẻ tấn công</div>
+    <div class="seminar-node indirect-data">Giấu lệnh trong trang web, email, tài liệu</div>
+    <div class="seminar-node seminar-core indirect-agent">Agent đọc trang khi làm việc</div>
+    <div class="seminar-node seminar-danger indirect-result">Lộ lịch sử chat, chèn link lừa đảo, gửi dữ liệu ra ngoài</div>
     <div class="indirect-cause"><slot name="cause" /></div>
-    <div class="hoang-node hoang-neutral indirect-user">Người dùng: "Tóm tắt trang này"</div>
+    <div class="seminar-node seminar-neutral indirect-user">Người dùng: "Tóm tắt trang này"</div>
   </div>
 </template>
 

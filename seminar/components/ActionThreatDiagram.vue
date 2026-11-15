@@ -1,17 +1,17 @@
 <template>
-  <div class="hoang-action" role="group" aria-label="Action input, Action execution, Observation, Final answer; vị trí của Agent2Tool và Supply chain">
-    <div class="hoang-action-label">Agent2Tool (chủ động)</div>
-    <div class="hoang-action-label">Supply chain</div>
-    <div class="hoang-action-label hoang-action-passive">Agent2Tool (bị động): lộ dữ liệu khi trả về</div>
-    <div class="hoang-action-node">Action input</div>
-    <div class="hoang-action-node">Action execution<br />(trong tool)</div>
-    <div class="hoang-action-node">Observation</div>
-    <div class="hoang-action-node">Final answer</div>
+  <div class="seminar-action" role="group" aria-label="Action input, Action execution, Observation, Final answer; vị trí của Agent2Tool và Supply chain">
+    <div class="seminar-action-label">Agent2Tool (chủ động)</div>
+    <div class="seminar-action-label">Supply chain</div>
+    <div class="seminar-action-label seminar-action-passive">Agent2Tool (bị động): lộ dữ liệu khi trả về</div>
+    <div class="seminar-action-node">Action input</div>
+    <div class="seminar-action-node">Action execution<br />(trong tool)</div>
+    <div class="seminar-action-node">Observation</div>
+    <div class="seminar-action-node">Final answer</div>
   </div>
 </template>
 
 <style scoped>
-.hoang-action {
+.seminar-action {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   column-gap: 32px;
@@ -19,7 +19,7 @@
   font: 18px/1.25 Arial, sans-serif;
 }
 
-.hoang-action-label {
+.seminar-action-label {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,11 +32,11 @@
   font-weight: 700;
 }
 
-.hoang-action-passive {
+.seminar-action-passive {
   grid-column: span 2;
 }
 
-.hoang-action-node {
+.seminar-action-node {
   position: relative;
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@
   font-weight: 700;
 }
 
-.hoang-action-node:not(:last-child)::after {
+.seminar-action-node:not(:last-child)::after {
   content: '';
   position: absolute;
   top: calc(50% - 5px);

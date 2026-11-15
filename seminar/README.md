@@ -1,46 +1,62 @@
 # Group ISSEC Seminar
 
-Slidev deck using Phong’s presentation as the base, with Hoàng’s overview and attack slides rebuilt as editable Slidev content. Source files in `../refs/` remain unchanged.
+Slidev presentation on AI agent security: attacks, defenses, and research directions. The main reference is *AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways* (Deng et al., 2025). Original reference materials remain in `../refs/`.
 
 ## Sections
 
-1. **Tổng quan**: Hoàng 3 → Hoàng 5 → Hoàng 6 → Phong’s taxonomy and threat models.
-2. **Intra-execution**: Perception, Brain, and Action taxonomies → attack details from Hoàng → defenses at click 2.
-3. **Interaction**: Agent2Environment, Agent2Agent, and Agent2Memory taxonomies → attack details from Hoàng → defenses at click 2.
-4. **Kết luận và hướng nghiên cứu**: Phong’s conclusion, pending further content guidance.
+1. **Tổng quan**: chatbot versus agent, agent workflow, security gaps, taxonomy, and threat models.
+2. **Intra-execution**: Perception, Brain, and Action threats, followed by defense comparisons.
+3. **Interaction**: risks involving environments, other agents, and memory.
+4. **Kết luận và hướng nghiên cứu**: conclusions and research directions.
 
-Phong’s references and final thank-you slide are retained. The cover lists Dương Tấn Huỳnh Phong and Trần Trọng Hoàng, with the existing cover date (2026-11-15). Timing remains unset.
+References and a thank-you slide close the deck.
 
 ## Run, build, export
 
+Use Node.js and pnpm installed directly. The project specifies pnpm 12.18.0 in `package.json`.
+
+Run these commands from this directory:
+
 ```sh
-corepack pnpm install
-corepack pnpm dev
-corepack pnpm build
-corepack pnpm exec playwright install chromium
-corepack pnpm export
-corepack pnpm ppt
+pnpm install
+pnpm dev
 ```
 
-## Source mapping
+Build the website:
 
-| Seminar file | Source |
-| --- | --- |
-| `pages/overview/01-chatbot-vs-agent.md` | Hoàng slide 3, editable HTML/CSS diagram |
-| `pages/overview/02-agent-workflow.md` | Hoàng slide 5, editable HTML/CSS diagram |
-| `pages/overview/03-security-gaps.md` | Hoàng slide 6, editable HTML/CSS diagram |
-| `pages/overview/05-taxonomy.md`–`06-threat-model-map.md` | Phong overview with editable taxonomy SVG and `TableComparison` |
-| `pages/execution-threats/`, `pages/interaction-threats/` | Taxonomy diagrams followed by 14 attack-topic slides based on Hoàng slides 7–18; defenses integrated at click 2 |
-| `pages/discussion/` | Phong conclusion content |
+```sh
+pnpm build
+```
 
-Hoàng’s presenter notes are retained in the corresponding Markdown files. Phong’s assets and deck styles are reused. Dependencies remain pinned in `package.json` and `pnpm-lock.yaml`.
+Install Chromium for exports, then generate PDF or PowerPoint output:
 
-## Hoàng slides in HTML
+```sh
+pnpm exec playwright install chromium
+pnpm export
+pnpm ppt
+```
 
-The chatbot/agent comparison uses `shifting-intro` with the title “Chatbot và AI agent”. The slide Markdown directly composes reusable `ChatbotDiagram` and `AgentDiagram` components. Slide 5 uses `shifting-intro` with `AgentWorkflowDiagram`; slide 6 uses `shifting-intro`: click 1 shows `RectangleOrbitTetrad`, and click 2 shows the editable `GapsDiagram`. Text, boxes, borders, arrows, and diagram labels are HTML/CSS. Their wording and composition follow Hoàng’s deck; speaker notes remain in the corresponding Markdown files. No whole-slide image is used.
+Both export commands include click states. Dependency versions are recorded in `package.json` and `pnpm-lock.yaml`.
 
-## Attack detail sequence
+## Project structure
 
-Each taxonomy overview is followed by the corresponding attack detail slides inside the same article file. Each attack reveals its source-specific diagram or cards first, then replaces them with its defense comparison at click 2. The former shared defense slides are no longer imported. The prompt injection slide uses `PromptInjectionDiagram` for Hoàng’s original prompt flow; its two explanation blocks live directly in the slide Markdown. The composition, wording, and colors follow Hoàng’s source. Other details preserve Hoàng’s numbered cards, feedback loops, interaction panels, and memory pipeline using dedicated Vue components and the original planning vector figure. Defense comparisons use the addon’s `TableComparison`. Full source text and presenter notes from Hoàng are retained in each detail slide’s speaker notes.
+- `slides.md`: cover, contents, section imports, references, and closing slide.
+- `pages/`: section entry files (`main.md`) and numbered article files in presentation order.
+- `assets/`: backgrounds and SVG assets.
+- `components/`: reusable cards, callouts, and editable diagrams.
+- `layouts/`: local Slidev layouts, including the dimmed cover.
+- `style.css`: shared slide layouts and diagram styles.
 
-See [the attack source mapping](docs/hoang-attack-mapping.md) for all 14 topic slides. Where Hoàng only provides an overview or notes, details are drawn from those notes and the supplied survey; the mapping identifies those cases.
+Execution topics have separate files for prompt injection, jailbreak, backdoors, misalignment, hallucination, planning, and tool/supply-chain risks. Interaction articles currently contain multiple related slides.
+
+## Components and presentation behavior
+
+Use `ContentCard` for content cards and `Takeaway` for takeaway callouts. Their styles live inside their Vue components. Slide markup supplies titles and slot content; grid containers control their arrangement.
+
+Workflow, security-gap, attack, and planning diagrams use editable Vue/SVG or HTML/CSS elements. Taxonomy SVGs live in `assets/`. The planning diagram is rendered by `PlanningStructuresDiagram`, rather than an embedded image.
+
+The `shifting-intro` layout reveals content at click 1. Attack detail slides generally switch to defense comparisons at click 2. The security-gap slide switches from the tetrad to its diagram at click 2; the chatbot comparison reveals the agent at click 2 and takeaway at click 3.
+
+Presenter notes sit in HTML comments at the end of each slide. Notes in `overview` and `execution-threats` use concise Vietnamese explanations, survey references where applicable, and `[click]` markers aligned with reveals. Keep notes and citations consistent with the displayed content when editing.
+
+Follow `AGENTS.md` and the workspace `../../SLIDE-STANDARDS.md` when maintaining the deck.

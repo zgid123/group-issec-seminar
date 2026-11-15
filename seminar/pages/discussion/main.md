@@ -1,5 +1,6 @@
 ---
 layout: bg-center
+dim: true
 transition: fade
 indexed: true
 background: ../../assets/heading.png

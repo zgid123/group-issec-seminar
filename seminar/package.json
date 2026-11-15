@@ -15,6 +15,7 @@
     "@alphacifer/slidev-addon-theme": "0.0.15",
     "@alphacifer/slidev-core-theme": "0.0.4",
     "@slidev/cli": "52.19.0",
+    "@slidev/client": "53.1.0",
     "vue": "3.5.40"
   },
   "devDependencies": {

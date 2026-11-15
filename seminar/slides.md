@@ -5,6 +5,8 @@ colorSchema: light
 addons:
   - "@alphacifer/slidev-addon-theme"
 background: ./assets/main.png
+layout: dim-cover
+dim: true
 drawings:
   persist: false
 transition: slide-left
@@ -18,7 +20,9 @@ fonts:
 exportFilename: group-issec-seminar
 ---
 
-# Bảo mật AI agent<br>Tấn công và giải pháp
+# Bảo mật AI agent
+
+## Tấn công và giải pháp
 
 <Speaker
   :team="[
@@ -27,11 +31,6 @@ exportFilename: group-issec-seminar
   ]"
   date="2026-11-15"
 />
-
-<!--
-Nội dung ghép từ phong-slides và các slide 3, 5, 6 của hoang-slides. Thời lượng sẽ bổ sung sau. Ngày trên bìa tạm giữ từ phong-slides.
-Survey Deng et al. (2025) provides the map. Selected original studies are named on the reference slide; their “Survey ref. n” labels match the bibliography inside the supplied PDF. Discussion of evidence and limitations remains based on the survey.
--->
 
 ---
 layout: arc-toc
@@ -83,12 +82,6 @@ references:
     title: "AutoDefense: Multi-Agent LLM Defense Against Jailbreak Attacks."
     url: https://arxiv.org/pdf/2403.04783
 ---
-
-# Survey và nghiên cứu tiêu biểu
-
-<!--
-Survey của Deng et al. cung cấp taxonomy và tổng quan. Các công trình tiêu biểu ở dưới được chọn từ chính danh mục tham khảo của survey; mã “Survey ref. n” khớp số [n] trong PDF. Không phải tất cả nghiên cứu được survey nhắc đến đều được liệt kê ở đây.
--->
 
 ---
 layout: thanks

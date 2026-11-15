@@ -6,7 +6,7 @@ transition: slide-left
 
 # Agent2Agent: sai lệch lan truyền
 
-![agent-agent security threat taxonomy](./agent-agent-taxonomy.svg)
+![agent-agent security threat taxonomy](../../assets/agent-agent-taxonomy.svg)
 
 <!--
 Nguồn: S1 §4.2. Ví dụ minh họa nhóm hợp tác, không phải phép đo. Nhiều câu trả lời đồng ý có thể dùng cùng một nguồn sai nên không độc lập. Cạnh tranh có incentive khác; không suy từ trò chơi sang mọi hệ triển khai. Các nghiên cứu worm trong survey chỉ được đọc qua nguồn tổng quan, không trình bày như thí nghiệm đã tái lập.
@@ -33,28 +33,40 @@ transition: slide-left
 
 # Cooperative & Competitive
 
-<div v-if="$clicks < 2" class="hoang-source">
-  <p class="hoang-lead"><strong>Hợp tác làm lỗi lây lan giữa các agent, còn cạnh tranh dạy agent cách lừa dối</strong></p>
-  <div class="hoang-interactions">
-    <section class="hoang-interaction-panel">
-      <h3>Hợp tác (cooperative)</h3>
+<div v-if="$clicks < 2" class="seminar-content">
+  <p class="seminar-lead"><strong>Hợp tác làm lỗi lây lan giữa các agent, còn cạnh tranh dạy agent cách lừa dối</strong></p>
+  <div class="seminar-interactions">
+    <ContentCard title="Hợp tác (cooperative)" variant="panel">
       <CooperativeDiagram />
       <ul>
-        <li><strong>Sâu Morris II:</strong> prompt độc tự nhân bản sang agent khác</li>
-        <li><strong>Thông đồng ngầm</strong> qua kênh công khai</li>
-        <li><strong>Khuếch đại hallucination</strong>, lan tin sai</li>
-        <li>Mặt tốt: AutoDefense dùng nhiều agent để chặn jailbreak</li>
+        <li>
+          <strong>Sâu Morris II:</strong> prompt độc tự nhân bản sang agent khác
+        </li>
+        <li>
+          <strong>Thông đồng ngầm</strong> qua kênh công khai
+        </li>
+        <li>
+          <strong>Khuếch đại hallucination</strong>, lan tin sai
+        </li>
+        <li>
+          Mặt tốt: AutoDefense dùng nhiều agent để chặn jailbreak
+        </li>
       </ul>
-    </section>
-    <section class="hoang-interaction-panel hoang-gray">
-      <h3>Cạnh tranh (competitive)</h3>
+    </ContentCard>
+    <ContentCard title="Cạnh tranh (competitive)" variant="panel" tone="gray">
       <CompetitiveDiagram />
       <ul>
-        <li><strong>Cicero</strong> (Meta, game Diplomacy): được dạy trung thực nhưng học cách nói dối, lập liên minh giả</li>
-        <li>Tạo đầu vào đối kháng để hạ đối thủ</li>
-        <li>Phòng thủ: vẫn là <strong>câu hỏi mở</strong></li>
+        <li>
+          <strong>Cicero</strong> (Meta, game Diplomacy): được dạy trung thực nhưng học cách nói dối, lập liên minh giả
+        </li>
+        <li>
+          Tạo đầu vào đối kháng để hạ đối thủ
+        </li>
+        <li>
+          Phòng thủ: vẫn là <strong>câu hỏi mở</strong>
+        </li>
       </ul>
-    </section>
+    </ContentCard>
   </div>
 </div>
 <div v-else>

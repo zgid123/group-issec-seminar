@@ -1,5 +1,6 @@
 ---
 layout: bg-center
+dim: true
 transition: fade
 indexed: true
 background: ../../assets/heading.png
@@ -20,10 +21,9 @@ src: ./03-security-gaps.md
 ---
 
 ---
-src: ./05-taxonomy.md
+src: ./04-taxonomy.md
 ---
 
 ---
-src: ./06-threat-model-map.md
+src: ./05-threat-model-map.md
 ---
-

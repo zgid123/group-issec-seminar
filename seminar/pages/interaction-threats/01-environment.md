@@ -6,7 +6,7 @@ transition: slide-left
 
 # Environment: rủi ro từ bên ngoài
 
-![environment security threat taxonomy](./environment-taxonomy.svg)
+![environment security threat taxonomy](../../assets/environment-taxonomy.svg)
 
 <!--
 Nguồn: S1 §4.1, giữ thứ tự Hình 3. RL là học tăng cường từ phản hồi/phần thưởng. Anthropomorphic attachment là gắn bó có hại do xem agent như con người; misuse là dùng agent vào mục đích gây hại. Bốn nhánh tài nguyên: resource exhaustion attack; inefficient resource allocation; insufficient isolation between agents; unmonitored resource usage. Các lỗi phân bổ/giám sát không cần attacker. Nêu tên nhóm ngắn gọn, dành ví dụ cho web chứa lệnh đổi người nhận báo cáo; không kể năm câu chuyện riêng.
@@ -34,33 +34,30 @@ transition: slide-left
 
 # Agent2Environment
 
-<div v-if="$clicks < 2" class="hoang-source">
-  <p class="hoang-lead"><strong>Môi trường không chỉ nhận lệnh từ agent mà còn phản hồi ngược để điều khiển agent</strong></p>
-  <div class="hoang-environment-top">
+<div v-if="$clicks < 2" class="seminar-content">
+  <p class="seminar-lead"><strong>Môi trường không chỉ nhận lệnh từ agent mà còn phản hồi ngược để điều khiển agent</strong></p>
+  <div class="seminar-environment-top">
     <EnvironmentInteractionDiagram />
-    <div class="hoang-card">Agent2Tool là rủi ro chiều đi. Agent2Environment là rủi ro <strong>chiều về</strong>: HTML, ảnh chụp màn hình, trạng thái bị giả mạo.</div>
+    <ContentCard variant="small">
+      Agent2Tool là rủi ro chiều đi. Agent2Environment là rủi ro <strong>chiều về</strong>: HTML, ảnh chụp màn hình, trạng thái bị giả mạo.
+    </ContentCard>
   </div>
-  <div class="hoang-five hoang-below">
-    <div class="hoang-card ">
-      <div class="hoang-card-heading"><span class="hoang-number">1</span><strong>Web, dữ liệu ngoài</strong></div>
+  <div class="seminar-five seminar-below">
+    <ContentCard variant="compact" title="Web, dữ liệu ngoài" number="1">
       <p>Indirect prompt injection</p>
-    </div>
-    <div class="hoang-card hoang-gray">
-      <div class="hoang-card-heading"><span class="hoang-number">2</span><strong>Học tăng cường (RL)</strong></div>
+    </ContentCard>
+    <ContentCard variant="compact" title="Học tăng cường (RL)" number="2" tone="gray">
       <p>Đầu độc điểm thưởng</p>
-    </div>
-    <div class="hoang-card ">
-      <div class="hoang-card-heading"><span class="hoang-number">3</span><strong>Giả lập, sandbox</strong></div>
+    </ContentCard>
+    <ContentCard variant="compact" title="Giả lập, sandbox" number="3">
       <p>Gắn bó cảm xúc, lạm dụng</p>
-    </div>
-    <div class="hoang-card hoang-gray">
-      <div class="hoang-card-heading"><span class="hoang-number">4</span><strong>Hạ tầng tính toán</strong></div>
+    </ContentCard>
+    <ContentCard variant="compact" title="Hạ tầng tính toán" number="4" tone="gray">
       <p>Cạn tài nguyên, thiếu cách ly</p>
-    </div>
-    <div class="hoang-card hoang-gray">
-      <div class="hoang-card-heading"><span class="hoang-number">5</span><strong>Thế giới vật lý</strong></div>
+    </ContentCard>
+    <ContentCard variant="compact" title="Thế giới vật lý" number="5" tone="gray">
       <p>Cảm biến bị giả mạo</p>
-    </div>
+    </ContentCard>
   </div>
 </div>
 <div v-else>
@@ -139,11 +136,13 @@ transition: slide-left
 
 # Indirect Prompt Injection
 
-<div v-if="$clicks < 2" class="hoang-source">
-  <p class="hoang-lead"><strong>Indirect prompt injection giấu lệnh trong dữ liệu mà agent tự đi đọc</strong></p>
+<div v-if="$clicks < 2" class="seminar-content">
+  <p class="seminar-lead"><strong>Indirect prompt injection giấu lệnh trong dữ liệu mà agent tự đi đọc</strong></p>
   <IndirectPromptInjectionDiagram>
     <template #cause>
-      <div class="hoang-cause"><strong>Nguyên nhân gốc:</strong> agent không phân biệt được <strong>dữ liệu</strong> với <strong>mệnh lệnh</strong> từ nguồn bên ngoài.</div>
+      <ContentCard variant="note">
+        <strong>Nguyên nhân gốc:</strong> agent không phân biệt được <strong>dữ liệu</strong> với <strong>mệnh lệnh</strong> từ nguồn bên ngoài.
+      </ContentCard>
     </template>
   </IndirectPromptInjectionDiagram>
   <TableComparison dense :spacing="2" :animation="false" row-header-width="22%">
@@ -222,11 +221,13 @@ transition: slide-left
 
 # RL Environment
 
-<div v-if="$clicks < 2" class="hoang-source">
-  <p class="hoang-lead"><strong>Trong học tăng cường, kẻ tấn công nhắm vào điểm thưởng thay vì vào mô hình</strong></p>
-  <div class="hoang-rl-layout">
+<div v-if="$clicks < 2" class="seminar-content">
+  <p class="seminar-lead"><strong>Trong học tăng cường, kẻ tấn công nhắm vào điểm thưởng thay vì vào mô hình</strong></p>
+  <div class="seminar-rl-layout">
     <RLThreatDiagram />
-    <div class="hoang-card hoang-rl-explanation"><strong>Vì sao khó phát hiện:</strong> điểm thưởng chỉ là những con số. Con người nhìn vào khó biết con số nào đã bị sửa.</div>
+    <ContentCard variant="explanation">
+      <strong>Vì sao khó phát hiện:</strong> điểm thưởng chỉ là những con số. Con người nhìn vào khó biết con số nào đã bị sửa.
+    </ContentCard>
   </div>
 </div>
 <div v-else>
@@ -251,7 +252,7 @@ transition: slide-left
       </TableComparisonRow>
     </TableComparisonRows>
   </TableComparison>
-  <p class="hoang-defense-takeaway">Paper đánh giá: nghiên cứu cho agent dùng RL <strong>còn rất ít</strong>.</p>
+  <p class="seminar-defense-takeaway">Paper đánh giá: nghiên cứu cho agent dùng RL <strong>còn rất ít</strong>.</p>
 </div>
 
 <!--
@@ -293,29 +294,25 @@ transition: slide-left
 
 # Computing Resources
 
-<div v-if="$clicks < 2" class="hoang-source">
-  <p class="hoang-lead"><strong>Hạ tầng quản lý tài nguyên yếu cho phép một agent làm sập hoặc xâm nhập agent khác</strong></p>
-  <div class="hoang-resource-grid">
-    <div class="hoang-card ">
-      <div class="hoang-card-heading"><span class="hoang-number">1</span><strong>Cạn kiệt tài nguyên</strong></div>
+<div v-if="$clicks < 2" class="seminar-content">
+  <p class="seminar-lead"><strong>Hạ tầng quản lý tài nguyên yếu cho phép một agent làm sập hoặc xâm nhập agent khác</strong></p>
+  <div class="seminar-resource-grid">
+    <ContentCard variant="resource" title="Cạn kiệt tài nguyên" number="1">
       <p>Bắt agent làm việc nặng liên tục, người dùng khác bị từ chối dịch vụ.</p>
-      <p class="hoang-operational">Thiếu resource limit, rate limit</p>
-    </div>
-    <div class="hoang-card ">
-      <div class="hoang-card-heading"><span class="hoang-number">2</span><strong>Phân bổ kém hiệu quả</strong></div>
+      <p class="seminar-operational">Thiếu resource limit, rate limit</p>
+    </ContentCard>
+    <ContentCard variant="resource" title="Phân bổ kém hiệu quả" number="2">
       <p>Prompt không được kiểm tra làm tốn thời gian xử lý, việc quan trọng bị chậm.</p>
-      <p class="hoang-operational">Thiếu priority, scheduling</p>
-    </div>
-    <div class="hoang-card ">
-      <div class="hoang-card-heading"><span class="hoang-number">3</span><strong>Cách ly kém giữa agent</strong></div>
+      <p class="seminar-operational">Thiếu priority, scheduling</p>
+    </ContentCard>
+    <ContentCard variant="resource" title="Cách ly kém giữa agent" number="3">
       <p>Agent xấu đọc hoặc can thiệp dữ liệu, tiến trình của agent khác.</p>
-      <p class="hoang-operational">Thiếu namespace, NetworkPolicy</p>
-    </div>
-    <div class="hoang-card ">
-      <div class="hoang-card-heading"><span class="hoang-number">4</span><strong>Không giám sát</strong></div>
+      <p class="seminar-operational">Thiếu namespace, NetworkPolicy</p>
+    </ContentCard>
+    <ContentCard variant="resource" title="Không giám sát" number="4">
       <p>Tài nguyên tăng vọt bất thường nhưng không ai phát hiện.</p>
-      <p class="hoang-operational">Thiếu metrics, cảnh báo</p>
-    </div>
+      <p class="seminar-operational">Thiếu metrics, cảnh báo</p>
+    </ContentCard>
   </div>
 </div>
 <div v-else>

@@ -9,12 +9,11 @@ transition: slide-left
 <AgentWorkflowDiagram />
 
 <!--
-Nguồn nguyên bản: ../refs/hoang-slides.pptx, slide 5 (đếm từ 1).
-Đây là khung khái niệm thống nhất (unified conceptual framework) của paper, cũng là "bản đồ" cho toàn bộ phần sau.
-Bên trong một agent (intra-execution) có ba khối, giống con người:
-- Perception là "mắt, tai": nhận đầu vào nhiều dạng và chuẩn bị prompt cho bộ não.
-- Brain là "bộ não": chính là LLM, làm suy luận (reasoning), lập kế hoạch (planning), ra quyết định chọn tool.
-- Action là "tay": gọi tool, API để làm từng việc con.
-Bên ngoài (interaction): agent làm việc với môi trường, với agent khác, và với bộ nhớ. Paper xếp bộ nhớ vào nhóm "bên ngoài" vì việc truy xuất bộ nhớ có rủi ro riêng.
-Tái tạo nội dung và sơ đồ bằng HTML/CSS trong Vue để chỉnh sửa trực tiếp trong Slidev.
+[click]
+
+Đi từ trái sang phải: Perception nhận đầu vào, Brain suy luận và lập kế hoạch, Action gọi công cụ để thực hiện. Kết quả lại trở thành đầu vào cho vòng tiếp theo.
+
+Bên dưới là ba nơi agent trao đổi thông tin: agent khác, bộ nhớ và môi trường. Phần sau sẽ lần lượt xét rủi ro ở từng vị trí này.
+
+Nguồn: Deng et al. (2025), khung Perception–Brain–Action.
 -->
