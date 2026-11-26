@@ -8,16 +8,8 @@ transition: slide-left
 # Agent2Tool & Supply Chain
 
 <div v-if="$clicks < 2" class="seminar-content">
-  <p class="seminar-lead"><strong>Hành động bị tấn công từ hai phía: lệnh agent gửi đi và chính công cụ nhận lệnh</strong></p>
+  <p class="seminar-lead"><strong>Khi agent gọi tool, có ba điểm bị tấn công: lệnh gửi đi, chính tool, và dữ liệu trả về.</strong></p>
   <ActionThreatDiagram />
-  <div class="seminar-two seminar-below">
-    <ContentCard title="Agent2Tool:" tone="gray">
-      <p>tool được cấp quyền quá rộng nên chạy lệnh nguy hiểm không hỏi người dùng; dữ liệu cá nhân lộ cho bên thứ ba.</p>
-    </ContentCard>
-    <ContentCard title="Supply chain:" tone="gray">
-      <p>tool hoặc plugin đã bị nhiễm. Ví dụ: trang web độc (WIPI), phụ đề YouTube bị sửa, plugin Webpilot lấy lịch sử chat.</p>
-    </ContentCard>
-  </div>
 </div>
 <div v-else>
   <TableComparison dense :spacing="2" :animation="false" row-header-width="24%">
@@ -52,7 +44,11 @@ transition: slide-left
 <!--
 [click]
 
-Theo sơ đồ: agent soạn lệnh, tool thực thi, trả kết quả, rồi agent trả lời. Rủi ro có thể nằm ở lệnh quá quyền, dữ liệu trao đổi hoặc chính tool đã bị xâm phạm.
+Đọc sơ đồ từ trái sang phải: người dùng giao việc, agent soạn lệnh (action input) gửi cho tool, tool thực thi và trả kết quả (observation), agent tổng hợp thành câu trả lời.
+
+(1) Agent2Tool chủ động: lệnh do LLM sinh ra có thể cần quyền quá rộng, chạy lệnh rủi ro mà không hỏi người dùng (ToolEmu).
+(2) Supply chain: bản thân tool có lỗ hổng hoặc đã bị xâm phạm, ví dụ trang web độc của WIPI, phụ đề YouTube bị sửa, plugin Webpilot lấy lịch sử chat.
+(3) Agent2Tool bị động: dữ liệu trao đổi giữa agent và tool có thể bị chặn và lộ cho bên thứ ba (đã ghi nhận ở HuggingGPT, ToolFormer).
 
 [click]
 

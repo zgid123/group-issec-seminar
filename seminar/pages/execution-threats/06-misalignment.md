@@ -9,17 +9,7 @@ transition: slide-left
 
 <div v-if="$clicks < 2" class="seminar-content">
   <p class="seminar-lead"><strong>Misalignment: agent làm khác ý con người vì dữ liệu, vì chiều lòng, vì không hiểu thế giới</strong></p>
-  <div class="seminar-three seminar-misalignment">
-    <ContentCard variant="tall" title="Dữ liệu huấn luyện" number="1">
-      <p>Nội dung độc chiếm khoảng 0,2% dữ liệu tiền huấn luyện của LLaMA2. Thiên vị giới tính, chủng tộc, vùng miền đi theo vào agent.</p>
-    </ContentCard>
-    <ContentCard variant="tall" title="Người và agent" number="2">
-      <p>Sycophancy: agent chiều theo ý người dùng, kể cả chọn đáp án mà nó biết là sai.</p>
-    </ContentCard>
-    <ContentCard variant="tall" title="Môi trường embodied" number="3">
-      <p>Được bảo bật đèn xanh cho người đi bộ, agent bật ngay dù đèn xe làn bên cạnh cũng đang xanh.</p>
-    </ContentCard>
-  </div>
+  <MisalignmentDiagram />
 </div>
 <div v-else>
   <TableComparison dense :spacing="2" :animation="false" row-header-width="24%">
@@ -55,6 +45,8 @@ transition: slide-left
 [click]
 
 Misalignment là khi agent làm khác điều con người mong muốn. Ba nguồn trên slide là dữ liệu huấn luyện, cách đáp ứng người dùng và hiểu biết về môi trường.
+
+Sơ đồ đọc theo hàng: nguồn lệch, đầu vào, agent, hành vi thực tế (đỏ) so với điều con người mong đợi (xanh). Ví dụ "đáp án B" ở hàng 2 là minh họa, không lấy từ survey.
 
 Ví dụ: agent đồng ý với người dùng dù họ sai, hoặc bật đèn cho người đi bộ mà không xét đèn xe.
 

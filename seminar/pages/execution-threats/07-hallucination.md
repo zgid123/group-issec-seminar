@@ -8,15 +8,8 @@ transition: slide-left
 # Hallucination
 
 <div v-if="$clicks < 2" class="seminar-content">
-  <p class="seminar-lead"><strong>MetaGPT thấy hợp tác thường xuyên làm hallucination nhỏ bị khuếch đại.</strong></p>
-  <div class="seminar-two">
-    <ContentCard title="Khuếch đại hallucination">
-      <p>lan tin sai</p>
-    </ContentCard>
-    <ContentCard title="Lỗi lan sang cả hệ">
-      <p>Lỗi của một agent lan sang cả hệ, làm hiệu năng giảm mạnh.</p>
-    </ContentCard>
-  </div>
+  <p class="seminar-lead"><strong>Agent bịa thông tin nghe hợp lý; trong hệ nhiều agent, lỗi nhỏ bị khuếch đại.</strong></p>
+  <HallucinationDiagram />
 </div>
 <div v-else>
   <TableComparison dense :spacing="2" :animation="false" row-header-width="24%">
@@ -52,6 +45,10 @@ transition: slide-left
 [click]
 
 Hallucination là thông tin sai nhưng nghe có vẻ hợp lý. Nếu agent sau dùng câu trả lời của agent trước làm dữ kiện, lỗi có thể lan qua cả hệ.
+
+Hàng trên: ví dụ trong survey (mục 3.2.3, ref. [150]) — người dùng quên đưa email, agent bịa địa chỉ từ tên đồng nghiệp rồi cấp quyền ghi chú mật. Tên "Minh" là minh họa.
+
+Hàng dưới: MetaGPT thấy hợp tác thường xuyên khuếch đại hallucination nhỏ; Pan et al. thấy lỗi lan truyền làm hiệu năng cả hệ giảm mạnh (survey mục 4.2.1). Kích thước chấm đỏ chỉ mang tính minh họa.
 
 Nhiều agent cùng đồng ý chưa chứng minh thông tin đúng: chúng có thể cùng dựa vào một dữ kiện sai.
 
