@@ -2,7 +2,7 @@
   <div class="backdoor-flow" role="group" aria-label="Agent email có backdoor chèn link lừa đảo nhưng báo đã gửi xong">
     <div class="backdoor-node">Người dùng: "Gửi email cho bạn tôi"</div>
     <span class="backdoor-arrow"></span>
-    <div class="backdoor-node compromised">Agent email (LLM có backdoor)</div>
+    <div class="backdoor-node compromised">Agent email dùng plugin Trojan</div>
     <span class="backdoor-arrow malicious"></span>
     <div class="backdoor-node payload">Lén chèn link lừa đảo vào thư</div>
     <span class="backdoor-arrow"></span>

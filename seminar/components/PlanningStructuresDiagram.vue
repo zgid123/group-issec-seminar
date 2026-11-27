@@ -132,7 +132,7 @@ const nodes = [
 .planning-structures {
   display: block;
   width: 100%;
-  height: 380px;
+  height: 340px;
   font-family: 'Times New Roman', serif;
   font-size: 14px;
   color: #111;

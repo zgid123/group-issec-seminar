@@ -1,0 +1,882 @@
+{
+  "checkedOn": "2026-11-26",
+  "scope": "Every substantive slide: explicit claim groups and survey locators. Table claims are in claim-evidence.json. Section dividers, cover, agenda and thanks contain no research claims.",
+  "slides": [
+    {
+      "file": "pages/overview/01-chatbot-vs-agent.md",
+      "survey": {
+        "section": "§1; §2.1",
+        "pages": [
+          1,
+          2,
+          4,
+          5
+        ]
+      },
+      "claims": [
+        {
+          "text": "So sánh chatbot chỉ sinh văn bản với agent có quyền hành động; gửi email/xóa file là ví dụ minh họa, không phải số liệu.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/overview/02-agent-workflow.md",
+      "survey": {
+        "section": "§2.1; Figure 2",
+        "pages": [
+          4,
+          5
+        ]
+      },
+      "claims": [
+        {
+          "text": "Sơ đồ perception–brain–action và tương tác môi trường: vẽ lại từ Figure 2.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/overview/03-security-gaps.md",
+      "survey": {
+        "section": "§2.2; Figure 1",
+        "pages": [
+          3,
+          5
+        ]
+      },
+      "claims": [
+        {
+          "text": "Bốn khoảng trống và liên hệ thành phần agent: tổng hợp §2.2; cách bố trí là minh họa.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/overview/04-taxonomy.md",
+      "survey": {
+        "section": "Figure 3",
+        "pages": [
+          7
+        ]
+      },
+      "claims": [
+        {
+          "text": "Sáu nhánh perception, brain, action, environment, agent, memory: vẽ lại taxonomy Figure 3.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/overview/05-threat-model-map.md",
+      "survey": {
+        "section": "Table 1",
+        "pages": [
+          6
+        ]
+      },
+      "claims": [
+        {
+          "text": "Bảng quyền truy cập, mục tiêu và nạn nhân là các ví dụ trong Table 1, không phải định nghĩa đầy đủ của mỗi loại attacker.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/execution-threats/01-perception.md",
+      "survey": {
+        "section": "§3.1; Figure 3",
+        "pages": [
+          5,
+          7,
+          8
+        ]
+      },
+      "claims": [
+        {
+          "text": "Phân nhánh prompt injection và jailbreak theo taxonomy survey.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/execution-threats/02-prompt-injection-attack.md",
+      "survey": {
+        "section": "§3.1.1",
+        "pages": [
+          8,
+          9,
+          10
+        ]
+      },
+      "claims": [
+        {
+          "text": "Goal hijacking và prompt leakage là hai mục tiêu tấn công.",
+          "refs": [
+            137
+          ],
+          "locator": "Survey p.8, đoạn mở đầu §3.1.1",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "RCE hoặc API-key theft là hậu quả phụ thuộc quyền và lỗi ứng dụng.",
+          "refs": [
+            103
+          ],
+          "locator": "Survey p.8, Goal hijacking; không gộp với tấn công ảnh của Wu",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Rò rỉ prompt hoặc chi tiết API của hệ RAG.",
+          "refs": [
+            201
+          ],
+          "locator": "Survey p.8, Prompt leakage",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Sơ đồ chèn lệnh là ví dụ minh họa; câu “ignore…” không bảo đảm khai thác thành công.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/execution-threats/03-jailbreak.md",
+      "survey": {
+        "section": "§3.1.2",
+        "pages": [
+          10,
+          11
+        ]
+      },
+      "claims": [
+        {
+          "text": "Lây jailbreak giữa agent qua ảnh: Agent Smith; chỉ áp dụng trong thiết lập trao đổi của bài.",
+          "refs": [
+            57
+          ],
+          "locator": "Abstract; survey pp.10–11",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Đầu vào đa phương thức và hậu quả vật lý: nhóm nguy cơ được survey tổng hợp, không phải khả năng của mọi agent.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/execution-threats/04-brain.md",
+      "survey": {
+        "section": "§3.2; Figure 3",
+        "pages": [
+          7,
+          11,
+          12
+        ]
+      },
+      "claims": [
+        {
+          "text": "Bốn nhánh backdoor, misalignment, hallucination, planning theo Figure 3.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/execution-threats/05-backdoor-attack.md",
+      "survey": {
+        "section": "§3.2.1",
+        "pages": [
+          12
+        ]
+      },
+      "claims": [
+        {
+          "text": "Hai loại backdoor: đổi kết quả cuối hoặc chỉ đổi quá trình trung gian.",
+          "refs": [
+            211
+          ],
+          "locator": "Survey p.12, hai loại backdoor",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Sơ đồ email chèn link: plugin Trojan; không gán việc này cho LLM đã bị cài backdoor.",
+          "refs": [
+            39
+          ],
+          "locator": "Survey p.12, ví dụ email/plugin",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Februus và Quarantine nghiên cứu mô hình thị giác; không suy ra đã bảo vệ toàn hệ LLM agent.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/execution-threats/06-misalignment.md",
+      "survey": {
+        "section": "§3.2.2",
+        "pages": [
+          12,
+          13,
+          14
+        ]
+      },
+      "claims": [
+        {
+          "text": "Dữ liệu độc/thiên vị, sycophancy và hiểu môi trường chưa đầy đủ: ba nhóm survey tổng hợp; không khẳng định mô hình “biết mình sai”.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Đèn giao thông là tình huống ToolEmu mô phỏng, không phải tai nạn ngoài đời.",
+          "refs": [
+            150
+          ],
+          "locator": "Survey p.14, embodied environment; ToolEmu abstract xác định sandbox mô phỏng",
+          "basis": "survey-mediated unless original material is specified below"
+        }
+      ]
+    },
+    {
+      "file": "pages/execution-threats/07-hallucination.md",
+      "survey": {
+        "section": "§3.2.3",
+        "pages": [
+          14,
+          15
+        ]
+      },
+      "claims": [
+        {
+          "text": "Nối agent đơn giản có thể gây cascading hallucinations; đây là động cơ thiết kế MetaGPT, không phải mọi hợp tác đều làm tăng lỗi.",
+          "refs": [
+            65
+          ],
+          "locator": "Abstract, naive chaining / cascading hallucinations",
+          "basis": "survey-mediated unless original material is specified below"
+        }
+      ]
+    },
+    {
+      "file": "pages/execution-threats/08-planning-threat.md",
+      "survey": {
+        "section": "§3.2.4; Figure 4",
+        "pages": [
+          15,
+          16
+        ]
+      },
+      "claims": [
+        {
+          "text": "Lỗi trung gian có thể lan truyền trong planning; bốn cấu trúc vẽ lại từ Figure 4.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Chain-of-Thought là phương pháp suy luận từng bước; bài gốc không được dùng làm bằng chứng tấn công.",
+          "refs": [
+            190
+          ],
+          "locator": "Abstract: intermediate reasoning steps",
+          "basis": "survey-mediated unless original material is specified below"
+        }
+      ]
+    },
+    {
+      "file": "pages/execution-threats/09-action.md",
+      "survey": {
+        "section": "§3.3; Figure 3",
+        "pages": [
+          7,
+          16,
+          17,
+          18
+        ]
+      },
+      "claims": [
+        {
+          "text": "Agent2Tool và supply-chain là hai nhóm rủi ro hành động trong survey.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/execution-threats/10-agent2tool-supply-chain.md",
+      "survey": {
+        "section": "§3.3.1–§3.3.2",
+        "pages": [
+          17,
+          18
+        ]
+      },
+      "claims": [
+        {
+          "text": "Webpage độc điều khiển web agent: WIPI.",
+          "refs": [
+            200
+          ],
+          "locator": "Abstract: publicly accessible webpages",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "YouTube transcript chèn chỉ dẫn đổi hành vi.",
+          "refs": [
+            147
+          ],
+          "locator": "Bài demo chính tác giả, mục Proof of Concept; survey Table 1 p.6",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Dữ liệu web độc qua WebPilot gây rò rỉ lịch sử bằng Markdown image; plugin không nhất thiết là độc hại.",
+          "refs": [
+            45
+          ],
+          "locator": "Bài demo chính tác giả, Untrusted Data and Markdown Injection / Proof of Concept",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Nguồn 147 và 45 là báo cáo demo kỹ thuật, không gọi là paper bình duyệt.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/interaction-threats/01-environment.md",
+      "survey": {
+        "section": "§4.1; Figure 3",
+        "pages": [
+          7,
+          18,
+          19,
+          20,
+          21
+        ]
+      },
+      "claims": [
+        {
+          "text": "Các môi trường natural language, RL, simulation, computing resources, physical theo survey.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/interaction-threats/02-agent-environment.md",
+      "survey": {
+        "section": "§4.1; §4.1.3; §4.1.5",
+        "pages": [
+          18,
+          19,
+          20,
+          21
+        ]
+      },
+      "claims": [
+        {
+          "text": "Tương tác có hai chiều: hành động tác động môi trường và phản hồi tác động agent. Agent2Tool cũng có thể mang rủi ro từ phản hồi.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Môi trường mô phỏng/vật lý có nguy cơ bị thao túng hoặc lạm dụng; các ví dụ là tóm tắt survey.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/interaction-threats/03-indirect-prompt-injection.md",
+      "survey": {
+        "section": "§4.1.1",
+        "pages": [
+          18,
+          19
+        ]
+      },
+      "claims": [
+        {
+          "text": "Chỉ dẫn độc nằm trong dữ liệu agent truy xuất, vượt ranh giới dữ liệu/chỉ dẫn.",
+          "refs": [
+            56
+          ],
+          "locator": "Abstract: injecting prompts into data likely to be retrieved",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Sơ đồ website/email là minh họa luồng tấn công; cần agent đọc và làm theo payload.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/interaction-threats/04-rl-environment.md",
+      "survey": {
+        "section": "§4.1.2",
+        "pages": [
+          19
+        ]
+      },
+      "claims": [
+        {
+          "text": "Đầu độc phản hồi/điểm thưởng có thể làm lệch policy; đây là một loại tấn công RL, không phải duy nhất.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Inverse RL suy ra hàm thưởng từ hành vi; kiến thức nền, không tự nó là một exploit.",
+          "refs": [
+            9
+          ],
+          "locator": "Survey p.19; nguồn là survey về inverse RL",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "ERNIE nghiên cứu robust multi-agent RL; không trình bày là đã chặn reward poisoning trong LLM agent.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/interaction-threats/05-computing-resources.md",
+      "survey": {
+        "section": "§4.1.4",
+        "pages": [
+          20
+        ]
+      },
+      "claims": [
+        {
+          "text": "Bốn nguy cơ: resource exhaustion, inefficient allocation, insufficient isolation, unmonitored usage; tổng hợp survey p.20.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Thiếu quota, ưu tiên, cách ly, metrics là diễn giải vận hành của nhóm; không gán cho một paper DevOps.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Bảng phân biệt nghiên cứu tấn công, phát hiện DDoS và tối ưu lượt hỏi LLM; không coi cả ba là cơ chế cách ly CPU/GPU.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/interaction-threats/06-agent-agent.md",
+      "survey": {
+        "section": "§4.2; Figure 3",
+        "pages": [
+          7,
+          21,
+          22
+        ]
+      },
+      "claims": [
+        {
+          "text": "Hai nhánh hợp tác và cạnh tranh; sơ đồ và ví dụ nhóm cùng tin thông tin sai là minh họa.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/interaction-threats/07-cooperative-competitive.md",
+      "survey": {
+        "section": "§4.2.1–§4.2.2",
+        "pages": [
+          21,
+          22
+        ]
+      },
+      "claims": [
+        {
+          "text": "Morris II: self-replicating prompts lan qua hệ ứng dụng dùng RAG; không tự lây trong mọi hệ.",
+          "refs": [
+            28
+          ],
+          "locator": "Abstract: RAG-based inference / email assistants",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Thông đồng qua kênh giao tiếp công khai là rủi ro được survey mô tả.",
+          "refs": [
+            122
+          ],
+          "locator": "Survey pp.21–22, steganography/collusion; bản gốc bị chặn truy cập khi kiểm tra",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Hallucination có thể lan qua chuỗi agent đơn giản.",
+          "refs": [
+            65
+          ],
+          "locator": "Abstract: cascading hallucinations",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Cicero phối hợp ngôn ngữ và strategic reasoning trong Diplomacy; không dùng nó làm bằng chứng học lừa dối.",
+          "refs": [
+            47
+          ],
+          "locator": "Survey p.22; tên bài gốc và mô tả hệ thống",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Tạo đầu vào đối kháng và câu hỏi mở về phòng thủ cạnh tranh là nhận định của survey (2025), không phải khảo sát cập nhật đến 2026.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/interaction-threats/08-memory.md",
+      "survey": {
+        "section": "§4.3; Figure 3",
+        "pages": [
+          7,
+          23,
+          24
+        ]
+      },
+      "claims": [
+        {
+          "text": "Long-term/short-term memory và nhóm rủi ro theo taxonomy Figure 3. Ví dụ địa chỉ sai là minh họa.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/interaction-threats/09-long-term-memory.md",
+      "survey": {
+        "section": "§4.3.2",
+        "pages": [
+          23,
+          24
+        ]
+      },
+      "claims": [
+        {
+          "text": "PoisonedRAG: năm văn bản độc cho mỗi câu hỏi mục tiêu, 90% ASR trong thiết lập của bài; không phải một con số chung cho mọi RAG.",
+          "refs": [
+            235
+          ],
+          "locator": "Abstract: five malicious texts for each target question",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Truy vấn làm rò rỉ dữ liệu từ kho truy xuất.",
+          "refs": [
+            220
+          ],
+          "locator": "Abstract: privacy of retrieved data",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Khôi phục văn bản từ sentence embeddings.",
+          "refs": [
+            91,
+            120
+          ],
+          "locator": "Survey p.24, embedding inversion; original abstracts",
+          "basis": "survey-mediated unless original material is specified below"
+        },
+        {
+          "text": "Dữ liệu mâu thuẫn/lỗi thời là rủi ro survey nêu. Ví dụ Trái Đất tròn/phẳng là minh họa, không phải thí nghiệm PoisonedRAG.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/interaction-threats/10-short-term-memory.md",
+      "survey": {
+        "section": "§4.3.1",
+        "pages": [
+          23
+        ]
+      },
+      "claims": [
+        {
+          "text": "Context hữu hạn và thiếu đồng bộ có thể gây mất thông tin; phụ thuộc thiết kế hệ thống.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "LongRoPE, multi-robot planning và CoT-Influx là hướng liên quan đến context/phối hợp; không phải ba phòng thủ an ninh đã được chứng nhận.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/discussion/01-research-directions.md",
+      "survey": {
+        "section": "§5; Figure 5",
+        "pages": [
+          24,
+          25,
+          26,
+          27
+        ]
+      },
+      "claims": [
+        {
+          "text": "Bảy hướng nghiên cứu tổng hợp từ Figure 5 và §5.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/discussion/02-input-inspection.md",
+      "survey": {
+        "section": "§5: Efficient and effective input inspection",
+        "pages": [
+          24
+        ]
+      },
+      "claims": [
+        {
+          "text": "Khoảng trống tốc độ/độ chính xác và hướng kiểm tra tự động; không dùng ASR của Maatphor làm độ chính xác detector.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/discussion/03-bias-and-fairness.md",
+      "survey": {
+        "section": "§5: Bias and fairness in AI agents",
+        "pages": [
+          25
+        ]
+      },
+      "claims": [
+        {
+          "text": "Thiên vị, benchmark và đánh giá con người là hướng nghiên cứu survey đề xuất.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/discussion/04-tool-use-auditing.md",
+      "survey": {
+        "section": "§5: Strict tool use auditing",
+        "pages": [
+          25,
+          26
+        ]
+      },
+      "claims": [
+        {
+          "text": "Kiểm toán truy cập/call/log và chi phí triển khai theo survey.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/discussion/05-safety-evaluation.md",
+      "survey": {
+        "section": "§5: Sound safety evaluation baselines",
+        "pages": [
+          26
+        ]
+      },
+      "claims": [
+        {
+          "text": "Đánh giá end-to-end và tiêu chí an toàn là hướng của survey năm 2025.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/discussion/06-development-deployment-policy.md",
+      "survey": {
+        "section": "§5: Solid agent development and deployment policy",
+        "pages": [
+          26
+        ]
+      },
+      "claims": [
+        {
+          "text": "Minh bạch, trách nhiệm, riêng tư và hướng dẫn triển khai theo survey.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/discussion/07-interaction-architectures.md",
+      "survey": {
+        "section": "§5: Optimal interaction architectures",
+        "pages": [
+          26
+        ]
+      },
+      "claims": [
+        {
+          "text": "Giao tiếp, phụ thuộc và quyền truy cập cần được thiết kế/kiểm soát theo survey.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    },
+    {
+      "file": "pages/discussion/08-memory-management.md",
+      "survey": {
+        "section": "§5: Robust memory management",
+        "pages": [
+          26,
+          27
+        ]
+      },
+      "claims": [
+        {
+          "text": "Benchmark và truy xuất bộ nhớ an toàn theo survey.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Ghi chú thuyết trình nhắc lại PoisonedRAG từ phần long-term memory để minh họa dữ liệu truy xuất bị đầu độc.",
+          "refs": [
+            235
+          ],
+          "locator": "Abstract; survey §4.3.2, pp.23–24; liên hệ hướng quản lý bộ nhớ ở §5",
+          "basis": "original abstract and survey synthesis"
+        }
+      ]
+    },
+    {
+      "file": "pages/discussion/09-conclusion.md",
+      "survey": {
+        "section": "§5–§6; Figure 3",
+        "pages": [
+          7,
+          24,
+          25,
+          26,
+          27
+        ]
+      },
+      "claims": [
+        {
+          "text": "Ba thông điệp là tổng hợp của người trình bày từ survey: bảo vệ quá trình, chọn theo rủi ro, đánh giá an toàn/tác vụ/chi phí. Không phải ba kết luận thực nghiệm độc lập.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        },
+        {
+          "text": "Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.",
+          "refs": [],
+          "locator": "",
+          "basis": "survey synthesis; illustrative wording is not an experimental result"
+        }
+      ]
+    }
+  ]
+}
