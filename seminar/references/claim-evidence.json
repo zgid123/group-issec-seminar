@@ -1,0 +1,498 @@
+{
+  "scope": "Revised comparison tables. Abstract-level checks support only the narrow method/result/scope stated here. Specific sections are identified where read. This is not a full-text review of every reference or a reproduction of experiments.",
+  "checkedOn": "2026-11-26",
+  "rows": [
+    {
+      "file": "pages/execution-threats/02-prompt-injection-attack.md",
+      "surveyReference": 77,
+      "method": "Paraphrasing",
+      "source": "https://arxiv.org/pdf/2309.00614",
+      "checkedMaterial": "§4.2; kết quả Table 3 và Figure 4. Mô hình viết lại có thể làm mất chuỗi token đối kháng, nhưng cũng có thể làm thay đổi yêu cầu hợp lệ.",
+      "claims": {
+        "method": "Viết lại prompt bằng một LLM trước khi gửi tới mô hình đích.",
+        "finding": "Giảm tấn công hậu tố trong các thí nghiệm của bài.",
+        "scope": "Có suy giảm chất lượng trên AlpacaEval."
+      },
+      "checkedSource": "https://arxiv.org/html/2309.00614v2"
+    },
+    {
+      "file": "pages/execution-threats/02-prompt-injection-attack.md",
+      "surveyReference": 77,
+      "method": "Retokenization",
+      "source": "https://arxiv.org/pdf/2309.00614",
+      "checkedMaterial": "Bản v2, §4.3, Figure 5 và Table 6: BPE-dropout giảm ASR trên Vicuna/Guanaco trong thiết lập thử; làm tăng số token và giảm win rate AlpacaEval. Không hiệu quả đồng đều giữa các mô hình.",
+      "claims": {
+        "method": "Dùng BPE-dropout để thay đổi cách chia token của prompt.",
+        "finding": "Thay đổi phân đoạn token mà không cần sửa mô hình đích.",
+        "scope": "Tăng số token và giảm chất lượng trên AlpacaEval."
+      },
+      "checkedSource": "https://arxiv.org/html/2309.00614v2",
+      "previousEvidenceClaims": {
+        "method": "Dùng BPE-dropout để thay đổi cách chia token của prompt.",
+        "finding": "Được đánh giá như một biện pháp tiền xử lý.",
+        "scope": "Xét các tấn công tối ưu token trong thiết lập của bài."
+      }
+    },
+    {
+      "file": "pages/execution-threats/02-prompt-injection-attack.md",
+      "surveyReference": 6,
+      "method": "Perplexity detection",
+      "source": "https://arxiv.org/pdf/2308.14132",
+      "checkedMaterial": "Abstract: LightGBM kết hợp perplexity và độ dài nhằm giảm báo nhầm của ngưỡng perplexity đơn lẻ. Không gán hạn chế của baseline cho bộ phân loại được đề xuất.",
+      "claims": {
+        "method": "Kết hợp perplexity GPT-2 và độ dài token trong LightGBM.",
+        "finding": "Phát hiện phần lớn hậu tố đối kháng trong tập kiểm tra.",
+        "scope": "Đánh giá trên tập hậu tố đối kháng; chưa bao phủ mọi prompt injection."
+      },
+      "checkedSource": "https://arxiv.org/abs/2308.14132"
+    },
+    {
+      "file": "pages/execution-threats/03-jailbreak.md",
+      "surveyReference": 154,
+      "method": "Defense evaluation",
+      "source": "https://arxiv.org/pdf/2310.19737",
+      "checkedMaterial": "Đã đọc toàn văn: §3 về đánh giá phòng thủ và §4 Conclusion. Bài phân tích threat model, embedding-space attacks và sai sót trong đánh giá; không đề xuất bộ lọc đầu vào chung.",
+      "claims": {
+        "method": "Kiểm tra cách đánh giá độ bền của các biện pháp phòng thủ.",
+        "finding": "Chỉ ra nguy cơ đánh giá quá cao độ an toàn.",
+        "scope": "Là nghiên cứu đánh giá; không đề xuất bộ lọc chung."
+      },
+      "checkedSource": "https://arxiv.org/abs/2310.19737"
+    },
+    {
+      "file": "pages/execution-threats/03-jailbreak.md",
+      "surveyReference": 84,
+      "method": "Erase-and-check",
+      "source": "https://arxiv.org/pdf/2309.02705",
+      "checkedMaterial": "Abstract: suffix, insertion và infusion là các kiểu tấn công được xét. Chứng nhận không đồng nghĩa mọi jailbreak đều bị chặn.",
+      "claims": {
+        "method": "Xóa token và kiểm tra các chuỗi con bằng safety filter.",
+        "finding": "Chứng nhận an toàn cho tấn công có kích thước giới hạn.",
+        "scope": "Bảo đảm gắn với bộ lọc và mô hình tấn công đã định nghĩa."
+      },
+      "checkedSource": "https://arxiv.org/abs/2309.02705"
+    },
+    {
+      "file": "pages/execution-threats/03-jailbreak.md",
+      "surveyReference": 25,
+      "method": "Multi-agent debate",
+      "source": "https://arxiv.org/pdf/2401.05998",
+      "checkedMaterial": "Đã đối chiếu abstract và phần kết quả của toàn văn: hiệu quả giảm toxicity phụ thuộc mô hình cùng tranh luận. Kết quả không áp dụng đồng đều cho mọi nhóm agent.",
+      "claims": {
+        "method": "Cho mô hình bị jailbreak tranh luận với mô hình khác.",
+        "finding": "Giảm toxicity khi tranh luận với mô hình an toàn hoặc mạnh hơn.",
+        "scope": "Tranh luận đa agent nói chung chỉ cải thiện ít trong bài."
+      },
+      "checkedSource": "https://arxiv.org/abs/2401.05998"
+    },
+    {
+      "file": "pages/execution-threats/05-backdoor-attack.md",
+      "surveyReference": 38,
+      "method": "Februus",
+      "source": "https://arxiv.org/abs/1908.03369",
+      "checkedMaterial": "Đã đọc abstract và phần Limitations của toàn văn. Phạm vi chính là trigger ảnh; trigger lớn có thể làm giảm chất lượng phục hồi/phân loại.",
+      "claims": {
+        "method": "Loại dấu hiệu trigger rồi phục hồi ảnh đầu vào.",
+        "finding": "Lọc dấu hiệu trigger và phục hồi ảnh ngay lúc chạy.",
+        "scope": "Trigger lớn có thể làm giảm chất lượng phục hồi; chỉ xét ảnh."
+      },
+      "checkedSource": "https://arxiv.org/abs/1908.03369",
+      "previousEvidenceClaims": {
+        "method": "Loại dấu hiệu trigger rồi phục hồi ảnh đầu vào.",
+        "finding": "Đánh giá phòng thủ lúc chạy trên bốn bộ dữ liệu ảnh.",
+        "scope": "Bài nghiên cứu DNN thị giác, không phải LLM agent."
+      }
+    },
+    {
+      "file": "pages/execution-threats/05-backdoor-attack.md",
+      "surveyReference": 21,
+      "method": "Quarantine",
+      "source": "https://arxiv.org/abs/2205.11819",
+      "checkedMaterial": "Abstract. Trojan lottery ticket giữ đặc trưng backdoor trong khi khả năng phân loại ảnh sạch suy giảm. Không gán đây là biện pháp đồng bộ hay bảo vệ toàn agent.",
+      "claims": {
+        "method": "Pruning để cô lập mạng con giữ backdoor rồi khôi phục trigger.",
+        "finding": "Cô lập mạng con backdoor để khôi phục trigger.",
+        "scope": "Đánh giá trên DNN thị giác; chưa có bằng chứng cho LLM agent."
+      },
+      "checkedSource": "https://arxiv.org/abs/2205.11819",
+      "previousEvidenceClaims": {
+        "method": "Pruning để cô lập mạng con giữ backdoor rồi khôi phục trigger.",
+        "finding": "Thí nghiệm trên CIFAR-10, CIFAR-100 và ImageNet.",
+        "scope": "Phát hiện Trojan trong DNN; không đánh giá LLM agent."
+      }
+    },
+    {
+      "file": "pages/execution-threats/06-misalignment.md",
+      "surveyReference": 130,
+      "method": "InstructGPT / RLHF",
+      "source": "https://arxiv.org/abs/2203.02155",
+      "checkedMaterial": "Abstract. Pipeline: supervised fine-tuning từ demonstrations, rồi tối ưu bằng phản hồi xếp hạng. Không phải chứng nhận an toàn khi gọi tool.",
+      "claims": {
+        "method": "Học từ minh họa và xếp hạng câu trả lời của con người.",
+        "finding": "Người đánh giá ưu tiên InstructGPT hơn GPT-3 trên tập prompt của bài.",
+        "scope": "Mô hình vẫn mắc lỗi; đánh giá tập trung vào câu trả lời."
+      },
+      "checkedSource": "https://arxiv.org/abs/2203.02155"
+    },
+    {
+      "file": "pages/execution-threats/06-misalignment.md",
+      "surveyReference": 98,
+      "method": "SafeguardGPT",
+      "source": "https://arxiv.org/pdf/2304.00416",
+      "checkedMaterial": "Đã đọc §4 và Figure 2 của toàn văn. Chatbot hỏi Therapist trước khi trả lời; Critic đánh giá lịch sử. Ví dụ dùng bốn instance GPT-3.5 và chủ động gợi chatbot hành vi cần sửa.",
+      "claims": {
+        "method": "Bốn vai: Chatbot, User, Therapist và Critic.",
+        "finding": "Minh họa cải thiện hội thoại qua một tình huống mô phỏng.",
+        "scope": "Bằng chứng là ví dụ hội thoại, chưa phải đánh giá toàn hệ agent."
+      },
+      "checkedSource": "https://arxiv.org/abs/2304.00416"
+    },
+    {
+      "file": "pages/execution-threats/06-misalignment.md",
+      "surveyReference": 171,
+      "method": "TWOSOME",
+      "source": "https://arxiv.org/abs/2401.14151",
+      "checkedMaterial": "Abstract. Actor và critic chia sẻ LLM đóng băng; LoRA được huấn luyện qua tương tác. Hành động thuộc tập hợp lệ không đồng nghĩa đã kiểm chứng an toàn.",
+      "claims": {
+        "method": "Chấm xác suất các hành động hợp lệ; cập nhật LoRA bằng PPO.",
+        "finding": "Gắn lựa chọn hành động với tập hành động hợp lệ của môi trường.",
+        "scope": "Đánh giá trên Overcooked và VirtualHome; chưa bao phủ toàn hệ agent."
+      },
+      "checkedSource": "https://arxiv.org/abs/2401.14151",
+      "previousEvidenceClaims": {
+        "method": "Chấm xác suất các hành động hợp lệ; cập nhật LoRA bằng PPO.",
+        "finding": "Đánh giá trên Overcooked và VirtualHome.",
+        "scope": "Bài tối ưu ra quyết định trong môi trường embodied."
+      }
+    },
+    {
+      "file": "pages/execution-threats/07-hallucination.md",
+      "surveyReference": 191,
+      "method": "SAFE",
+      "source": "https://arxiv.org/pdf/2403.18802",
+      "checkedMaterial": "Abstract. SAFE xác định một fact có được kết quả tìm kiếm hỗ trợ hay không. Không gọi đây là cơ chế bảo đảm mọi thông tin đúng.",
+      "claims": {
+        "method": "Tách câu trả lời thành các fact, kiểm tra bằng Google Search.",
+        "finding": "Đánh giá tính đúng của nội dung dài bằng bằng chứng tìm kiếm.",
+        "scope": "Là bộ đánh giá; không tự sửa câu trả lời."
+      },
+      "checkedSource": "https://arxiv.org/abs/2403.18802"
+    },
+    {
+      "file": "pages/execution-threats/07-hallucination.md",
+      "surveyReference": 43,
+      "method": "Neural Path Hunter",
+      "source": "https://aclanthology.org/2021.emnlp-main.168/",
+      "checkedMaterial": "Đã đọc §3 của toàn văn: hai module là token-level hallucination critic và entity mention retriever. Bài đánh giá trên OpenDialKG.",
+      "claims": {
+        "method": "Fact critic tìm lỗi; truy vấn knowledge graph để sửa entity.",
+        "finding": "Phát hiện và sửa entity bằng tri thức từ knowledge graph.",
+        "scope": "Cần knowledge graph phù hợp; phạm vi thử nghiệm là OpenDialKG."
+      },
+      "checkedSource": "https://aclanthology.org/2021.emnlp-main.168/",
+      "previousEvidenceClaims": {
+        "method": "Fact critic tìm lỗi; truy vấn knowledge graph để sửa entity.",
+        "finding": "Đánh giá độ trung thực với tri thức trên OpenDialKG.",
+        "scope": "Đối thoại gắn với knowledge graph được cung cấp."
+      }
+    },
+    {
+      "file": "pages/execution-threats/07-hallucination.md",
+      "surveyReference": 41,
+      "method": "Multi-agent debate",
+      "source": "https://arxiv.org/pdf/2305.14325",
+      "checkedMaterial": "Đã đọc §5 Limitations and Discussion của toàn văn. Tác giả ghi nhận tốn nhiều thế hệ câu trả lời hơn, khó xử lý debate dài và vẫn có thể đồng thuận về đáp án sai.",
+      "claims": {
+        "method": "Nhiều LLM đề xuất rồi phản biện đáp án qua nhiều vòng.",
+        "finding": "Cải thiện suy luận và factuality trong các tác vụ được thử.",
+        "scope": "Kết quả thực nghiệm; không chứng nhận đồng thuận luôn đúng."
+      },
+      "checkedSource": "https://arxiv.org/abs/2305.14325"
+    },
+    {
+      "file": "pages/execution-threats/08-planning-threat.md",
+      "surveyReference": 70,
+      "method": "TrustAgent",
+      "source": "https://aclanthology.org/2024.findings-emnlp.585/",
+      "checkedMaterial": "Đã đọc §3 và §3.1 của toàn văn. Quy tắc Agent Constitution được đưa vào ba giai đoạn planning. GPT-4 mô phỏng thực thi tool trong sandbox, không phải thử nghiệm an toàn của mọi tool thật.",
+      "claims": {
+        "method": "Dùng Agent Constitution trước, trong và sau lập kế hoạch.",
+        "finding": "Báo cáo cải thiện safety và helpfulness trong sandbox mô phỏng.",
+        "scope": "Khả năng tuân thủ phụ thuộc năng lực suy luận của LLM."
+      },
+      "checkedSource": "https://aclanthology.org/2024.findings-emnlp.585/"
+    },
+    {
+      "file": "pages/execution-threats/08-planning-threat.md",
+      "surveyReference": 94,
+      "method": "Formal-LLM",
+      "source": "https://arxiv.org/pdf/2402.00798",
+      "checkedMaterial": "Đã đọc §4.1 của toàn văn. PDA ràng buộc tính hợp lệ và khả năng thực thi theo constraints; tác giả nêu rõ không bảo đảm performance hay optimality.",
+      "claims": {
+        "method": "Automaton giám sát quá trình sinh kế hoạch dựa trên stack.",
+        "finding": "Ràng buộc kế hoạch theo yêu cầu hình thức đã khai báo.",
+        "scope": "Phạm vi bảo đảm là các ràng buộc được biểu diễn."
+      },
+      "checkedSource": "https://arxiv.org/abs/2402.00798"
+    },
+    {
+      "file": "pages/execution-threats/10-agent2tool-supply-chain.md",
+      "surveyReference": 150,
+      "method": "ToolEmu",
+      "source": "https://arxiv.org/abs/2309.15817",
+      "checkedMaterial": "Abstract. ToolEmu giúp tạo tình huống rủi ro mà không dựng tool thật. Kiểm tra bằng người cho thấy emulator không phải bản sao hoàn hảo của thực tế.",
+      "claims": {
+        "method": "LLM mô phỏng thực thi tool; evaluator tìm hành vi rủi ro.",
+        "finding": "Tạo tình huống rủi ro để đánh giá tool mà không dựng tool thật.",
+        "scope": "Mô phỏng chưa phản ánh hoàn toàn việc thực thi tool thật."
+      },
+      "checkedSource": "https://arxiv.org/abs/2309.15817",
+      "previousEvidenceClaims": {
+        "method": "LLM mô phỏng thực thi tool; evaluator tìm hành vi rủi ro.",
+        "finding": "Benchmark gồm 36 tool và 144 tình huống kiểm tra.",
+        "scope": "Môi trường mô phỏng dùng để đánh giá trước triển khai."
+      }
+    },
+    {
+      "file": "pages/execution-threats/10-agent2tool-supply-chain.md",
+      "surveyReference": 225,
+      "method": "PrivacyAsst",
+      "source": "https://ieeexplore.ieee.org/document/10458329",
+      "checkedMaterial": "Nguồn đã đọc: README chính thức, phần Introduction và New Components; PDF công khai chưa tải thành công. Giải pháp shuffling kết hợp attribute forgery và attribute shuffling; bỏ nhận định tăng chi phí chưa đối chiếu.",
+      "claims": {
+        "method": "Hai hướng: mã hóa đồng cấu và trộn thuộc tính đầu vào.",
+        "finding": "Cung cấp hai cách bảo vệ dữ liệu khi tương tác với tool.",
+        "scope": "Mới minh họa bằng hai case study; phải chọn cách theo tác vụ."
+      },
+      "checkedSource": "https://github.com/Eyr3/PrivacyAsst",
+      "previousEvidenceClaims": {
+        "method": "Hai hướng: mã hóa đồng cấu và trộn thuộc tính đầu vào.",
+        "finding": "Tác giả triển khai và minh họa qua hai case study.",
+        "scope": "Chọn giải pháp theo tác vụ và yêu cầu riêng tư."
+      }
+    },
+    {
+      "file": "pages/interaction-threats/02-agent-environment.md",
+      "surveyReference": 140,
+      "method": "Misuse analysis",
+      "source": "https://arxiv.org/pdf/2403.15325",
+      "checkedMaterial": "Abstract. Các kịch bản thuộc an ninh chính trị, số và vật lý. Hàng cũ đã diễn giải thành một phương pháp phát hiện được đánh giá; đã bỏ diễn giải đó.",
+      "claims": {
+        "method": "Xây dựng ba kịch bản lạm dụng công nghệ AI sẵn có.",
+        "finding": "Phân tích điểm có thể kiểm soát để hạn chế lạm dụng.",
+        "scope": "Phân tích tình huống; không phải benchmark bộ lọc."
+      },
+      "checkedSource": "https://arxiv.org/abs/2403.15325"
+    },
+    {
+      "file": "pages/interaction-threats/03-indirect-prompt-injection.md",
+      "surveyReference": 17,
+      "method": "Self-reminder",
+      "source": "https://arxiv.org/abs/2401.00994",
+      "checkedMaterial": "§IV.C, §V, §VI/Table II. Bài đánh giá Self-Reminder dựa trên ý tưởng của Xie et al.; không phải nghiên cứu riêng về nội dung web độc hại.",
+      "claims": {
+        "method": "Nhắc lại chỉ dẫn ban đầu mỗi lần gửi prompt tới trợ lý.",
+        "finding": "Đưa lại chỉ dẫn gốc vào mỗi lượt để nhắc phạm vi nhiệm vụ.",
+        "scope": "Prompt dài hơn làm tăng chi phí; thử nghiệm trên GPT-3.5."
+      },
+      "checkedSource": "https://arxiv.org/abs/2401.00994",
+      "previousEvidenceClaims": {
+        "method": "Nhắc lại chỉ dẫn ban đầu mỗi lần gửi prompt tới trợ lý.",
+        "finding": "Thử các prompt thao túng trên trợ lý cửa hàng Xbox.",
+        "scope": "Thí nghiệm GPT-3.5; prompt dài hơn làm tăng chi phí."
+      }
+    },
+    {
+      "file": "pages/interaction-threats/03-indirect-prompt-injection.md",
+      "surveyReference": 64,
+      "method": "Spotlighting",
+      "source": "https://arxiv.org/pdf/2403.14720",
+      "checkedMaterial": "Abstract. Điểm cốt lõi là cung cấp tín hiệu nguồn gốc xuyên suốt dữ liệu, thay vì để LLM coi mọi đoạn văn là cùng mức tin cậy.",
+      "claims": {
+        "method": "Biến đổi dữ liệu để đánh dấu nguồn đầu vào không tin cậy.",
+        "finding": "Giảm thành công của indirect injection trong các thử nghiệm GPT.",
+        "scope": "Bằng chứng thuộc mô hình và tập tấn công được thử."
+      },
+      "checkedSource": "https://arxiv.org/abs/2403.14720"
+    },
+    {
+      "file": "pages/interaction-threats/04-rl-environment.md",
+      "surveyReference": 15,
+      "method": "ERNIE",
+      "source": "https://arxiv.org/abs/2310.10810",
+      "checkedMaterial": "Abstract; proceedings NeurIPS 2023. Regularization thúc đẩy tính liên tục Lipschitz; tác giả dùng Stackelberg game để giảm bất ổn huấn luyện. Không gán đây là thử nghiệm reward poisoning trên LLM agent.",
+      "claims": {
+        "method": "Adversarial regularization cho policy trong multi-agent RL.",
+        "finding": "Đưa regularization vào policy để xử lý nhiễu và hành động đối kháng.",
+        "scope": "Thử trên traffic và particle environments; chưa đánh giá LLM agent."
+      },
+      "checkedSource": "https://arxiv.org/abs/2310.10810",
+      "previousEvidenceClaims": {
+        "method": "Adversarial regularization cho policy trong multi-agent RL.",
+        "finding": "Đánh giá trên điều khiển đèn giao thông và particle environments.",
+        "scope": "Xét nhiễu quan sát, thay đổi dynamics và hành động độc hại."
+      }
+    },
+    {
+      "file": "pages/interaction-threats/05-computing-resources.md",
+      "surveyReference": 52,
+      "method": "LLM coercion",
+      "source": "https://arxiv.org/abs/2402.14020",
+      "checkedMaterial": "Abstract. Không gán các cơ chế DevOps cho bài này.",
+      "claims": {
+        "method": "Nghiên cứu tấn công ép LLM thực hiện hành vi ngoài ý muốn.",
+        "finding": "Phân tích các kiểu tấn công, gồm denial of service.",
+        "scope": "Nghiên cứu tấn công; không phải cơ chế quota."
+      },
+      "checkedSource": "https://arxiv.org/abs/2402.14020"
+    },
+    {
+      "file": "pages/interaction-threats/05-computing-resources.md",
+      "surveyReference": 58,
+      "method": "LLM-based DDoS detection",
+      "source": "https://doi.org/10.1007/978-3-031-51630-6_6",
+      "checkedMaterial": "Abstract trên trang nhà xuất bản. SmartSP 2023; kỷ yếu xuất bản năm 2024.",
+      "claims": {
+        "method": "Dùng few-shot learning hoặc fine-tuning để phát hiện DDoS.",
+        "finding": "Áp dụng LLM cho nhận diện DDoS bằng few-shot hoặc fine-tuning.",
+        "scope": "Bằng chứng trên hai bộ dữ liệu mạng; chưa đánh giá cách ly agent."
+      },
+      "checkedSource": "https://eudl.eu/doi/10.1007/978-3-031-51630-6_6",
+      "previousEvidenceClaims": {
+        "method": "Dùng few-shot learning hoặc fine-tuning để phát hiện DDoS.",
+        "finding": "Đánh giá trên CICIDS 2017 và Urban IoT.",
+        "scope": "Phát hiện tấn công mạng; không đánh giá cách ly agent."
+      }
+    },
+    {
+      "file": "pages/interaction-threats/05-computing-resources.md",
+      "surveyReference": 69,
+      "method": "When2Ask",
+      "source": "https://arxiv.org/pdf/2306.03604",
+      "checkedMaterial": "Abstract. Tác nhân học cách tránh hỏi dư thừa và cập nhật kế hoạch khi môi trường thay đổi.",
+      "claims": {
+        "method": "Dùng RL để học khi nào agent cần hỏi LLM.",
+        "finding": "Giảm tương tác dư thừa trên MiniGrid và Habitat.",
+        "scope": "Tối ưu việc gọi LLM; không phải lập lịch CPU/GPU."
+      },
+      "checkedSource": "https://arxiv.org/abs/2306.03604"
+    },
+    {
+      "file": "pages/interaction-threats/07-cooperative-competitive.md",
+      "surveyReference": 221,
+      "method": "AutoDefense",
+      "source": "https://arxiv.org/pdf/2403.04783",
+      "checkedMaterial": "Abstract. Cơ chế response filtering là phần chính; bài không chứng minh ngăn thông đồng hay worm trong mọi hệ.",
+      "claims": {
+        "method": "Nhiều agent phân vai để lọc câu trả lời có hại của LLM.",
+        "finding": "Giảm jailbreak thành công trong các thí nghiệm của bài.",
+        "scope": "Phòng thủ ở câu trả lời; không đánh giá mọi rủi ro đa agent."
+      },
+      "checkedSource": "https://arxiv.org/abs/2403.04783"
+    },
+    {
+      "file": "pages/interaction-threats/07-cooperative-competitive.md",
+      "surveyReference": 108,
+      "method": "Reference architecture",
+      "source": "https://arxiv.org/abs/2311.13148v3",
+      "checkedMaterial": "Abstract; §§3.3–3.5 của bản v3. Bản v1 có tên Building the Future of Responsible AI; v3 đổi thành Towards Responsible Generative AI. Bỏ khẳng định rằng bài đã kiểm chứng chặn lệnh không đảo ngược.",
+      "claims": {
+        "method": "Kiến trúc gồm planning, execution, giám sát và guardrail.",
+        "finding": "Tổ chức rõ các thành phần giám sát và guardrail trong thiết kế.",
+        "scope": "Là hướng dẫn kiến trúc; chưa chứng nhận hiệu quả ngăn tấn công."
+      },
+      "checkedSource": "https://arxiv.org/abs/2311.13148v3",
+      "previousEvidenceClaims": {
+        "method": "Kiến trúc gồm planning, execution, giám sát và guardrail.",
+        "finding": "Đối chiếu kiến trúc với hai hệ agent thực tế.",
+        "scope": "Hướng dẫn thiết kế; không phải chứng nhận an toàn."
+      }
+    },
+    {
+      "file": "pages/interaction-threats/09-long-term-memory.md",
+      "surveyReference": 235,
+      "method": "PoisonedRAG",
+      "source": "https://arxiv.org/pdf/2402.07867",
+      "checkedMaterial": "Abstract. Năm văn bản độc là cho mỗi câu hỏi mục tiêu; kết quả 90% thuộc thiết lập thực nghiệm trên kho hàng triệu văn bản, không phải mọi RAG.",
+      "claims": {
+        "method": "Chèn văn bản độc để RAG trả lời theo mục tiêu kẻ tấn công.",
+        "finding": "Làm rõ điểm yếu của RAG bằng tấn công và thử nghiệm phòng thủ.",
+        "scope": "Các defense được thử chưa đủ; kết quả gắn với thiết lập của bài."
+      },
+      "checkedSource": "https://arxiv.org/abs/2402.07867",
+      "previousEvidenceClaims": {
+        "method": "Chèn văn bản độc để RAG trả lời theo mục tiêu kẻ tấn công.",
+        "finding": "Thử nghiệm tấn công và một số biện pháp phòng thủ.",
+        "scope": "Các defense được thử chưa đủ trong thiết lập của bài."
+      }
+    },
+    {
+      "file": "pages/interaction-threats/09-long-term-memory.md",
+      "surveyReference": 220,
+      "method": "RAG privacy",
+      "source": "https://arxiv.org/pdf/2402.16893",
+      "checkedMaterial": "Abstract. Phân biệt hai nguồn riêng tư: dữ liệu trong kho truy xuất và dữ liệu từng dùng huấn luyện LLM.",
+      "claims": {
+        "method": "Dùng truy vấn tấn công để khảo sát rò rỉ dữ liệu truy xuất.",
+        "finding": "Phân biệt rò rỉ từ kho truy xuất và từ dữ liệu huấn luyện.",
+        "scope": "Là nghiên cứu rủi ro; chưa cung cấp bảo đảm riêng tư tổng quát."
+      },
+      "checkedSource": "https://arxiv.org/abs/2402.16893",
+      "previousEvidenceClaims": {
+        "method": "Dùng truy vấn tấn công để khảo sát rò rỉ dữ liệu truy xuất.",
+        "finding": "Chỉ ra rủi ro lộ dữ liệu riêng trong kho retrieval.",
+        "scope": "RAG cũng có thể giảm rò rỉ dữ liệu huấn luyện của LLM."
+      }
+    },
+    {
+      "file": "pages/interaction-threats/10-short-term-memory.md",
+      "surveyReference": 37,
+      "method": "LongRoPE",
+      "source": "https://arxiv.org/pdf/2402.13753",
+      "checkedMaterial": "Abstract. Mở rộng vị trí token và fine-tuning theo giai đoạn; đây là cải thiện context, không phải cơ chế chống dữ liệu độc trong memory.",
+      "claims": {
+        "method": "Tìm positional interpolation và mở rộng context theo giai đoạn.",
+        "finding": "Mở rộng context tới 2.048.000 token trong thí nghiệm.",
+        "scope": "Đánh giá trên LLaMA2/Mistral; chưa kiểm chứng an toàn bộ nhớ."
+      },
+      "checkedSource": "https://arxiv.org/abs/2402.13753",
+      "previousEvidenceClaims": {
+        "method": "Tìm positional interpolation và mở rộng context theo giai đoạn.",
+        "finding": "Thử nghiệm mở rộng tới 2.048.000 token.",
+        "scope": "Đánh giá trên LLaMA2 và Mistral."
+      }
+    },
+    {
+      "file": "pages/interaction-threats/10-short-term-memory.md",
+      "surveyReference": 23,
+      "method": "Multi-robot planning",
+      "source": "https://arxiv.org/html/2309.15943v2",
+      "checkedMaterial": "Abstract và §I. State-action history dùng trạng thái/hành động để kiểm soát độ dài context. Hàng Memory synchronization trước đây mô tả sai trọng tâm của bài.",
+      "claims": {
+        "method": "So sánh phối hợp tập trung, phân tán và hai dạng kết hợp.",
+        "finding": "Một dạng kết hợp có hiệu quả và khả năng mở rộng tốt hơn.",
+        "scope": "Bốn tác vụ 2D và mô phỏng 3D; không chứng nhận đồng bộ bộ nhớ."
+      },
+      "checkedSource": "https://arxiv.org/html/2309.15943v2"
+    },
+    {
+      "file": "pages/interaction-threats/10-short-term-memory.md",
+      "surveyReference": 72,
+      "method": "CoT-Influx",
+      "source": "https://arxiv.org/pdf/2312.08901",
+      "checkedMaterial": "Abstract: CoT-Influx dùng pruning hai mức (ví dụ và token), đánh giá suy luận trên năm bộ dữ liệu toán. Không phải tóm tắt lịch sử hội thoại.",
+      "claims": {
+        "method": "Chọn ví dụ CoT và cắt token ít quan trọng để vừa context.",
+        "finding": "Đánh giá cải thiện suy luận trên năm bộ dữ liệu toán.",
+        "scope": "Nén ví dụ trong prompt; không tóm tắt lịch sử agent."
+      },
+      "checkedSource": "https://arxiv.org/abs/2312.08901"
+    }
+  ],
+  "lastReviewedOn": "2026-11-24",
+  "columnMeaning": {
+    "method": "Method described in the source",
+    "finding": "Reported benefit or capability derived from the documented method; not necessarily a comparative benchmark result",
+    "scope": "Documented limitation or explicit boundary of available evidence"
+  }
+}

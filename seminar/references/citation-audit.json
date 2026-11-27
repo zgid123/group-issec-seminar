@@ -1,0 +1,1868 @@
+{
+  "source": "../refs/AI_Agents_Under_Threat_A_Survey_of_Key_Security_Challenges_and_Future.pdf",
+  "scope": "Inclusion and usedIn are generated from explicit slide claim mappings and table rows, never author-name matching. Every included source has a survey bibliography locator. Original-paper checks vary; see per-source and per-row checked material.",
+  "survey": {
+    "authors": "Zehang Deng et al.",
+    "year": 2025,
+    "title": "AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways.",
+    "url": "https://doi.org/10.1145/3716628",
+    "role": "Primary survey for the entire deck",
+    "fullAuthors": "Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang",
+    "publication": "ACM Computing Surveys 57(7), Article 182, February 2025"
+  },
+  "papers": [
+    {
+      "surveyReference": 77,
+      "authors": "Neel Jain et al.",
+      "year": 2023,
+      "title": "Baseline defenses for adversarial attacks against aligned language models.",
+      "url": "https://arxiv.org/pdf/2309.00614",
+      "usedIn": [
+        "pages/execution-threats/02-prompt-injection-attack.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Neel Jain, Avi Schwarzschild, Yuxin Wen, Gowthami Somepalli, John Kirchenbauer, Ping-yeh Chiang, Micah Goldblum, Aniruddha Saha, Jonas Geiping, and Tom Goldstein",
+        "year": 2023,
+        "rest": "Baseline defenses for adversarial attacks against aligned language models. Retrieved from https://arxiv.org/pdf/2309.00614"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/02-prompt-injection-attack.md"
+      ],
+      "surveyBibliographyPage": 30,
+      "surveyBodyPages": [
+        9
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 6,
+      "authors": "Gabriel Alon and Michael Kamfonas",
+      "year": 2023,
+      "title": "Detecting language model attacks with perplexity.",
+      "url": "https://arxiv.org/pdf/2308.14132",
+      "usedIn": [
+        "pages/execution-threats/02-prompt-injection-attack.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Gabriel Alon and Michael Kamfonas",
+        "year": 2023,
+        "rest": "Detecting language model attacks with perplexity. Retrieved from https: //arxiv.org/pdf/2308.14132"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/02-prompt-injection-attack.md"
+      ],
+      "surveyBibliographyPage": 27,
+      "surveyBodyPages": [
+        9,
+        27
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 57,
+      "authors": "Xiangming Gu et al.",
+      "year": 2024,
+      "title": "Agent smith: A single image can jailbreak one million multimodal LLM agents exponentially fast.",
+      "url": "https://arxiv.org/pdf/2402.08567",
+      "usedIn": [
+        "pages/execution-threats/03-jailbreak.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Xiangming Gu, Xiaosen Zheng, Tianyu Pang, Chao Du, Qian Liu, Ye Wang, Jing Jiang, and Min Lin",
+        "year": 2024,
+        "rest": "Agent smith: A single image can jailbreak one million multimodal LLM agents exponentially fast. Retrieved from https: //arxiv.org/pdf/2402.08567"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/03-jailbreak.md",
+        "pages/interaction-threats/07-cooperative-competitive.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        6,
+        7,
+        10,
+        21
+      ],
+      "originalCheck": "Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 154,
+      "authors": "Leo Schwinn et al.",
+      "year": 2023,
+      "title": "Adversarial attacks and defenses in large language models: Old and new threats.",
+      "url": "https://arxiv.org/pdf/2310.19737",
+      "usedIn": [
+        "pages/execution-threats/03-jailbreak.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Leo Schwinn, David Dobre, Stephan Günnemann, and Gauthier Gidel",
+        "year": 2023,
+        "rest": "Adversarial attacks and defenses in large language models: Old and new threats. Retrieved from https://arxiv.org/pdf/2310.19737"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/03-jailbreak.md"
+      ],
+      "surveyBibliographyPage": 33,
+      "surveyBodyPages": [
+        6,
+        7,
+        11
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 84,
+      "authors": "Aounon Kumar et al.",
+      "year": 2024,
+      "title": "Certifying LLM safety against adversarial prompting.",
+      "url": "https://arxiv.org/pdf/2309.02705",
+      "usedIn": [
+        "pages/execution-threats/03-jailbreak.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Aounon Kumar, Chirag Agarwal, Suraj Srinivas, Soheil Feizi, and Hima Lakkaraju",
+        "year": 2024,
+        "rest": "Certifying LLM safety against adversarial prompting. Retrieved from https://arxiv.org/pdf/2309.02705"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/03-jailbreak.md"
+      ],
+      "surveyBibliographyPage": 30,
+      "surveyBodyPages": [
+        11
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 25,
+      "authors": "Steffi Chern et al.",
+      "year": 2024,
+      "title": "Combating adversarial attacks with multi-agent debate.",
+      "url": "https://arxiv.org/pdf/2401.05998",
+      "usedIn": [
+        "pages/execution-threats/03-jailbreak.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Steffi Chern, Zhen Fan, and Andy Liu",
+        "year": 2024,
+        "rest": "Combating adversarial attacks with multi-agent debate. Retrieved from https://arxiv.org/pdf/2401.05998"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/03-jailbreak.md"
+      ],
+      "surveyBibliographyPage": 28,
+      "surveyBodyPages": [
+        6,
+        7,
+        10,
+        11
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 38,
+      "authors": "Bao Gia Doan et al.",
+      "year": 2020,
+      "title": "Februus: Input purification defense against trojan attacks on deep neural network systems.",
+      "usedIn": [
+        "pages/execution-threats/05-backdoor-attack.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Bao Gia Doan, Ehsan Abbasnejad, and Damith C Ranasinghe",
+        "year": 2020,
+        "rest": "Februus: Input purification defense against trojan attacks on deep neural network systems. In Proceedings of the ACSAC . 897–912."
+      },
+      "url": "https://arxiv.org/abs/1908.03369",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/05-backdoor-attack.md"
+      ],
+      "surveyBibliographyPage": 28,
+      "surveyBodyPages": [
+        12
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 21,
+      "authors": "Tianlong Chen et al.",
+      "year": 2022,
+      "title": "Quarantine: Sparsity can uncover the trojan attack trigger for free.",
+      "usedIn": [
+        "pages/execution-threats/05-backdoor-attack.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Tianlong Chen, Zhenyu Zhang, Yihua Zhang, Shiyu Chang, Sijia Liu, and Zhangyang Wang",
+        "year": 2022,
+        "rest": "Quarantine: Sparsity can uncover the trojan attack trigger for free. In Proceedings of the CVPR ."
+      },
+      "url": "https://arxiv.org/abs/2205.11819",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/05-backdoor-attack.md"
+      ],
+      "surveyBibliographyPage": 28,
+      "surveyBodyPages": [
+        12
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 130,
+      "authors": "Long Ouyang et al.",
+      "year": 2022,
+      "title": "Training language models to follow instructions with human feedback.",
+      "usedIn": [
+        "pages/execution-threats/06-misalignment.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray et al",
+        "year": 2022,
+        "rest": "Training language models to follow instructions with human feedback. NeurIPS ."
+      },
+      "url": "https://arxiv.org/abs/2203.02155",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/06-misalignment.md"
+      ],
+      "surveyBibliographyPage": 32,
+      "surveyBodyPages": [
+        14,
+        19
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 98,
+      "authors": "Baihan Lin et al.",
+      "year": 2023,
+      "title": "Towards healthy AI: large language models need therapists too.",
+      "url": "https://arxiv.org/pdf/2304.00416",
+      "usedIn": [
+        "pages/execution-threats/06-misalignment.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Baihan Lin, Djallel Bouneffouf, Guillermo Cecchi, and Kush R. Varshney",
+        "year": 2023,
+        "rest": "Towards healthy AI: large language models need therapists too. Retrieved from https://arxiv.org/pdf/2304.00416"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/06-misalignment.md"
+      ],
+      "surveyBibliographyPage": 31,
+      "surveyBodyPages": [
+        6,
+        7,
+        14
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 171,
+      "authors": "Weihao Tan et al.",
+      "year": 2024,
+      "title": "True knowledge comes from practice: Aligning large language models with embodied environments via reinforcement learning.",
+      "url": "https://arxiv.org/abs/2401.14151",
+      "usedIn": [
+        "pages/execution-threats/06-misalignment.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Weihao Tan, Wentao Zhang, Shanqi Liu, Longtao Zheng, Xinrun Wang, and Bo An",
+        "year": 2024,
+        "rest": "True knowledge comes from practice: Aligning large language models with embodied environments via reinforcement learning. In Proceedings of the ICLR ."
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/06-misalignment.md"
+      ],
+      "surveyBibliographyPage": 34,
+      "surveyBodyPages": [
+        6,
+        7,
+        14
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 65,
+      "authors": "Sirui Hong et al.",
+      "year": 2024,
+      "title": "MetaGPT: Meta programming for a multi-agent collaborative framework.",
+      "usedIn": [
+        "pages/execution-threats/07-hallucination.md",
+        "pages/interaction-threats/07-cooperative-competitive.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Sirui Hong, Mingchen Zhuge, Jonathan Chen, Xiawu Zheng, Yuheng Cheng, Jinlin Wang, Ceyao Zhang, Zili Wang, Steven Ka Shing Yau, Zijuan Lin, Liyang Zhou, Chenyu Ran, Lingfeng Xiao, Chenglin Wu, and Jürgen Schmidhuber",
+        "year": 2024,
+        "rest": "MetaGPT: Meta programming for a multi-agent collaborative framework. In Proceedings of the ICLR ."
+      },
+      "url": "https://arxiv.org/abs/2308.00352",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/07-hallucination.md",
+        "pages/interaction-threats/07-cooperative-competitive.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        21
+      ],
+      "originalCheck": "Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 191,
+      "authors": "Jerry Wei et al.",
+      "year": 2024,
+      "title": "Long-form factuality in large language models.",
+      "url": "https://arxiv.org/pdf/2403.18802",
+      "usedIn": [
+        "pages/execution-threats/07-hallucination.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Jerry Wei, Chengrun Yang, Xinying Song, Yifeng Lu, Nathan Hu, Dustin Tran, Daiyi Peng, Ruibo Liu, Da Huang, Cosmo Du et al",
+        "year": 2024,
+        "rest": "Long-form factuality in large language models. Retrieved from https://arxiv.org/pdf/2403.18802"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/07-hallucination.md"
+      ],
+      "surveyBibliographyPage": 34,
+      "surveyBodyPages": [
+        15
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 43,
+      "authors": "Nouha Dziri et al.",
+      "year": 2021,
+      "title": "Neural path hunter: Reducing hallucination in dialogue systems via path grounding.",
+      "usedIn": [
+        "pages/execution-threats/07-hallucination.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Nouha Dziri, Andrea Madotto, Osmar Zaïane, and Avishek Joey Bose",
+        "year": 2021,
+        "rest": "Neural path hunter: Reducing hallucination in dialogue systems via path grounding. In Proceedings of the EMNLP ."
+      },
+      "url": "https://aclanthology.org/2021.emnlp-main.168/",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/07-hallucination.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        15
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 41,
+      "authors": "Yilun Du et al.",
+      "year": 2023,
+      "title": "Improving factuality and reasoning in language models through multiagent debate.",
+      "url": "https://arxiv.org/pdf/2305.14325",
+      "usedIn": [
+        "pages/execution-threats/07-hallucination.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Yilun Du, Shuang Li, Antonio Torralba, Joshua B. Tenenbaum, and Igor Mordatch",
+        "year": 2023,
+        "rest": "Improving factuality and reasoning in language models through multiagent debate. Retrieved from https://arxiv.org/pdf/2305.14325"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/07-hallucination.md"
+      ],
+      "surveyBibliographyPage": 28,
+      "surveyBodyPages": [
+        6,
+        7,
+        15
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 190,
+      "authors": "Jason Wei et al.",
+      "year": 2022,
+      "title": "Chain-of-thought prompting elicits reasoning in large language models.",
+      "usedIn": [
+        "pages/execution-threats/08-planning-threat.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed Chi, Quoc V Le, Denny Zhou et al",
+        "year": 2022,
+        "rest": "Chain-of-thought prompting elicits reasoning in large language models. NeurIPS ."
+      },
+      "url": "https://arxiv.org/abs/2201.11903",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/08-planning-threat.md"
+      ],
+      "surveyBibliographyPage": 34,
+      "surveyBodyPages": [
+        11
+      ],
+      "originalCheck": "Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 70,
+      "authors": "W. Hua et al.",
+      "year": 2024,
+      "title": "TrustAgent: Towards Safe and Trustworthy LLM-based Agents.",
+      "usedIn": [
+        "pages/execution-threats/08-planning-threat.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "W. Hua, X. Yang, M. Jin, Z. Li, W. Cheng, R. Tang, and Y. Zhang",
+        "year": 2024,
+        "rest": "November. Trustagent: Towards safe and trustworthy llm-based agents. In Findings of the Association for Computational Linguistics: EMNLP 2024 . 10000–10016."
+      },
+      "url": "https://aclanthology.org/2024.findings-emnlp.585/",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/08-planning-threat.md",
+        "pages/discussion/06-development-deployment-policy.md"
+      ],
+      "surveyBibliographyPage": 30,
+      "surveyBodyPages": [
+        16,
+        26
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 94,
+      "authors": "Zelong Li et al.",
+      "year": 2024,
+      "title": "Formal-LLM: Integrating formal language and natural language for controllable LLM-based agents.",
+      "url": "https://arxiv.org/pdf/2402.00798",
+      "usedIn": [
+        "pages/execution-threats/08-planning-threat.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Zelong Li, Wenyue Hua, Hao Wang, He Zhu, and Yongfeng Zhang",
+        "year": 2024,
+        "rest": "Formal-LLM: Integrating formal language and natural language for controllable LLM-based agents. Retrieved from https://arxiv.org/pdf/2402.00798"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/08-planning-threat.md"
+      ],
+      "surveyBibliographyPage": 31,
+      "surveyBodyPages": [
+        16
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 200,
+      "authors": "Fangzhou Wu et al.",
+      "year": 2024,
+      "title": "WIPI: A new web threat for LLM-driven web agents.",
+      "url": "https://arxiv.org/pdf/2402.16965",
+      "usedIn": [
+        "pages/execution-threats/10-agent2tool-supply-chain.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Fangzhou Wu, Shutong Wu, Yulong Cao, and Chaowei Xiao",
+        "year": 2024,
+        "rest": "WIPI: A new web threat for LLM-driven web agents. Retrieved from https://arxiv.org/pdf/2402.16965"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/10-agent2tool-supply-chain.md"
+      ],
+      "surveyBibliographyPage": 35,
+      "surveyBodyPages": [
+        6,
+        7,
+        17,
+        18
+      ],
+      "originalCheck": "Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 147,
+      "authors": "Embrace The Red",
+      "year": 2023,
+      "title": "Indirect Prompt Injection via YouTube Transcripts.",
+      "url": "https://embracethered.com/blog/posts/2023/chatgpt-plugin-youtube-indirect-prompt-injection/",
+      "usedIn": [
+        "pages/execution-threats/10-agent2tool-supply-chain.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Embrace The Red",
+        "year": 2023,
+        "rest": "Indirect Prompt Injection via YouTube Transcripts · Embrace The Red—embracethered.com. Retrieved from https://embracethered.com/blog/posts/2023/chatgpt-plugin-youtube-indirect-prompt-injection/"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/10-agent2tool-supply-chain.md"
+      ],
+      "surveyBibliographyPage": 33,
+      "surveyBodyPages": [
+        6,
+        7
+      ],
+      "originalCheck": "Đã đọc báo cáo demo kỹ thuật của tác giả; đây là blog nghiên cứu, không phải paper bình duyệt.",
+      "versionNote": "Survey Table 1 p.6 trỏ mục 147 cho YouTube transcript; đoạn thân bài p.18 trỏ mục 68 khác. Dùng mục 147 và demo gốc để định danh ví dụ.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 45,
+      "authors": "Embrace The Red",
+      "year": 2023,
+      "title": "ChatGPT Plugins: Data Exfiltration Via Images & Cross Plugin Request Forgery.",
+      "url": "https://embracethered.com/blog/posts/2023/chatgpt-webpilot-data-exfil-via-markdown-injection/",
+      "usedIn": [
+        "pages/execution-threats/10-agent2tool-supply-chain.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Embrace The Red",
+        "year": 2023,
+        "rest": "ChatGPT Plugins: Data Exfiltration Via Images & Cross Plugin Request Forgery. Retrieved from https://embracethered.com/blog/posts/2023/chatgpt-webpilot-data-exfil-via-markdown-injection/"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/10-agent2tool-supply-chain.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        6,
+        7,
+        18
+      ],
+      "originalCheck": "Đã đọc báo cáo demo kỹ thuật của tác giả; đây là blog nghiên cứu, không phải paper bình duyệt.",
+      "versionNote": "Survey gọi ví dụ này là malicious plugin; báo cáo gốc mô tả malicious retrieved data. Slide theo nguồn gốc, không cáo buộc bản thân WebPilot là plugin độc.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 150,
+      "authors": "Yangjun Ruan et al.",
+      "year": 2024,
+      "title": "Identifying the risks of LM agents with an LM-emulated sandbox.",
+      "url": "https://arxiv.org/abs/2309.15817",
+      "usedIn": [
+        "pages/execution-threats/06-misalignment.md",
+        "pages/execution-threats/10-agent2tool-supply-chain.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Yangjun Ruan, Honghua Dong, Andrew Wang, Silviu Pitis, Yongchao Zhou, Jimmy Ba, Yann Dubois, Chris J. Maddison, and Tatsunori Hashimoto",
+        "year": 2024,
+        "rest": "Identifying the risks of LM agents with an LM-emulated sandbox. In Proceedings of the ICLR ."
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/10-agent2tool-supply-chain.md",
+        "pages/discussion/05-safety-evaluation.md"
+      ],
+      "surveyBibliographyPage": 33,
+      "surveyBodyPages": [
+        6,
+        7,
+        14,
+        17,
+        26
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 225,
+      "authors": "Xinyu Zhang et al.",
+      "year": 2024,
+      "title": "PrivacyAsst: Safeguarding User Privacy in Tool-Using Large Language Model Agents.",
+      "usedIn": [
+        "pages/execution-threats/10-agent2tool-supply-chain.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Xinyu Zhang, Huiyu Xu, Zhongjie Ba, Zhibo Wang, Yuan Hong, Jian Liu, Zhan Qin, and Kui Ren",
+        "year": 2024,
+        "rest": "PrivacyAsst: Safeguarding user privacy in tool-using large language model agents. IEEE Transactions on Dependable and Secure Computing 21, 6 (2024), 5242–5258."
+      },
+      "url": "https://ieeexplore.ieee.org/document/10458329",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/execution-threats/10-agent2tool-supply-chain.md",
+        "pages/discussion/04-tool-use-auditing.md"
+      ],
+      "surveyBibliographyPage": 36,
+      "surveyBodyPages": [
+        17,
+        26
+      ],
+      "originalCheck": "Đã đọc README chính thức tại https://github.com/Eyr3/PrivacyAsst, mục Introduction và New Components. Chưa truy cập được toàn văn IEEE; không gán kết quả benchmark ngoài README.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 140,
+      "authors": "Lukas Pöhler et al.",
+      "year": 2024,
+      "title": "A technological perspective on misuse of available AI.",
+      "url": "https://arxiv.org/pdf/2403.15325",
+      "usedIn": [
+        "pages/interaction-threats/02-agent-environment.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Lukas Pöhler, Valentin Schrader, Alexander Ladwein, and Florian von Keller",
+        "year": 2024,
+        "rest": "A technological perspective on misuse of available AI. Retrieved from https://arxiv.org/pdf/2403.15325"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/02-agent-environment.md"
+      ],
+      "surveyBibliographyPage": 32,
+      "surveyBodyPages": [
+        2,
+        20
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 56,
+      "authors": "Kai Greshake et al.",
+      "year": 2023,
+      "title": "Not what you’ve signed up for: Compromising real-world LLM-integrated applications with indirect prompt injection.",
+      "url": "https://arxiv.org/abs/2302.12173",
+      "usedIn": [
+        "pages/interaction-threats/03-indirect-prompt-injection.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Kai Greshake, Sahar Abdelnabi, Shailesh Mishra, Christoph Endres, Thorsten Holz, and Mario Fritz",
+        "year": 2023,
+        "rest": "Not what you’ve signed up for: Compromising real-world LLM-integrated applications with indirect prompt injection. In Proceedings of the AISec . 79–90."
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/03-indirect-prompt-injection.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        18
+      ],
+      "originalCheck": "Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 17,
+      "authors": "Chun Fai Chan et al.",
+      "year": 2023,
+      "title": "Detection and defense against prominent attacks on preconditioned LLM-integrated virtual assistants.",
+      "usedIn": [
+        "pages/interaction-threats/03-indirect-prompt-injection.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Chun Fai Chan, Daniel Wankit Yip, and Aysan Esmradi",
+        "year": 2023,
+        "rest": "Detection and defense against prominent attacks on preconditioned LLM-integrated virtual assistants. In Proceedings of the CSDE . IEEE."
+      },
+      "url": "https://arxiv.org/abs/2401.00994",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/03-indirect-prompt-injection.md"
+      ],
+      "surveyBibliographyPage": 27,
+      "surveyBodyPages": [
+        6,
+        7,
+        19,
+        27
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 64,
+      "authors": "Keegan Hines et al.",
+      "year": 2024,
+      "title": "Defending against indirect prompt injection attacks with spotlighting.",
+      "url": "https://arxiv.org/pdf/2403.14720",
+      "usedIn": [
+        "pages/interaction-threats/03-indirect-prompt-injection.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Keegan Hines, Gary Lopez, Matthew Hall, Federico Zarfati, Yonatan Zunger, and Emre Kiciman",
+        "year": 2024,
+        "rest": "Defending against indirect prompt injection attacks with spotlighting. Retrieved from https://arxiv.org/pdf/2403.14720"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/03-indirect-prompt-injection.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        18,
+        19
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 15,
+      "authors": "Alexander Bukharin et al.",
+      "year": 2023,
+      "title": "Robust multi-agent reinforcement learning via adversarial regularization: Theoretical foundation and stable algorithms.",
+      "usedIn": [
+        "pages/interaction-threats/04-rl-environment.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Alexander Bukharin, Yan Li, Yue Yu, Qingru Zhang, Zhehui Chen, Simiao Zuo, Chao Zhang, Songan Zhang, and Tuo Zhao",
+        "year": 2024,
+        "rest": "Robust multi-agent reinforcement learning via adversarial regularization: Theoretical foundation and stable algorithms. NeurIPS (2024)."
+      },
+      "url": "https://arxiv.org/abs/2310.10810",
+      "metadataNote": "Survey lists 2024; primary proceedings identify NeurIPS 2023.",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/04-rl-environment.md"
+      ],
+      "surveyBibliographyPage": 27,
+      "surveyBodyPages": [
+        19,
+        27
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "versionNote": "Survey ghi 2024; bài thuộc proceedings NeurIPS 2023. Slide dùng năm hội nghị 2023.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 9,
+      "authors": "Saurabh Arora et al.",
+      "year": 2021,
+      "title": "A survey of inverse reinforcement learning: Challenges, methods and progress.",
+      "usedIn": [
+        "pages/interaction-threats/04-rl-environment.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Saurabh Arora and Prashant Doshi",
+        "year": 2021,
+        "rest": "A survey of inverse reinforcement learning: Challenges, methods and progress. Artific. Intell. 297 (Aug. 2021), 103500."
+      },
+      "url": "https://arxiv.org/abs/1806.06877",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/04-rl-environment.md"
+      ],
+      "includeInReferences": true,
+      "exclusionReason": "Not cited in the revised slide content or speaker notes; retained in the audit inventory for traceability.",
+      "surveyBibliographyPage": 27,
+      "surveyBodyPages": [
+        19,
+        27
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json."
+    },
+    {
+      "surveyReference": 52,
+      "authors": "Jonas Geiping et al.",
+      "year": 2024,
+      "title": "Coercing LLMs to do and reveal (almost) anything.",
+      "url": "https://arxiv.org/abs/2402.14020",
+      "usedIn": [
+        "pages/interaction-threats/05-computing-resources.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Jonas Geiping, Alex Stein, Manli Shu, Khalid Saifullah, Yuxin Wen, and Tom Goldstein",
+        "year": 2024,
+        "rest": "Coercing LLMs to do and reveal (almost) anything. Retrieved from https://arxiv.org/abs/2402.14020"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/05-computing-resources.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        5,
+        6,
+        7,
+        8,
+        20
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 58,
+      "authors": "Michael Guastalla et al.",
+      "year": 2024,
+      "title": "Application of large language models to DDoS attack detection.",
+      "url": "https://doi.org/10.1007/978-3-031-51630-6_6",
+      "usedIn": [
+        "pages/interaction-threats/05-computing-resources.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Michael Guastalla, Yiyi Li, Arvin Hekmati, and Bhaskar Krishnamachari",
+        "year": 2023,
+        "rest": "Application of large language models to DDoS attack detection. In Proceedings of the SmartSP ."
+      },
+      "metadataNote": "SmartSP 2023 conference; proceedings published 2024.",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/05-computing-resources.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        20
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "versionNote": "Survey ghi năm hội thảo 2023; trang Springer ghi xuất bản kỷ yếu ngày 5-2-2024. Slide dùng năm xuất bản 2024.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 69,
+      "authors": "Bin Hu et al.",
+      "year": 2023,
+      "title": "Enabling intelligent interactions between an agent and an LLM: A reinforcement learning approach.",
+      "url": "https://arxiv.org/pdf/2306.03604",
+      "usedIn": [
+        "pages/interaction-threats/05-computing-resources.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Bin Hu, Chenyang Zhao, Pu Zhang, Zihao Zhou, Yuanhang Yang, Zenglin Xu, and Bin Liu",
+        "year": 2023,
+        "rest": "Enabling intelligent interactions between an agent and an LLM: A reinforcement learning approach. Retrieved from https://arxiv.org/ pdf/2306.03604"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/05-computing-resources.md"
+      ],
+      "surveyBibliographyPage": 30,
+      "surveyBodyPages": [
+        6,
+        7,
+        14,
+        15,
+        20
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 7,
+      "authors": "Jacob Andreas",
+      "year": 2022,
+      "title": "Language models as agent models.",
+      "url": "https://arxiv.org/pdf/2212.01681",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Jacob Andreas",
+        "year": 2022,
+        "rest": "Language models as agent models. Retrieved from: https://arxiv.org/pdf/2212.01681"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/05-computing-resources.md"
+      ],
+      "includeInReferences": false,
+      "exclusionReason": "Not cited in the revised slide content or speaker notes; retained in the audit inventory for traceability.",
+      "surveyBibliographyPage": 27,
+      "surveyBodyPages": [
+        20,
+        27
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json."
+    },
+    {
+      "surveyReference": 95,
+      "authors": "Tian Liang et al.",
+      "year": 2023,
+      "title": "Encouraging divergent thinking in large language models through multi-agent debate.",
+      "url": "https://arxiv.org/pdf/2305.19118",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Tian Liang, Zhiwei He, Wenxiang Jiao, Xing Wang, Yan Wang, Rui Wang, Yujiu Yang, Zhaopeng Tu, and Shuming Shi",
+        "year": 2023,
+        "rest": "Encouraging divergent thinking in large language models through multi-agent debate. Retrieved from https://arxiv.org/pdf/2305.19118"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/05-computing-resources.md"
+      ],
+      "includeInReferences": false,
+      "exclusionReason": "Not cited in the revised slide content or speaker notes; retained in the audit inventory for traceability.",
+      "surveyBibliographyPage": 31,
+      "surveyBodyPages": [
+        6,
+        7,
+        20
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json."
+    },
+    {
+      "surveyReference": 163,
+      "authors": "Emily H. Soice et al.",
+      "year": 2023,
+      "title": "Can large language models democratize access to dual-use biotechnology?",
+      "url": "https://arxiv.org/pdf/2306.03809",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Emily H. Soice, Rafael Rocha, Kimberlee Cordova, Michael Specter, and Kevin M. Esvelt",
+        "year": 2023,
+        "rest": "Can large language models democratize access to dual-use biotechnology? Retrieved from https://arxiv.org/pdf/2306.03809"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/05-computing-resources.md"
+      ],
+      "includeInReferences": false,
+      "exclusionReason": "Not cited in the revised slide content or speaker notes; retained in the audit inventory for traceability.",
+      "surveyBibliographyPage": 33,
+      "surveyBodyPages": [
+        20
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json."
+    },
+    {
+      "surveyReference": 28,
+      "authors": "Stav Cohen et al.",
+      "year": 2024,
+      "title": "Here comes the AI worm: Unleashing zero-click worms that target GenAI-powered applications.",
+      "url": "https://arxiv.org/pdf/2403.02817",
+      "usedIn": [
+        "pages/interaction-threats/07-cooperative-competitive.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Stav Cohen, Ron Bitton, and Ben Nassi",
+        "year": 2024,
+        "rest": "Here comes the AI worm: Unleashing zero-click worms that target GenAI-powered applications. Retrieved from https://arxiv.org/pdf/2403.02817"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/07-cooperative-competitive.md",
+        "pages/interaction-threats/09-long-term-memory.md",
+        "pages/interaction-threats/10-short-term-memory.md"
+      ],
+      "surveyBibliographyPage": 28,
+      "surveyBodyPages": [
+        5,
+        6,
+        7,
+        21,
+        24
+      ],
+      "originalCheck": "Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 122,
+      "authors": "Sumeet Ramesh Motwani et al.",
+      "year": 2023,
+      "title": "A perfect collusion benchmark: How can AI agents be prevented from colluding with information-theoretic undetectability?.",
+      "usedIn": [
+        "pages/interaction-threats/07-cooperative-competitive.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Sumeet Ramesh Motwani, Mikhail Baranchuk, Lewis Hammond, and Christian Schroeder de Witt",
+        "year": 2023,
+        "rest": "A perfect collusion benchmark: How can AI agents be prevented from colluding with information-theoretic undetectability?. In Proceedings of the NeurIPS Workshop ."
+      },
+      "url": "https://openreview.net/forum?id=FXZFrOvIoc",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/07-cooperative-competitive.md"
+      ],
+      "surveyBibliographyPage": 32,
+      "surveyBodyPages": [
+        6,
+        7,
+        21
+      ],
+      "originalCheck": "Dẫn qua survey pp.21–22. Trang OpenReview yêu cầu xác minh trình duyệt; chưa xác nhận nội dung toàn văn gốc.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 221,
+      "authors": "Yifan Zeng et al.",
+      "year": 2024,
+      "title": "AutoDefense: Multi-agent LLM defense against jailbreak attacks.",
+      "url": "https://arxiv.org/pdf/2403.04783",
+      "usedIn": [
+        "pages/interaction-threats/07-cooperative-competitive.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Yifan Zeng, Yiran Wu, Xiao Zhang, Huazheng Wang, and Qingyun Wu",
+        "year": 2024,
+        "rest": "AutoDefense: Multi-agent LLM defense against jailbreak attacks. Retrieved from https://arxiv.org/pdf/2403.04783"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/07-cooperative-competitive.md"
+      ],
+      "surveyBibliographyPage": 36,
+      "surveyBodyPages": [
+        22
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 47,
+      "authors": "Meta Fundamental AI Research Diplomacy Team (FAIR) et al.",
+      "year": 2022,
+      "title": "Human-level play in the game of Diplomacy by combining language models with strategic reasoning.",
+      "usedIn": [
+        "pages/interaction-threats/07-cooperative-competitive.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Meta Fundamental AI Research Diplomacy Team (FAIR)., Anton Bakhtin, Noam Brown, Emily Dinan, Gabriele Farina, Colin Flaherty, Daniel Fried, et al",
+        "year": 2022,
+        "rest": "Human-level play in the game of Diplomacy by combining language models with strategic reasoning. Science 378, 6624 (2022), 1067–1074."
+      },
+      "url": "https://doi.org/10.1126/science.ade9097",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/07-cooperative-competitive.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        22
+      ],
+      "originalCheck": "Dẫn qua survey p.22 cho mô tả Cicero. DOI nhà xuất bản bị chặn khi kiểm tra; không suy ra thực nghiệm lừa dối.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 108,
+      "authors": "Qinghua Lu et al.",
+      "year": 2024,
+      "title": "Towards Responsible Generative AI: A Reference Architecture for Designing Foundation Model based Agents.",
+      "url": "https://arxiv.org/abs/2311.13148v3",
+      "usedIn": [
+        "pages/interaction-threats/07-cooperative-competitive.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Qinghua Lu, Liming Zhu, Xiwei Xu, Zhenchang Xing, Stefan Harrer, and Jon Whittle",
+        "year": 2023,
+        "rest": "Building the future of responsible AI: A reference architecture for designing large language model based agents. Retrieved from https: //arxiv.org/pdf/2311.13148"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/07-cooperative-competitive.md"
+      ],
+      "surveyBibliographyPage": 31,
+      "surveyBodyPages": [
+        22
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "versionNote": "Survey dẫn bản 2023 “Building the future of responsible AI…”. Nội dung kiến trúc đã đối chiếu bản v3 (3-4-2024), tên mới như trên; cùng arXiv:2311.13148.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 235,
+      "authors": "Wei Zou et al.",
+      "year": 2024,
+      "title": "PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models.",
+      "url": "https://arxiv.org/pdf/2402.07867",
+      "usedIn": [
+        "pages/interaction-threats/09-long-term-memory.md",
+        "pages/discussion/08-memory-management.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Wei Zou, Runpeng Geng, Binghui Wang, and Jinyuan Jia",
+        "year": 2024,
+        "rest": "PoisonedRAG: Knowledge poisoning attacks to retrieval-augmented generation of large language models. Retrieved from https://arxiv.org/pdf/2402.07867"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/09-long-term-memory.md",
+        "pages/interaction-threats/10-short-term-memory.md",
+        "pages/discussion/08-memory-management.md"
+      ],
+      "surveyBibliographyPage": 36,
+      "surveyBodyPages": [
+        6,
+        7,
+        24,
+        26
+      ],
+      "originalCheck": "Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.",
+      "versionNote": "Tên trong survey: “Knowledge poisoning attacks…”. Trang arXiv hiện dùng “Knowledge Corruption Attacks…”. Cùng arXiv:2402.07867; số liệu 5 văn bản/câu hỏi và 90% đã đối chiếu abstract.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 220,
+      "authors": "Shenglai Zeng et al.",
+      "year": 2024,
+      "title": "The good and the bad: Exploring privacy issues in retrieval-augmented generation (RAG).",
+      "url": "https://arxiv.org/pdf/2402.16893",
+      "usedIn": [
+        "pages/interaction-threats/09-long-term-memory.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Shenglai Zeng, Jiankun Zhang, Pengfei He, Yue Xing, Yiding Liu, Han Xu, Jie Ren, Shuaiqiang Wang, Dawei Yin, Yi Chang et al",
+        "year": 2024,
+        "rest": "The good and the bad: Exploring privacy issues in retrieval-augmented generation (RAG). Retrieved from https://arxiv.org/pdf/2402.16893"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/09-long-term-memory.md",
+        "pages/interaction-threats/10-short-term-memory.md"
+      ],
+      "surveyBibliographyPage": 36,
+      "surveyBodyPages": [
+        6,
+        7,
+        24
+      ],
+      "originalCheck": "Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 91,
+      "authors": "Haoran Li et al.",
+      "year": 2023,
+      "title": "Sentence embedding leaks more information than you expect: Generative embedding inversion attack to recover the whole sentence.",
+      "usedIn": [
+        "pages/interaction-threats/09-long-term-memory.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Haoran Li, Mingshi Xu, and Yangqiu Song",
+        "year": 2023,
+        "rest": "Sentence embedding leaks more information than you expect: Generative embedding inversion attack to recover the whole sentence. In Proceedings of the ACL ."
+      },
+      "url": "https://aclanthology.org/2023.findings-acl.881/",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/09-long-term-memory.md"
+      ],
+      "surveyBibliographyPage": 31,
+      "surveyBodyPages": [
+        24
+      ],
+      "originalCheck": "Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 120,
+      "authors": "John Morris et al.",
+      "year": 2023,
+      "title": "Text embeddings reveal (almost) as much as text.",
+      "usedIn": [
+        "pages/interaction-threats/09-long-term-memory.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "John Morris, Volodymyr Kuleshov, Vitaly Shmatikov, and Alexander Rush",
+        "year": 2023,
+        "rest": "Text embeddings reveal (almost) as much as text. In Proceedings of the EMNLP ."
+      },
+      "url": "https://aclanthology.org/2023.emnlp-main.765/",
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/09-long-term-memory.md"
+      ],
+      "surveyBibliographyPage": 32,
+      "surveyBodyPages": [
+        24
+      ],
+      "originalCheck": "Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 37,
+      "authors": "Yiran Ding et al.",
+      "year": 2024,
+      "title": "LongRoPE: Extending LLM context window beyond 2 million tokens.",
+      "url": "https://arxiv.org/pdf/2402.13753",
+      "usedIn": [
+        "pages/interaction-threats/10-short-term-memory.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Yiran Ding, Li Lyna Zhang, Chengruidong Zhang, Yuanyuan Xu, Ning Shang, Jiahang Xu, Fan Yang, and Mao Yang",
+        "year": 2024,
+        "rest": "LongRoPE: Extending LLM context window beyond 2 million tokens. Retrieved from https://arxiv.org/pdf/2402. 13753"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/10-short-term-memory.md"
+      ],
+      "surveyBibliographyPage": 28,
+      "surveyBodyPages": [
+        23
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 23,
+      "authors": "Yongchao Chen et al.",
+      "year": 2023,
+      "title": "Scalable multi-robot collaboration with large language models: Centralized or decentralized systems?",
+      "url": "https://arxiv.org/html/2309.15943v2",
+      "usedIn": [
+        "pages/interaction-threats/10-short-term-memory.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Yongchao Chen, Jacob Arkin, Yang Zhang, Nicholas Roy, and Chuchu Fan",
+        "year": 2023,
+        "rest": "Scalable multi-robot collaboration with large language models: Centralized or decentralized systems? Retrieved from https://arxiv.org/html/2309. 15943v2"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/10-short-term-memory.md"
+      ],
+      "surveyBibliographyPage": 28,
+      "surveyBodyPages": [
+        23
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 53,
+      "authors": "Mingyang Geng et al.",
+      "year": 2024,
+      "title": "Large language models are few-shot summarizers: Multi-intent comment generation via in-context learning.",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Mingyang Geng, Shangwen Wang, Dezun Dong, Haotian Wang, Ge Li, Zhi Jin, Xiaoguang Mao, and Xiangke Liao",
+        "year": 2024,
+        "rest": "Large language models are few-shot summarizers: Multi-intent comment generation via in-context learning. In Proceedings of the ICSE ."
+      },
+      "url": "https://arxiv.org/abs/2304.11384",
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/10-short-term-memory.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        23
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 72,
+      "authors": "Xijie Huang et al.",
+      "year": 2023,
+      "title": "Fewer is More: Boosting LLM Reasoning with Reinforced Context Pruning.",
+      "url": "https://arxiv.org/pdf/2312.08901",
+      "usedIn": [
+        "pages/interaction-threats/10-short-term-memory.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Xijie Huang, Li Lyna Zhang, Kwang-Ting Cheng, and Mao Yang",
+        "year": 2023,
+        "rest": "Boosting LLM reasoning: Push the limits of few-shot learning with reinforced in-context pruning. Retrieved from https://arxiv.org/pdf/2312.08901"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/10-short-term-memory.md"
+      ],
+      "surveyBibliographyPage": 30,
+      "surveyBodyPages": [
+        23
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "versionNote": "Survey dùng tên “Boosting LLM reasoning: Push the limits of few-shot learning with reinforced in-context pruning”. Trang gốc hiện mang tên “Fewer is More…”, cùng arXiv:2312.08901. Giữ năm bản thảo 2023 như survey.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 102,
+      "authors": "Sheng Liu et al.",
+      "year": 2023,
+      "title": "In-context vectors: Making in context learning more effective and controllable through latent space steering.",
+      "url": "https://arxiv.org/pdf/2311.06668",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Sheng Liu, Lei Xing, and James Zou",
+        "year": 2023,
+        "rest": "In-context vectors: Making in context learning more effective and controllable through latent space steering. Retrieved from https://arxiv.org/pdf/2311.06668"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/10-short-term-memory.md"
+      ],
+      "surveyBibliographyPage": 31,
+      "surveyBodyPages": [
+        23
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 127,
+      "authors": "Tai Nguyen et al.",
+      "year": 2023,
+      "title": "In-context example selection with influences.",
+      "url": "https://arxiv.org/pdf/2302.11042",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Tai Nguyen and Eric Wong",
+        "year": 2023,
+        "rest": "In-context example selection with influences. Retrieved from https://arxiv.org/pdf/ 2302.11042"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/interaction-threats/10-short-term-memory.md"
+      ],
+      "surveyBibliographyPage": 32,
+      "surveyBodyPages": [
+        23
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 151,
+      "authors": "Ahmed Salem et al.",
+      "year": 2023,
+      "title": "Maatphor: Automated variant analysis for prompt injection attacks.",
+      "url": "https://arxiv.org/pdf/2312.11513",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Ahmed Salem, Andrew Paverd, and Boris Köpf",
+        "year": 2023,
+        "rest": "Maatphor: Automated variant analysis for prompt injection attacks. Retrieved from https://arxiv.org/pdf/2312.11513"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/02-input-inspection.md"
+      ],
+      "surveyBibliographyPage": 33,
+      "surveyBodyPages": [
+        24
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 213,
+      "authors": "Dongyu Yao et al.",
+      "year": 2024,
+      "title": "FuzzLLM: A novel and universal fuzzing framework for proactively discovering jailbreak vulnerabilities in large language models.",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Dongyu Yao, Jianshu Zhang, Ian G. Harris, and Marcel Carlsson",
+        "year": 2024,
+        "rest": "FuzzLLM: A novel and universal fuzzing framework for proactively discovering jailbreak vulnerabilities in large language models. In Proceedings of the ICASSP ."
+      },
+      "url": "https://arxiv.org/abs/2309.05274",
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/02-input-inspection.md"
+      ],
+      "surveyBibliographyPage": 35,
+      "surveyBodyPages": [
+        24
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 44,
+      "authors": "Eva Eigner et al.",
+      "year": 2024,
+      "title": "Determinants of LLM-assisted decision-making.",
+      "url": "https://arxiv.org/pdf/2402.17385",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Eva Eigner and Thorsten Händler",
+        "year": 2024,
+        "rest": "Determinants of LLM-assisted decision-making. Retrieved from https://arxiv. org/pdf/2402.17385"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/03-bias-and-fairness.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        25
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 49,
+      "authors": "Isabel O. Gallegos et al.",
+      "year": 2023,
+      "title": "Bias and fairness in large language models: A survey.",
+      "url": "https://arxiv.org/pdf/2309.00770",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Isabel O. Gallegos, Ryan A. Rossi, Joe Barrow, Md Mehrab Tanjim, Sungchul Kim, Franck Dernoncourt, Tong Yu, Ruiyi Zhang, and Nesreen K. Ahmed",
+        "year": 2023,
+        "rest": "Bias and fairness in large language models: A survey. Retrieved from https://arxiv.org/pdf/2309.00770"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/03-bias-and-fairness.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        6,
+        7,
+        13,
+        25
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 54,
+      "authors": "Judy Wawira Gichoya et al.",
+      "year": 2023,
+      "title": "AI pitfalls and what not to do: Mitigating bias in AI.",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Judy Wawira Gichoya, Kaesha Thomas, Leo Anthony Celi, Nabile Safdar, Imon Banerjee, John D. Banja, Laleh Seyyed- Kalantari, Hari Trivedi, and Saptarshi Purkayastha",
+        "year": 2023,
+        "rest": "AI pitfalls and what not to do: Mitigating bias in AI. The British Journal of Radiology 96, 1150 (2023), 20230023."
+      },
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10546443/",
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/03-bias-and-fairness.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        25
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 169,
+      "authors": "Harini Suresh et al.",
+      "year": 2019,
+      "title": "A framework for understanding unintended consequences of machine learning.",
+      "url": "https://arxiv.org/pdf/1901.10002",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Harini Suresh and John V. Guttag",
+        "year": 2019,
+        "rest": "A framework for understanding unintended consequences of machine learning. Retrieved from https://arxiv.org/pdf/1901.10002"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/03-bias-and-fairness.md"
+      ],
+      "surveyBibliographyPage": 34,
+      "surveyBodyPages": [
+        25
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 174,
+      "authors": "Yu Tian et al.",
+      "year": 2023,
+      "title": "Evil geniuses: Delving into the safety of llm-based agents.",
+      "url": "https://arxiv.org/pdf/2311.11855",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Yu Tian, Xiao Yang, Jingyuan Zhang, Yinpeng Dong, and Hang Su",
+        "year": 2023,
+        "rest": "Evil geniuses: Delving into the safety of llm-based agents. Retrieved from https://arxiv.org/pdf/2311.11855"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/03-bias-and-fairness.md"
+      ],
+      "surveyBibliographyPage": 34,
+      "surveyBodyPages": [
+        5,
+        6,
+        7,
+        10,
+        25
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 234,
+      "authors": "Xiaogang Zhu et al.",
+      "year": 2025,
+      "title": "When Software Security Meets Large Language Models: A Survey.",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Xiaogang Zhu, Wei Zhou, Qing-Long Han, Wanlun Ma, Sheng Wen, and Yang Xiang",
+        "year": 2025,
+        "rest": "When software security meets large language models: A survey. IEEE/CAA Journal of Automatica Sinica 12, 2 (2024), 317–334."
+      },
+      "url": "https://www.ieee-jas.com/article/doi/10.1109/JAS.2024.124971",
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/04-tool-use-auditing.md"
+      ],
+      "surveyBibliographyPage": 36,
+      "surveyBodyPages": [
+        25
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 219,
+      "authors": "Tongxin Yuan et al.",
+      "year": 2024,
+      "title": "R-Judge: Benchmarking safety risk awareness for LLM agents.",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Tongxin Yuan, Zhiwei He, Lingzhong Dong, Yiming Wang, Ruijie Zhao, Tian Xia, Lizhen Xu, Binglin Zhou, Fangqi Li, Zhuosheng Zhang et al",
+        "year": 2024,
+        "rest": "R-Judge: Benchmarking safety risk awareness for LLM agents. In Proceedings of the ICLR ."
+      },
+      "url": "https://arxiv.org/abs/2401.10019",
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/05-safety-evaluation.md"
+      ],
+      "surveyBibliographyPage": 36,
+      "surveyBodyPages": [
+        26
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 179,
+      "authors": "Bertie Vidgen et al.",
+      "year": 2024,
+      "title": "Introducing v0.5 of the AI Safety Benchmark from MLCommons.",
+      "url": "https://arxiv.org/pdf/2404.12241",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Bertie Vidgen, Adarsh Agrawal, Ahmed M. Ahmed, Victor Akinwande, Namir Al-Nuaimi, Najla Alfaraj, Elie Alhajjar, Lora Aroyo, Trupti Bavalatti, Borhane Blili-Hamelin et al",
+        "year": 2024,
+        "rest": "Introducing v0. 5 of the AI safety benchmark from MLCommons. Retrieved from https://arxiv.org/pdf/2404.12241"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/05-safety-evaluation.md"
+      ],
+      "surveyBibliographyPage": 34,
+      "surveyBodyPages": [
+        26
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 89,
+      "authors": "Guohao Li et al.",
+      "year": 2023,
+      "title": "CAMEL: Communicative agents for ”Mind” exploration of large language model society.",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Guohao Li, Hasan Abed Al Kader Hammoud, Hani Itani, Dmitrii Khizbullin, and Bernard Ghanem",
+        "year": 2023,
+        "rest": "CAMEL: Communicative agents for ”Mind” exploration of large language model society. In Proceedings of the NeurIPS ."
+      },
+      "url": "https://arxiv.org/abs/2303.17760",
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/07-interaction-architectures.md"
+      ],
+      "surveyBibliographyPage": 30,
+      "surveyBodyPages": [
+        21,
+        26
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 60,
+      "authors": "Rui Hao et al.",
+      "year": 2023,
+      "title": "ChatLLM network: More brains, more intelligence.",
+      "url": "https://arxiv.org/pdf/2304.12998",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Rui Hao, Linmei Hu, Weijian Qi, Qingliu Wu, Yirui Zhang, and Liqiang Nie",
+        "year": 2023,
+        "rest": "ChatLLM network: More brains, more intelligence. Retrieved from https://arxiv.org/pdf/2304.12998"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/07-interaction-architectures.md"
+      ],
+      "surveyBibliographyPage": 29,
+      "surveyBodyPages": [
+        21,
+        26
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 113,
+      "authors": "Zhao Mandi et al.",
+      "year": 2023,
+      "title": "Roco: Dialectic multi-robot collaboration with large language models.",
+      "url": "https://arxiv.org/pdf/2307.04738",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Zhao Mandi, Shreeya Jain, and Shuran Song",
+        "year": 2023,
+        "rest": "Roco: Dialectic multi-robot collaboration with large language models. Retrieved from https://arxiv.org/pdf/2307.04738"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/07-interaction-architectures.md"
+      ],
+      "surveyBibliographyPage": 31,
+      "surveyBodyPages": [
+        21,
+        23,
+        26
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 125,
+      "authors": "Varun Nair et al.",
+      "year": 2023,
+      "title": "DERA: Enhancing large language model completions with dialog-enabled resolving agents.",
+      "url": "https://arxiv.org/pdf/2303.17071",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Varun Nair, Elliot Schumacher, Geoffrey Tso, and Anitha Kannan",
+        "year": 2023,
+        "rest": "DERA: Enhancing large language model completions with dialog-enabled resolving agents. Retrieved from https://arxiv.org/pdf/2303.17071"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/07-interaction-architectures.md"
+      ],
+      "surveyBibliographyPage": 32,
+      "surveyBodyPages": [
+        21,
+        26
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 97,
+      "authors": "Jonathan Light et al.",
+      "year": 2023,
+      "title": "AvalonBench: Evaluating LLMs playing the game of avalon.",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Jonathan Light, Min Cai, Sheng Shen, and Ziniu Hu",
+        "year": 2023,
+        "rest": "AvalonBench: Evaluating LLMs playing the game of avalon. In Proceedings of the NeurIPS Workshop ."
+      },
+      "url": "https://arxiv.org/abs/2310.05036",
+      "verification": "Excluded: no current slide claim uses this source",
+      "originalAuditUsedIn": [
+        "pages/discussion/08-memory-management.md"
+      ],
+      "surveyBibliographyPage": 31,
+      "surveyBodyPages": [
+        26
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 39,
+      "authors": "Tian Dong et al.",
+      "year": 2023,
+      "title": "Unleashing cheapfakes through trojan plugins of large language models.",
+      "url": "https://arxiv.org/pdf/2312.00374v1",
+      "usedIn": [
+        "pages/execution-threats/05-backdoor-attack.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Tian Dong, Guoxing Chen, Shaofeng Li, Minhui Xue, Rayne Holland, Yan Meng, Zhen Liu, and Haojin Zhu",
+        "year": 2023,
+        "rest": "Unleashing cheapfakes through trojan plugins of large language models. Retrieved from https://arxiv.org/pdf/2312. 00374v1"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "surveyBibliographyPage": 28,
+      "surveyBodyPages": [
+        6,
+        7,
+        12
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 103,
+      "authors": "Tong Liu et al.",
+      "year": 2023,
+      "title": "Demystifying rce vulnerabilities in LLM-integrated apps.",
+      "url": "https://arxiv.org/pdf/2309.02926",
+      "usedIn": [
+        "pages/execution-threats/02-prompt-injection-attack.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Tong Liu, Zizhuang Deng, Guozhu Meng, Yuekang Li, and Kai Chen",
+        "year": 2023,
+        "rest": "Demystifying rce vulnerabilities in LLMintegrated apps. Retrieved from https://arxiv.org/pdf/2309.02926"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "surveyBibliographyPage": 31,
+      "surveyBodyPages": [
+        6,
+        7,
+        8
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 137,
+      "authors": "Fábio Perez and Ian Ribeiro",
+      "year": 2022,
+      "title": "Ignore previous prompt: Attack techniques for language models.",
+      "url": "https://arxiv.org/abs/2211.09527",
+      "usedIn": [
+        "pages/execution-threats/02-prompt-injection-attack.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Fábio Perez and Ian Ribeiro",
+        "year": 2022,
+        "rest": "Ignore previous prompt: Attack techniques for language models. NeurIPS (2022)."
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "surveyBibliographyPage": 32,
+      "surveyBodyPages": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 199,
+      "authors": "Chen Henry Wu et al.",
+      "year": 2024,
+      "title": "Adversarial attacks on multimodal agents.",
+      "url": "https://arxiv.org/pdf/2406.12814v1",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Chen Henry Wu, Jing Yu Koh, Ruslan Salakhutdinov, Daniel Fried, and Aditi Raghunathan",
+        "year": 2024,
+        "rest": "Adversarial attacks on multimodal agents. Retrieved from https://arxiv.org/pdf/2406.12814v1"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "surveyBibliographyPage": 35,
+      "surveyBodyPages": [
+        8,
+        9
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    },
+    {
+      "surveyReference": 201,
+      "authors": "Fangzhou Wu et al.",
+      "year": 2024,
+      "title": "A new era in LLM security: Exploring security concerns in real-world LLM-based systems.",
+      "url": "https://arxiv.org/pdf/2402.18649",
+      "usedIn": [
+        "pages/execution-threats/02-prompt-injection-attack.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Fangzhou Wu, Ning Zhang, Somesh Jha, Patrick McDaniel, and Chaowei Xiao",
+        "year": 2024,
+        "rest": "A new era in LLM security: Exploring security concerns in real-world LLM-based systems. Retrieved from https://arxiv.org/pdf/2402.18649"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "surveyBibliographyPage": 35,
+      "surveyBodyPages": [
+        5,
+        6,
+        7,
+        8,
+        18,
+        19
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 211,
+      "authors": "Wenkai Yang et al.",
+      "year": 2024,
+      "title": "Watch out for your agents! Investigating backdoor threats to LLM-Based agents.",
+      "url": "https://arxiv.org/pdf/2402.11208",
+      "usedIn": [
+        "pages/execution-threats/05-backdoor-attack.md"
+      ],
+      "bibliographyEntry": {
+        "authors": "Wenkai Yang, Xiaohan Bi, Yankai Lin, Sishuo Chen, Jie Zhou, and Xu Sun",
+        "year": 2024,
+        "rest": "Watch out for your agents! Investigating backdoor threats to LLM-Based agents. Retrieved from https://arxiv.org/pdf/2402.11208"
+      },
+      "verification": "See explicit claim mapping, slide notes and checked material",
+      "surveyBibliographyPage": 35,
+      "surveyBodyPages": [
+        2,
+        6,
+        7,
+        12
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": true
+    },
+    {
+      "surveyReference": 226,
+      "authors": "Yiming Zhang et al.",
+      "year": 2024,
+      "title": "Effective prompt extraction from language models.",
+      "url": "https://arxiv.org/pdf/2307.06865",
+      "usedIn": [],
+      "bibliographyEntry": {
+        "authors": "Yiming Zhang, Nicholas Carlini, and Daphne Ippolito",
+        "year": 2024,
+        "rest": "Effective prompt extraction from language models. Retrieved from https://arxiv.org/pdf/2307.06865"
+      },
+      "verification": "Excluded: no current slide claim uses this source",
+      "surveyBibliographyPage": 36,
+      "surveyBodyPages": [
+        6,
+        7,
+        8
+      ],
+      "originalCheck": "Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.",
+      "includeInReferences": false
+    }
+  ],
+  "auditNote": "originalAuditUsedIn preserves the pre-correction citation inventory. usedIn tracks direct source links or checked table rows after correction; background sources can have an empty current list.",
+  "checkedOn": "2026-11-26"
+}

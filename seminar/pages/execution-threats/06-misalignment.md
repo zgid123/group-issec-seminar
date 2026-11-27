@@ -14,28 +14,28 @@ transition: slide-left
 <div v-else>
   <TableComparison dense :spacing="2" :animation="false" row-header-width="24%">
     <TableComparisonColumns>
-      <TableComparisonColumn>Cách phòng thủ</TableComparisonColumn>
+      <TableComparisonColumn>Phương pháp</TableComparisonColumn>
       <TableComparisonColumn>Điểm mạnh</TableComparisonColumn>
-      <TableComparisonColumn>Điểm yếu</TableComparisonColumn>
+      <TableComparisonColumn>Điểm yếu / giới hạn</TableComparisonColumn>
     </TableComparisonColumns>
     <TableComparisonRows>
       <TableComparisonRow>
-        <template #heading>RLHF<span class="defense-citation">Ouyang et al., 2022</span></template>
-        <TableComparisonCell align="left">Học từ đánh giá và ưu tiên của con người.</TableComparisonCell>
-        <TableComparisonCell align="left">Điều chỉnh hành vi theo mong muốn người dùng.</TableComparisonCell>
-        <TableComparisonCell align="left">Phản hồi sai hoặc thiên vị có thể gây lệch tiếp.</TableComparisonCell>
+        <template #heading>InstructGPT / RLHF<span class="defense-citation"><a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener noreferrer">Ouyang et al., 2022</a></span></template>
+        <TableComparisonCell align="left">Học từ minh họa và xếp hạng câu trả lời của con người.</TableComparisonCell>
+        <TableComparisonCell align="left">Người đánh giá ưu tiên InstructGPT hơn GPT-3 trên tập prompt của bài.</TableComparisonCell>
+        <TableComparisonCell align="left">Mô hình vẫn mắc lỗi; đánh giá tập trung vào câu trả lời.</TableComparisonCell>
       </TableComparisonRow>
       <TableComparisonRow>
-        <template #heading>SafeguardGPT<span class="defense-citation">Lin et al., 2023</span></template>
-        <TableComparisonCell align="left">Nhiều agent mô phỏng trị liệu để điều chỉnh hành vi chatbot.</TableComparisonCell>
-        <TableComparisonCell align="left">Có phản hồi để sửa hành vi có hại.</TableComparisonCell>
-        <TableComparisonCell align="left">Phạm vi chatbot; chưa bảo đảm mọi hành động của agent.</TableComparisonCell>
+        <template #heading>SafeguardGPT<span class="defense-citation"><a href="https://arxiv.org/pdf/2304.00416" target="_blank" rel="noopener noreferrer">Lin et al., 2023</a></span></template>
+        <TableComparisonCell align="left">Bốn vai: Chatbot, User, Therapist và Critic.</TableComparisonCell>
+        <TableComparisonCell align="left">Minh họa cải thiện hội thoại qua một tình huống mô phỏng.</TableComparisonCell>
+        <TableComparisonCell align="left">Bằng chứng là ví dụ hội thoại, chưa phải đánh giá toàn hệ agent.</TableComparisonCell>
       </TableComparisonRow>
       <TableComparisonRow>
-        <template #heading>TWOSOME<span class="defense-citation">Tan et al., 2024</span></template>
-        <TableComparisonCell align="left">Chấm điểm các hành động khả dụng bằng LLM và học từ phần thưởng môi trường.</TableComparisonCell>
-        <TableComparisonCell align="left">Hạn chế việc sinh hành động không hợp lệ.</TableComparisonCell>
-        <TableComparisonCell align="left">Hành động hợp lệ chưa chắc an toàn; phụ thuộc reward và tập hành động.</TableComparisonCell>
+        <template #heading>TWOSOME<span class="defense-citation"><a href="https://arxiv.org/abs/2401.14151" target="_blank" rel="noopener noreferrer">Tan et al., 2024</a></span></template>
+        <TableComparisonCell align="left">Chấm xác suất các hành động hợp lệ; cập nhật LoRA bằng PPO.</TableComparisonCell>
+        <TableComparisonCell align="left">Gắn lựa chọn hành động với tập hành động hợp lệ của môi trường.</TableComparisonCell>
+        <TableComparisonCell align="left">Đánh giá trên Overcooked và VirtualHome; chưa bao phủ toàn hệ agent.</TableComparisonCell>
       </TableComparisonRow>
     </TableComparisonRows>
   </TableComparison>
@@ -52,7 +52,5 @@ Ví dụ: agent đồng ý với người dùng dù họ sai, hoặc bật đèn
 
 [click]
 
-Phản hồi của người và kiểm tra hành động giúp giảm độ lệch, nhưng vẫn phụ thuộc dữ liệu và bối cảnh sử dụng.
-
-Nguồn: Deng et al. (2025), mục 3.2.2.
+Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
 -->

@@ -30,6 +30,8 @@ transition: slide-left
 <GapsDiagram v-else />
 
 <!--
+GHI CHÚ THUYẾT TRÌNH
+
 [click]
 
 Có bốn điểm khó kiểm soát: đầu vào thay đổi qua nhiều lượt; xử lý bên trong phức tạp; môi trường vận hành thay đổi; và dữ liệu bên ngoài có thể không đáng tin.
@@ -37,6 +39,4 @@ Có bốn điểm khó kiểm soát: đầu vào thay đổi qua nhiều lượt
 [click]
 
 Trên sơ đồ, chỉ từng vị trí tương ứng. Một yêu cầu ban đầu bình thường vẫn có thể dẫn đến hành động sai sau vài lần trao đổi.
-
-Nguồn: Deng et al. (2025), mục 1, Hình 1.
 -->

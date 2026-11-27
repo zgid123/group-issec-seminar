@@ -22,44 +22,40 @@ transition: slide-left
 <div v-else>
   <TableComparison dense :spacing="2" :animation="false" row-header-width="24%">
     <TableComparisonColumns>
-      <TableComparisonColumn>Cách phòng thủ</TableComparisonColumn>
+      <TableComparisonColumn>Phương pháp</TableComparisonColumn>
       <TableComparisonColumn>Điểm mạnh</TableComparisonColumn>
-      <TableComparisonColumn>Điểm yếu</TableComparisonColumn>
+      <TableComparisonColumn>Điểm yếu / giới hạn</TableComparisonColumn>
     </TableComparisonColumns>
     <TableComparisonRows>
       <TableComparisonRow>
-        <template #heading>Input purification<span class="defense-citation">Februus · Doan et al., 2020</span></template>
-        <TableComparisonCell align="left">Loại vùng chứa trigger khỏi đầu vào.</TableComparisonCell>
-        <TableComparisonCell align="left">Xử lý đầu vào trước khi mô hình suy luận.</TableComparisonCell>
-        <TableComparisonCell align="left">Nghiên cứu trên DNN; chưa bảo đảm cho toàn bộ agent.</TableComparisonCell>
+        <template #heading>Februus<span class="defense-citation"><a href="https://arxiv.org/abs/1908.03369" target="_blank" rel="noopener noreferrer">Doan et al., 2020</a></span></template>
+        <TableComparisonCell align="left">Loại dấu hiệu trigger rồi phục hồi ảnh đầu vào.</TableComparisonCell>
+        <TableComparisonCell align="left">Lọc dấu hiệu trigger và phục hồi ảnh ngay lúc chạy.</TableComparisonCell>
+        <TableComparisonCell align="left">Trigger lớn có thể làm giảm chất lượng phục hồi; chỉ xét ảnh.</TableComparisonCell>
       </TableComparisonRow>
       <TableComparisonRow>
-        <template #heading>Neuron removal<span class="defense-citation">Deng et al., 2025 · survey</span></template>
-        <TableComparisonCell align="left">Loại neuron liên quan đến backdoor.</TableComparisonCell>
-        <TableComparisonCell align="left">Can thiệp vào mô hình đã nhiễm.</TableComparisonCell>
-        <TableComparisonCell align="left">Cần xác định đúng neuron; có thể ảnh hưởng tác vụ hợp lệ.</TableComparisonCell>
-      </TableComparisonRow>
-      <TableComparisonRow>
-        <template #heading>Trigger recovery<span class="defense-citation">Quarantine · Chen et al., 2022</span></template>
-        <TableComparisonCell align="left">Khai thác tính thưa để tìm trigger.</TableComparisonCell>
-        <TableComparisonCell align="left">Giúp nhận diện dấu hiệu backdoor.</TableComparisonCell>
-        <TableComparisonCell align="left">Tìm được trigger chưa đồng nghĩa bảo vệ mọi bước của agent.</TableComparisonCell>
+        <template #heading>Quarantine<span class="defense-citation"><a href="https://arxiv.org/abs/2205.11819" target="_blank" rel="noopener noreferrer">Chen et al., 2022</a></span></template>
+        <TableComparisonCell align="left">Pruning để cô lập mạng con giữ backdoor rồi khôi phục trigger.</TableComparisonCell>
+        <TableComparisonCell align="left">Cô lập mạng con backdoor để khôi phục trigger.</TableComparisonCell>
+        <TableComparisonCell align="left">Đánh giá trên DNN thị giác; chưa có bằng chứng cho LLM agent.</TableComparisonCell>
       </TableComparisonRow>
     </TableComparisonRows>
   </TableComparison>
-  <p>Phòng thủ hiện tại mới ở mức mô hình, chưa bao được cả hệ agent.</p>
+  <p>Các phòng thủ mô hình được survey (2025) dẫn chưa bảo vệ toàn hệ agent.</p>
 </div>
 
 <!--
-[click]
-
-Mô hình có backdoor có thể hoạt động bình thường cho đến khi gặp trigger. Khi đó, nó đổi câu trả lời hoặc âm thầm đổi các bước thực hiện.
-
-Ví dụ trên slide: agent vẫn báo gửi email thành công, nhưng đã chèn link lừa đảo. Chỉ xem câu trả lời cuối sẽ khó nhận ra.
+GHI CHÚ THUYẾT TRÌNH
 
 [click]
 
-Các cách được nêu chủ yếu xử lý ở mức mô hình, chưa bao quát cả hệ agent.
+Hai loại backdoor: đổi kết quả cuối hoặc chỉ đổi quá trình trung gian.
 
-Nguồn: Deng et al. (2025), mục 3.2.1.
+Sơ đồ email chèn link: plugin Trojan; không gán việc này cho LLM đã bị cài backdoor.
+
+Februus và Quarantine nghiên cứu mô hình thị giác; không suy ra đã bảo vệ toàn hệ LLM agent.
+
+[click]
+
+Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
 -->

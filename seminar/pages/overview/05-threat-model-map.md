@@ -4,7 +4,7 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Threat models
+# Threat models: ví dụ trong survey
 
 <TableComparison dense row-header-width="32%">
   <TableComparisonColumns>
@@ -46,11 +46,11 @@ transition: slide-left
 </TableComparison>
 
 <!--
+GHI CHÚ THUYẾT TRÌNH
+
 [click]
 
 Risk Source cho biết rủi ro nằm ở đâu. Threat Model cho biết bên tấn công hoặc bối cảnh được nghiên cứu.
 
 Bốn hàng đầu là các bên có thể cố tình gây hại. Hai hàng deployment là bối cảnh triển khai, không phải hai loại kẻ tấn công. Bảng tổng hợp nhiều nghiên cứu; không có nghĩa một đối thủ làm được tất cả những việc này cùng lúc.
-
-Nguồn: Deng et al. (2025), Bảng 1.
 -->

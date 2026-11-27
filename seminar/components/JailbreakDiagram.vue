@@ -7,7 +7,7 @@
         <span v-for="agent in 12" :key="agent" class="jailbreak-agent" :class="{ 'jailbreak-agent-clean': agent === 4 }"></span>
       </div>
     </div>
-    <figcaption>Agent Smith: một ảnh độc lây sang gần 100% agent</figcaption>
+    <figcaption>Agent Smith: lây nhiễm trong mô phỏng các agent LLaVA-1.5</figcaption>
   </figure>
 </template>
 

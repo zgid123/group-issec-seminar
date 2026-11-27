@@ -13,10 +13,10 @@ transition: slide-left
     <JailbreakDiagram />
     <div class="jailbreak-cards">
       <ContentCard title="Hiệu ứng domino">
-        <p>Một agent bị phá kéo theo cả hệ nhiều agent</p>
+        <p>Một agent bị phá có thể lây sang agent khác trong thiết lập có trao đổi dữ liệu</p>
       </ContentCard>
       <ContentCard title="Đầu vào đa phương thức">
-        <p>Lệnh độc giấu trong ảnh, giọng nói, khó phát hiện</p>
+        <p>Ảnh hoặc âm thanh có thể mang đầu vào đối kháng</p>
       </ContentCard>
       <ContentCard title="Hậu quả nặng hơn">
         <p>Agent bị phá có thể làm hành động vật lý nguy hiểm</p>
@@ -25,43 +25,45 @@ transition: slide-left
   </div>
 </div>
 <div v-else>
-  <TableComparison dense :animation="false" row-header-width="24%">
+  <TableComparison dense :spacing="2" :animation="false" row-header-width="24%">
     <TableComparisonColumns>
-      <TableComparisonColumn>Cách phòng thủ</TableComparisonColumn>
+      <TableComparisonColumn>Phương pháp</TableComparisonColumn>
       <TableComparisonColumn>Điểm mạnh</TableComparisonColumn>
-      <TableComparisonColumn>Điểm yếu</TableComparisonColumn>
+      <TableComparisonColumn>Điểm yếu / giới hạn</TableComparisonColumn>
     </TableComparisonColumns>
     <TableComparisonRows>
       <TableComparisonRow>
-        <template #heading>Filtering<span class="defense-citation">Schwinn et al., 2023</span></template>
-        <TableComparisonCell align="left">Sàng lọc đầu vào để phát hiện và chặn prompt độc hại.</TableComparisonCell>
-        <TableComparisonCell align="left">Có thể thêm lớp kiểm tra trước khi gọi LLM.</TableComparisonCell>
-        <TableComparisonCell align="left">Phụ thuộc bộ lọc; có thể bỏ sót hoặc chặn nhầm.</TableComparisonCell>
+        <template #heading>Defense evaluation<span class="defense-citation"><a href="https://arxiv.org/pdf/2310.19737" target="_blank" rel="noopener noreferrer">Schwinn et al., 2023</a></span></template>
+        <TableComparisonCell align="left">Kiểm tra cách đánh giá độ bền của các biện pháp phòng thủ.</TableComparisonCell>
+        <TableComparisonCell align="left">Chỉ ra nguy cơ đánh giá quá cao độ an toàn.</TableComparisonCell>
+        <TableComparisonCell align="left">Là nghiên cứu đánh giá; không đề xuất bộ lọc chung.</TableComparisonCell>
       </TableComparisonRow>
       <TableComparisonRow>
-        <template #heading>Certified defense<span class="defense-citation">Kumar et al., 2024</span></template>
-        <TableComparisonCell align="left">Kiểm tra các phần của prompt bằng mô hình phát hiện nội dung độc hại.</TableComparisonCell>
-        <TableComparisonCell align="left">Có bảo đảm trong phạm vi giả định của phương pháp.</TableComparisonCell>
-        <TableComparisonCell align="left">Tốn nhiều lượt kiểm tra; bảo đảm không bao phủ mọi kiểu jailbreak.</TableComparisonCell>
+        <template #heading>Erase-and-check<span class="defense-citation"><a href="https://arxiv.org/pdf/2309.02705" target="_blank" rel="noopener noreferrer">Kumar et al., 2024</a></span></template>
+        <TableComparisonCell align="left">Xóa token và kiểm tra các chuỗi con bằng safety filter.</TableComparisonCell>
+        <TableComparisonCell align="left">Chứng nhận an toàn cho tấn công có kích thước giới hạn.</TableComparisonCell>
+        <TableComparisonCell align="left">Bảo đảm gắn với bộ lọc và mô hình tấn công đã định nghĩa.</TableComparisonCell>
       </TableComparisonRow>
       <TableComparisonRow>
-        <template #heading>Multi-agent debate<span class="defense-citation">Chern et al., 2024</span></template>
-        <TableComparisonCell align="left">Nhiều agent thảo luận, phản biện và tự đánh giá câu trả lời.</TableComparisonCell>
-        <TableComparisonCell align="left">Có thêm phản hồi để phát hiện và sửa câu trả lời không an toàn.</TableComparisonCell>
-        <TableComparisonCell align="left">Tăng chi phí; các agent vẫn có thể cùng mắc lỗi.</TableComparisonCell>
+        <template #heading>Multi-agent debate<span class="defense-citation"><a href="https://arxiv.org/pdf/2401.05998" target="_blank" rel="noopener noreferrer">Chern et al., 2024</a></span></template>
+        <TableComparisonCell align="left">Cho mô hình bị jailbreak tranh luận với mô hình khác.</TableComparisonCell>
+        <TableComparisonCell align="left">Giảm toxicity khi tranh luận với mô hình an toàn hoặc mạnh hơn.</TableComparisonCell>
+        <TableComparisonCell align="left">Tranh luận đa agent nói chung chỉ cải thiện ít trong bài.</TableComparisonCell>
       </TableComparisonRow>
     </TableComparisonRows>
   </TableComparison>
 </div>
 
 <!--
-[click]
-
-Jailbreak khiến agent vượt ràng buộc an toàn. Trong hệ nhiều agent, đầu vào độc có thể lan qua trao đổi giữa các agent. Đầu vào còn có thể là ảnh hoặc âm thanh, không chỉ văn bản.
+GHI CHÚ THUYẾT TRÌNH
 
 [click]
 
-Lọc đầu vào, kiểm tra prompt và dùng nhiều agent phản biện. “Certified” chỉ có bảo đảm trong các giả định của phương pháp, không áp dụng cho mọi kiểu tấn công.
+Lây jailbreak giữa agent qua ảnh: Agent Smith; chỉ áp dụng trong thiết lập trao đổi của bài.
 
-Nguồn: Deng et al. (2025), mục 3.1.2.
+Đầu vào đa phương thức và hậu quả vật lý: nhóm nguy cơ được survey tổng hợp, không phải khả năng của mọi agent.
+
+[click]
+
+Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
 -->

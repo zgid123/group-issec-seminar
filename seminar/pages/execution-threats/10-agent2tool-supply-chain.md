@@ -14,28 +14,22 @@ transition: slide-left
 <div v-else>
   <TableComparison dense :spacing="2" :animation="false" row-header-width="24%">
     <TableComparisonColumns>
-      <TableComparisonColumn>Cách phòng thủ</TableComparisonColumn>
+      <TableComparisonColumn>Phương pháp</TableComparisonColumn>
       <TableComparisonColumn>Điểm mạnh</TableComparisonColumn>
-      <TableComparisonColumn>Điểm yếu</TableComparisonColumn>
+      <TableComparisonColumn>Điểm yếu / giới hạn</TableComparisonColumn>
     </TableComparisonColumns>
     <TableComparisonRows>
       <TableComparisonRow>
-        <template #heading>ToolEmu<span class="defense-citation">Ruan et al., 2024</span></template>
-        <TableComparisonCell align="left">Mô phỏng tool để đánh giá lệnh trong sandbox.</TableComparisonCell>
-        <TableComparisonCell align="left">Phát hiện tình huống rủi ro trước triển khai.</TableComparisonCell>
-        <TableComparisonCell align="left">Phụ thuộc emulator; không tự chặn mọi lệnh thật.</TableComparisonCell>
+        <template #heading>ToolEmu<span class="defense-citation"><a href="https://arxiv.org/abs/2309.15817" target="_blank" rel="noopener noreferrer">Ruan et al., 2024</a></span></template>
+        <TableComparisonCell align="left">LLM mô phỏng thực thi tool; evaluator tìm hành vi rủi ro.</TableComparisonCell>
+        <TableComparisonCell align="left">Tạo tình huống rủi ro để đánh giá tool mà không dựng tool thật.</TableComparisonCell>
+        <TableComparisonCell align="left">Mô phỏng chưa phản ánh hoàn toàn việc thực thi tool thật.</TableComparisonCell>
       </TableComparisonRow>
       <TableComparisonRow>
-        <template #heading>PrivacyAsst<span class="defense-citation">Zhang et al., 2024</span></template>
-        <TableComparisonCell align="left">Mã hóa đồng cấu; thay thế dữ liệu thuộc tính.</TableComparisonCell>
-        <TableComparisonCell align="left">Hạn chế lộ thông tin riêng tư qua tool.</TableComparisonCell>
-        <TableComparisonCell align="left">Tăng chi phí tính toán và truyền thông.</TableComparisonCell>
-      </TableComparisonRow>
-      <TableComparisonRow>
-        <template #heading>Trusted tools &amp; auditing<span class="defense-citation">Deng et al., 2025 · survey</span></template>
-        <TableComparisonCell align="left">Chỉ dùng tool tin cậy và kiểm toán chặt chuỗi cung ứng.</TableComparisonCell>
-        <TableComparisonCell align="left">Thu hẹp thành phần được phép thực thi.</TableComparisonCell>
-        <TableComparisonCell align="left">Còn ít nghiên cứu; tool đã duyệt vẫn có thể bị xâm phạm.</TableComparisonCell>
+        <template #heading>PrivacyAsst<span class="defense-citation"><a href="https://ieeexplore.ieee.org/document/10458329" target="_blank" rel="noopener noreferrer">Zhang et al., 2024</a></span></template>
+        <TableComparisonCell align="left">Hai hướng: mã hóa đồng cấu và trộn thuộc tính đầu vào.</TableComparisonCell>
+        <TableComparisonCell align="left">Cung cấp hai cách bảo vệ dữ liệu khi tương tác với tool.</TableComparisonCell>
+        <TableComparisonCell align="left">Mới minh họa bằng hai case study; phải chọn cách theo tác vụ.</TableComparisonCell>
       </TableComparisonRow>
     </TableComparisonRows>
   </TableComparison>
@@ -52,7 +46,5 @@ transition: slide-left
 
 [click]
 
-ToolEmu giúp thử tình huống trong môi trường mô phỏng; PrivacyAsst bảo vệ dữ liệu bằng mã hóa nhưng tăng chi phí. Mô phỏng vẫn phụ thuộc độ sát thực tế, còn tool cần được kiểm tra riêng.
-
-Nguồn: Deng et al. (2025), mục 3.3.
+Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
 -->

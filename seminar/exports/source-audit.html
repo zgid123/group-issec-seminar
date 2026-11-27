@@ -1,0 +1,1120 @@
+<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kiểm chứng nguồn — AI Agent Security</title><style>body{font:17px/1.65 system-ui,sans-serif;color:#12213b;background:#f5f7fa;max-width:1100px;margin:40px auto;padding:0 24px}h1{font-size:32px}article{background:white;padding:28px;margin:24px 0;border:1px solid #d5deea;border-radius:14px}a{color:#006ca8}input{box-sizing:border-box;width:100%;padding:14px;font:inherit;border:1px solid #9bacbf;border-radius:8px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}summary{cursor:pointer;font-weight:700}.muted{color:#52647b}nav a{display:inline-block;margin:4px 10px 4px 0} @media print{input,nav{display:none}article{break-before:page}details{display:block}}</style><h1>Kiểm chứng nội dung và tài liệu</h1><p>Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. https://doi.org/10.1145/3716628</p><p><a href="https://doi.org/10.1145/3716628">Survey</a> · <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=1">PDF survey</a> · 34 slide nội dung · 49 nguồn bổ trợ · 32 hàng so sánh.</p><p class="muted">Đối chiếu ngày 2026-11-26. Phân biệt nguồn gốc đã đọc, abstract, README tác giả và nội dung chỉ dẫn qua survey. Không tuyên bố đã đọc toàn văn mọi bài hoặc tái lập thí nghiệm. Các trang references chỉ chứa nguồn thực sự dùng ở nội dung bên dưới. Hai nguồn là báo cáo demo kỹ thuật, được ghi rõ trong notes.</p><input id="search" placeholder="Tìm tên slide, paper, tác giả hoặc phương pháp…" aria-label="Tìm nguồn"><nav><a href="#s0">Chatbot và AI agent</a><a href="#s1">Cấu trúc AI agent</a><a href="#s2">Bốn khoảng trống bảo mật</a><a href="#s3">Bản đồ an ninh AI Agent</a><a href="#s4">Threat models: ví dụ trong survey</a><a href="#s5">Perception: dữ liệu thành mệnh lệnh</a><a href="#s6">Prompt Injection Attack</a><a href="#s7">Jailbreak</a><a href="#s8">Brain: quyết định sai từ đâu?</a><a href="#s9">Backdoor Attack</a><a href="#s10">Misalignment</a><a href="#s11">Hallucination</a><a href="#s12">Planning Threat</a><a href="#s13">Action: sai lệnh hay sai công cụ?</a><a href="#s14">Agent2Tool &amp; Supply Chain</a><a href="#s15">Environment: rủi ro từ bên ngoài</a><a href="#s16">Agent2Environment</a><a href="#s17">Indirect Prompt Injection</a><a href="#s18">RL Environment</a><a href="#s19">Computing Resources</a><a href="#s20">Agent2Agent: sai lệch lan truyền</a><a href="#s21">Cooperative &amp; Competitive</a><a href="#s22">Agent2Memory: lỗi được giữ lại</a><a href="#s23">Long-term Memory</a><a href="#s24">Short-term Memory</a><a href="#s25">Bảy hướng nghiên cứu</a><a href="#s26">1. Kiểm tra đầu vào nhanh và chính xác</a><a href="#s27">2. Giảm thiên vị, tăng công bằng</a><a href="#s28">3. Kiểm toán việc dùng công cụ</a><a href="#s29">4. Đánh giá an toàn cho toàn bộ agent</a><a href="#s30">5. Chính sách phát triển và triển khai</a><a href="#s31">6. Thiết kế tương tác giữa các agent</a><a href="#s32">7. Quản lý bộ nhớ an toàn</a><a href="#s33">Kết luận</a></nav><article id="s0"><h2>Chatbot và AI agent</h2><p class="muted">pages/overview/01-chatbot-vs-agent.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Chatbot và AI agent
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §1; §2.1, trang 1, 2, 4, 5.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=1">https://dl.acm.org/doi/pdf/10.1145/3716628#page=1</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• So sánh chatbot chỉ sinh văn bản với agent có quyền hành động; gửi email/xóa file là ví dụ minh họa, không phải số liệu.
+  Nguồn: Survey §1; §2.1, tr. 1, 2, 4, 5.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s1"><h2>Cấu trúc AI agent</h2><p class="muted">pages/overview/02-agent-workflow.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Cấu trúc AI agent
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §2.1; Figure 2, trang 4, 5.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=4">https://dl.acm.org/doi/pdf/10.1145/3716628#page=4</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Sơ đồ perception–brain–action và tương tác môi trường: vẽ lại từ Figure 2.
+  Nguồn: Survey §2.1; Figure 2, tr. 4, 5.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s2"><h2>Bốn khoảng trống bảo mật</h2><p class="muted">pages/overview/03-security-gaps.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Bốn khoảng trống bảo mật
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §2.2; Figure 1, trang 3, 5.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=3">https://dl.acm.org/doi/pdf/10.1145/3716628#page=3</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Bốn khoảng trống và liên hệ thành phần agent: tổng hợp §2.2; cách bố trí là minh họa.
+  Nguồn: Survey §2.2; Figure 1, tr. 3, 5.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s3"><h2>Bản đồ an ninh AI Agent</h2><p class="muted">pages/overview/04-taxonomy.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Bản đồ an ninh AI Agent
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: Figure 3, trang 7.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=7">https://dl.acm.org/doi/pdf/10.1145/3716628#page=7</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Sáu nhánh perception, brain, action, environment, agent, memory: vẽ lại taxonomy Figure 3.
+  Nguồn: Survey Figure 3, tr. 7.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s4"><h2>Threat models: ví dụ trong survey</h2><p class="muted">pages/overview/05-threat-model-map.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Threat models: ví dụ trong survey
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: Table 1, trang 6.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=6">https://dl.acm.org/doi/pdf/10.1145/3716628#page=6</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Bảng quyền truy cập, mục tiêu và nạn nhân là các ví dụ trong Table 1, không phải định nghĩa đầy đủ của mỗi loại attacker.
+  Nguồn: Survey Table 1, tr. 6.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s5"><h2>Perception: dữ liệu thành mệnh lệnh</h2><p class="muted">pages/execution-threats/01-perception.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Perception: dữ liệu thành mệnh lệnh
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §3.1; Figure 3, trang 5, 7, 8.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=5">https://dl.acm.org/doi/pdf/10.1145/3716628#page=5</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Phân nhánh prompt injection và jailbreak theo taxonomy survey.
+  Nguồn: Survey §3.1; Figure 3, tr. 5, 7, 8.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s6"><h2>Prompt Injection Attack</h2><p class="muted">pages/execution-threats/02-prompt-injection-attack.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Prompt Injection Attack
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §3.1.1, trang 8, 9, 10.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=8">https://dl.acm.org/doi/pdf/10.1145/3716628#page=8</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Goal hijacking và prompt leakage là hai mục tiêu tấn công.
+  Nguồn: Fábio Perez and Ian Ribeiro (2022), mục tài liệu số 137 trong survey.
+  Vị trí kiểm tra: Survey p.8, đoạn mở đầu §3.1.1.
+• RCE hoặc API-key theft là hậu quả phụ thuộc quyền và lỗi ứng dụng.
+  Nguồn: Tong Liu et al. (2023), mục tài liệu số 103 trong survey.
+  Vị trí kiểm tra: Survey p.8, Goal hijacking; không gộp với tấn công ảnh của Wu.
+• Rò rỉ prompt hoặc chi tiết API của hệ RAG.
+  Nguồn: Fangzhou Wu et al. (2024), mục tài liệu số 201 trong survey.
+  Vị trí kiểm tra: Survey p.8, Prompt leakage.
+• Sơ đồ chèn lệnh là ví dụ minh họa; câu “ignore…” không bảo đảm khai thác thành công.
+  Nguồn: Survey §3.1.1, tr. 8, 9, 10.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+Paraphrasing — Neel Jain et al. (2023), mục tài liệu số 77.
+Phương pháp: Viết lại prompt bằng một LLM trước khi gửi tới mô hình đích.
+Điểm mạnh: Giảm tấn công hậu tố trong các thí nghiệm của bài.
+Điểm yếu / giới hạn: Có suy giảm chất lượng trên AlpacaEval.
+Phần đã đối chiếu: §4.2; kết quả Table 3 và Figure 4. Mô hình viết lại có thể làm mất chuỗi token đối kháng, nhưng cũng có thể làm thay đổi yêu cầu hợp lệ.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/html/2309.00614v2">https://arxiv.org/html/2309.00614v2</a>
+
+Retokenization — Neel Jain et al. (2023), mục tài liệu số 77.
+Phương pháp: Dùng BPE-dropout để thay đổi cách chia token của prompt.
+Điểm mạnh: Thay đổi phân đoạn token mà không cần sửa mô hình đích.
+Điểm yếu / giới hạn: Tăng số token và giảm chất lượng trên AlpacaEval.
+Phần đã đối chiếu: Bản v2, §4.3, Figure 5 và Table 6: BPE-dropout giảm ASR trên Vicuna/Guanaco trong thiết lập thử; làm tăng số token và giảm win rate AlpacaEval. Không hiệu quả đồng đều giữa các mô hình.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/html/2309.00614v2">https://arxiv.org/html/2309.00614v2</a>
+
+Perplexity detection — Gabriel Alon and Michael Kamfonas (2023), mục tài liệu số 6.
+Phương pháp: Kết hợp perplexity GPT-2 và độ dài token trong LightGBM.
+Điểm mạnh: Phát hiện phần lớn hậu tố đối kháng trong tập kiểm tra.
+Điểm yếu / giới hạn: Đánh giá trên tập hậu tố đối kháng; chưa bao phủ mọi prompt injection.
+Phần đã đối chiếu: Abstract: LightGBM kết hợp perplexity và độ dài nhằm giảm báo nhầm của ngưỡng perplexity đơn lẻ. Không gán hạn chế của baseline cho bộ phân loại được đề xuất.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2308.14132">https://arxiv.org/abs/2308.14132</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Fábio Perez and Ian Ribeiro (2022). Ignore previous prompt: Attack techniques for language models.
+Bản gốc: <a href="https://arxiv.org/abs/2211.09527">https://arxiv.org/abs/2211.09527</a>
+Truy ngược survey: mục tài liệu số 137, bibliography tr. 32; xuất hiện trong nội dung survey tr. 5, 6, 7, 8. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=32">https://dl.acm.org/doi/pdf/10.1145/3716628#page=32</a>
+Mục ghi trong survey: Fábio Perez and Ian Ribeiro (2022). Ignore previous prompt: Attack techniques for language models. NeurIPS (2022).
+Mức kiểm chứng: Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.
+
+Tong Liu, Zizhuang Deng, Guozhu Meng, Yuekang Li, and Kai Chen (2023). Demystifying rce vulnerabilities in LLM-integrated apps.
+Bản gốc: <a href="https://arxiv.org/pdf/2309.02926">https://arxiv.org/pdf/2309.02926</a>
+Truy ngược survey: mục tài liệu số 103, bibliography tr. 31; xuất hiện trong nội dung survey tr. 6, 7, 8. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=31">https://dl.acm.org/doi/pdf/10.1145/3716628#page=31</a>
+Mục ghi trong survey: Tong Liu, Zizhuang Deng, Guozhu Meng, Yuekang Li, and Kai Chen (2023). Demystifying rce vulnerabilities in LLMintegrated apps. Retrieved from <a href="https://arxiv.org/pdf/2309.02926">https://arxiv.org/pdf/2309.02926</a>
+Mức kiểm chứng: Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.
+
+Fangzhou Wu, Ning Zhang, Somesh Jha, Patrick McDaniel, and Chaowei Xiao (2024). A new era in LLM security: Exploring security concerns in real-world LLM-based systems.
+Bản gốc: <a href="https://arxiv.org/pdf/2402.18649">https://arxiv.org/pdf/2402.18649</a>
+Truy ngược survey: mục tài liệu số 201, bibliography tr. 35; xuất hiện trong nội dung survey tr. 5, 6, 7, 8, 18, 19. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=35">https://dl.acm.org/doi/pdf/10.1145/3716628#page=35</a>
+Mục ghi trong survey: Fangzhou Wu, Ning Zhang, Somesh Jha, Patrick McDaniel, and Chaowei Xiao (2024). A new era in LLM security: Exploring security concerns in real-world LLM-based systems. Retrieved from <a href="https://arxiv.org/pdf/2402.18649">https://arxiv.org/pdf/2402.18649</a>
+Mức kiểm chứng: Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.
+
+Neel Jain, Avi Schwarzschild, Yuxin Wen, Gowthami Somepalli, John Kirchenbauer, Ping-yeh Chiang, Micah Goldblum, Aniruddha Saha, Jonas Geiping, and Tom Goldstein (2023). Baseline defenses for adversarial attacks against aligned language models.
+Bản gốc: <a href="https://arxiv.org/pdf/2309.00614">https://arxiv.org/pdf/2309.00614</a>
+Truy ngược survey: mục tài liệu số 77, bibliography tr. 30; xuất hiện trong nội dung survey tr. 9. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=30">https://dl.acm.org/doi/pdf/10.1145/3716628#page=30</a>
+Mục ghi trong survey: Neel Jain, Avi Schwarzschild, Yuxin Wen, Gowthami Somepalli, John Kirchenbauer, Ping-yeh Chiang, Micah Goldblum, Aniruddha Saha, Jonas Geiping, and Tom Goldstein (2023). Baseline defenses for adversarial attacks against aligned language models. Retrieved from <a href="https://arxiv.org/pdf/2309.00614">https://arxiv.org/pdf/2309.00614</a>
+Mức kiểm chứng: §4.2; kết quả Table 3 và Figure 4. Mô hình viết lại có thể làm mất chuỗi token đối kháng, nhưng cũng có thể làm thay đổi yêu cầu hợp lệ. | Bản v2, §4.3, Figure 5 và Table 6: BPE-dropout giảm ASR trên Vicuna/Guanaco trong thiết lập thử; làm tăng số token và giảm win rate AlpacaEval. Không hiệu quả đồng đều giữa các mô hình.
+
+Gabriel Alon and Michael Kamfonas (2023). Detecting language model attacks with perplexity.
+Bản gốc: <a href="https://arxiv.org/pdf/2308.14132">https://arxiv.org/pdf/2308.14132</a>
+Truy ngược survey: mục tài liệu số 6, bibliography tr. 27; xuất hiện trong nội dung survey tr. 9, 27. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=27">https://dl.acm.org/doi/pdf/10.1145/3716628#page=27</a>
+Mục ghi trong survey: Gabriel Alon and Michael Kamfonas (2023). Detecting language model attacks with perplexity. Retrieved from https: //arxiv.org/pdf/2308.14132
+Mức kiểm chứng: Abstract: LightGBM kết hợp perplexity và độ dài nhằm giảm báo nhầm của ngưỡng perplexity đơn lẻ. Không gán hạn chế của baseline cho bộ phân loại được đề xuất.</pre></details></article><article id="s7"><h2>Jailbreak</h2><p class="muted">pages/execution-threats/03-jailbreak.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Jailbreak
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §3.1.2, trang 10, 11.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=10">https://dl.acm.org/doi/pdf/10.1145/3716628#page=10</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Lây jailbreak giữa agent qua ảnh: Agent Smith; chỉ áp dụng trong thiết lập trao đổi của bài.
+  Nguồn: Xiangming Gu et al. (2024), mục tài liệu số 57 trong survey.
+  Vị trí kiểm tra: Abstract; survey pp.10–11.
+• Đầu vào đa phương thức và hậu quả vật lý: nhóm nguy cơ được survey tổng hợp, không phải khả năng của mọi agent.
+  Nguồn: Survey §3.1.2, tr. 10, 11.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+Defense evaluation — Leo Schwinn et al. (2023), mục tài liệu số 154.
+Phương pháp: Kiểm tra cách đánh giá độ bền của các biện pháp phòng thủ.
+Điểm mạnh: Chỉ ra nguy cơ đánh giá quá cao độ an toàn.
+Điểm yếu / giới hạn: Là nghiên cứu đánh giá; không đề xuất bộ lọc chung.
+Phần đã đối chiếu: Đã đọc toàn văn: §3 về đánh giá phòng thủ và §4 Conclusion. Bài phân tích threat model, embedding-space attacks và sai sót trong đánh giá; không đề xuất bộ lọc đầu vào chung.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2310.19737">https://arxiv.org/abs/2310.19737</a>
+
+Erase-and-check — Aounon Kumar et al. (2024), mục tài liệu số 84.
+Phương pháp: Xóa token và kiểm tra các chuỗi con bằng safety filter.
+Điểm mạnh: Chứng nhận an toàn cho tấn công có kích thước giới hạn.
+Điểm yếu / giới hạn: Bảo đảm gắn với bộ lọc và mô hình tấn công đã định nghĩa.
+Phần đã đối chiếu: Abstract: suffix, insertion và infusion là các kiểu tấn công được xét. Chứng nhận không đồng nghĩa mọi jailbreak đều bị chặn.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2309.02705">https://arxiv.org/abs/2309.02705</a>
+
+Multi-agent debate — Steffi Chern et al. (2024), mục tài liệu số 25.
+Phương pháp: Cho mô hình bị jailbreak tranh luận với mô hình khác.
+Điểm mạnh: Giảm toxicity khi tranh luận với mô hình an toàn hoặc mạnh hơn.
+Điểm yếu / giới hạn: Tranh luận đa agent nói chung chỉ cải thiện ít trong bài.
+Phần đã đối chiếu: Đã đối chiếu abstract và phần kết quả của toàn văn: hiệu quả giảm toxicity phụ thuộc mô hình cùng tranh luận. Kết quả không áp dụng đồng đều cho mọi nhóm agent.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2401.05998">https://arxiv.org/abs/2401.05998</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Xiangming Gu, Xiaosen Zheng, Tianyu Pang, Chao Du, Qian Liu, Ye Wang, Jing Jiang, and Min Lin (2024). Agent smith: A single image can jailbreak one million multimodal LLM agents exponentially fast.
+Bản gốc: <a href="https://arxiv.org/pdf/2402.08567">https://arxiv.org/pdf/2402.08567</a>
+Truy ngược survey: mục tài liệu số 57, bibliography tr. 29; xuất hiện trong nội dung survey tr. 6, 7, 10, 21. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=29">https://dl.acm.org/doi/pdf/10.1145/3716628#page=29</a>
+Mục ghi trong survey: Xiangming Gu, Xiaosen Zheng, Tianyu Pang, Chao Du, Qian Liu, Ye Wang, Jing Jiang, and Min Lin (2024). Agent smith: A single image can jailbreak one million multimodal LLM agents exponentially fast. Retrieved from https: //arxiv.org/pdf/2402.08567
+Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.
+
+Leo Schwinn, David Dobre, Stephan Günnemann, and Gauthier Gidel (2023). Adversarial attacks and defenses in large language models: Old and new threats.
+Bản gốc: <a href="https://arxiv.org/pdf/2310.19737">https://arxiv.org/pdf/2310.19737</a>
+Truy ngược survey: mục tài liệu số 154, bibliography tr. 33; xuất hiện trong nội dung survey tr. 6, 7, 11. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=33">https://dl.acm.org/doi/pdf/10.1145/3716628#page=33</a>
+Mục ghi trong survey: Leo Schwinn, David Dobre, Stephan Günnemann, and Gauthier Gidel (2023). Adversarial attacks and defenses in large language models: Old and new threats. Retrieved from <a href="https://arxiv.org/pdf/2310.19737">https://arxiv.org/pdf/2310.19737</a>
+Mức kiểm chứng: Đã đọc toàn văn: §3 về đánh giá phòng thủ và §4 Conclusion. Bài phân tích threat model, embedding-space attacks và sai sót trong đánh giá; không đề xuất bộ lọc đầu vào chung.
+
+Aounon Kumar, Chirag Agarwal, Suraj Srinivas, Soheil Feizi, and Hima Lakkaraju (2024). Certifying LLM safety against adversarial prompting.
+Bản gốc: <a href="https://arxiv.org/pdf/2309.02705">https://arxiv.org/pdf/2309.02705</a>
+Truy ngược survey: mục tài liệu số 84, bibliography tr. 30; xuất hiện trong nội dung survey tr. 11. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=30">https://dl.acm.org/doi/pdf/10.1145/3716628#page=30</a>
+Mục ghi trong survey: Aounon Kumar, Chirag Agarwal, Suraj Srinivas, Soheil Feizi, and Hima Lakkaraju (2024). Certifying LLM safety against adversarial prompting. Retrieved from <a href="https://arxiv.org/pdf/2309.02705">https://arxiv.org/pdf/2309.02705</a>
+Mức kiểm chứng: Abstract: suffix, insertion và infusion là các kiểu tấn công được xét. Chứng nhận không đồng nghĩa mọi jailbreak đều bị chặn.
+
+Steffi Chern, Zhen Fan, and Andy Liu (2024). Combating adversarial attacks with multi-agent debate.
+Bản gốc: <a href="https://arxiv.org/pdf/2401.05998">https://arxiv.org/pdf/2401.05998</a>
+Truy ngược survey: mục tài liệu số 25, bibliography tr. 28; xuất hiện trong nội dung survey tr. 6, 7, 10, 11. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=28">https://dl.acm.org/doi/pdf/10.1145/3716628#page=28</a>
+Mục ghi trong survey: Steffi Chern, Zhen Fan, and Andy Liu (2024). Combating adversarial attacks with multi-agent debate. Retrieved from <a href="https://arxiv.org/pdf/2401.05998">https://arxiv.org/pdf/2401.05998</a>
+Mức kiểm chứng: Đã đối chiếu abstract và phần kết quả của toàn văn: hiệu quả giảm toxicity phụ thuộc mô hình cùng tranh luận. Kết quả không áp dụng đồng đều cho mọi nhóm agent.</pre></details></article><article id="s8"><h2>Brain: quyết định sai từ đâu?</h2><p class="muted">pages/execution-threats/04-brain.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Brain: quyết định sai từ đâu?
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §3.2; Figure 3, trang 7, 11, 12.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=7">https://dl.acm.org/doi/pdf/10.1145/3716628#page=7</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Bốn nhánh backdoor, misalignment, hallucination, planning theo Figure 3.
+  Nguồn: Survey §3.2; Figure 3, tr. 7, 11, 12.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s9"><h2>Backdoor Attack</h2><p class="muted">pages/execution-threats/05-backdoor-attack.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Backdoor Attack
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §3.2.1, trang 12.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=12">https://dl.acm.org/doi/pdf/10.1145/3716628#page=12</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Hai loại backdoor: đổi kết quả cuối hoặc chỉ đổi quá trình trung gian.
+  Nguồn: Wenkai Yang et al. (2024), mục tài liệu số 211 trong survey.
+  Vị trí kiểm tra: Survey p.12, hai loại backdoor.
+• Sơ đồ email chèn link: plugin Trojan; không gán việc này cho LLM đã bị cài backdoor.
+  Nguồn: Tian Dong et al. (2023), mục tài liệu số 39 trong survey.
+  Vị trí kiểm tra: Survey p.12, ví dụ email/plugin.
+• Februus và Quarantine nghiên cứu mô hình thị giác; không suy ra đã bảo vệ toàn hệ LLM agent.
+  Nguồn: Survey §3.2.1, tr. 12.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+Februus — Bao Gia Doan et al. (2020), mục tài liệu số 38.
+Phương pháp: Loại dấu hiệu trigger rồi phục hồi ảnh đầu vào.
+Điểm mạnh: Lọc dấu hiệu trigger và phục hồi ảnh ngay lúc chạy.
+Điểm yếu / giới hạn: Trigger lớn có thể làm giảm chất lượng phục hồi; chỉ xét ảnh.
+Phần đã đối chiếu: Đã đọc abstract và phần Limitations của toàn văn. Phạm vi chính là trigger ảnh; trigger lớn có thể làm giảm chất lượng phục hồi/phân loại.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/1908.03369">https://arxiv.org/abs/1908.03369</a>
+
+Quarantine — Tianlong Chen et al. (2022), mục tài liệu số 21.
+Phương pháp: Pruning để cô lập mạng con giữ backdoor rồi khôi phục trigger.
+Điểm mạnh: Cô lập mạng con backdoor để khôi phục trigger.
+Điểm yếu / giới hạn: Đánh giá trên DNN thị giác; chưa có bằng chứng cho LLM agent.
+Phần đã đối chiếu: Abstract. Trojan lottery ticket giữ đặc trưng backdoor trong khi khả năng phân loại ảnh sạch suy giảm. Không gán đây là biện pháp đồng bộ hay bảo vệ toàn agent.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2205.11819">https://arxiv.org/abs/2205.11819</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Wenkai Yang, Xiaohan Bi, Yankai Lin, Sishuo Chen, Jie Zhou, and Xu Sun (2024). Watch out for your agents! Investigating backdoor threats to LLM-Based agents.
+Bản gốc: <a href="https://arxiv.org/pdf/2402.11208">https://arxiv.org/pdf/2402.11208</a>
+Truy ngược survey: mục tài liệu số 211, bibliography tr. 35; xuất hiện trong nội dung survey tr. 2, 6, 7, 12. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=35">https://dl.acm.org/doi/pdf/10.1145/3716628#page=35</a>
+Mục ghi trong survey: Wenkai Yang, Xiaohan Bi, Yankai Lin, Sishuo Chen, Jie Zhou, and Xu Sun (2024). Watch out for your agents! Investigating backdoor threats to LLM-Based agents. Retrieved from <a href="https://arxiv.org/pdf/2402.11208">https://arxiv.org/pdf/2402.11208</a>
+Mức kiểm chứng: Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.
+
+Tian Dong, Guoxing Chen, Shaofeng Li, Minhui Xue, Rayne Holland, Yan Meng, Zhen Liu, and Haojin Zhu (2023). Unleashing cheapfakes through trojan plugins of large language models.
+Bản gốc: <a href="https://arxiv.org/pdf/2312.00374v1">https://arxiv.org/pdf/2312.00374v1</a>
+Truy ngược survey: mục tài liệu số 39, bibliography tr. 28; xuất hiện trong nội dung survey tr. 6, 7, 12. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=28">https://dl.acm.org/doi/pdf/10.1145/3716628#page=28</a>
+Mục ghi trong survey: Tian Dong, Guoxing Chen, Shaofeng Li, Minhui Xue, Rayne Holland, Yan Meng, Zhen Liu, and Haojin Zhu (2023). Unleashing cheapfakes through trojan plugins of large language models. Retrieved from <a href="https://arxiv.org/pdf/2312.">https://arxiv.org/pdf/2312.</a> 00374v1
+Mức kiểm chứng: Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.
+
+Bao Gia Doan, Ehsan Abbasnejad, and Damith C Ranasinghe (2020). Februus: Input purification defense against trojan attacks on deep neural network systems.
+Bản gốc: <a href="https://arxiv.org/abs/1908.03369">https://arxiv.org/abs/1908.03369</a>
+Truy ngược survey: mục tài liệu số 38, bibliography tr. 28; xuất hiện trong nội dung survey tr. 12. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=28">https://dl.acm.org/doi/pdf/10.1145/3716628#page=28</a>
+Mục ghi trong survey: Bao Gia Doan, Ehsan Abbasnejad, and Damith C Ranasinghe (2020). Februus: Input purification defense against trojan attacks on deep neural network systems. In Proceedings of the ACSAC . 897–912.
+Mức kiểm chứng: Đã đọc abstract và phần Limitations của toàn văn. Phạm vi chính là trigger ảnh; trigger lớn có thể làm giảm chất lượng phục hồi/phân loại.
+
+Tianlong Chen, Zhenyu Zhang, Yihua Zhang, Shiyu Chang, Sijia Liu, and Zhangyang Wang (2022). Quarantine: Sparsity can uncover the trojan attack trigger for free.
+Bản gốc: <a href="https://arxiv.org/abs/2205.11819">https://arxiv.org/abs/2205.11819</a>
+Truy ngược survey: mục tài liệu số 21, bibliography tr. 28; xuất hiện trong nội dung survey tr. 12. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=28">https://dl.acm.org/doi/pdf/10.1145/3716628#page=28</a>
+Mục ghi trong survey: Tianlong Chen, Zhenyu Zhang, Yihua Zhang, Shiyu Chang, Sijia Liu, and Zhangyang Wang (2022). Quarantine: Sparsity can uncover the trojan attack trigger for free. In Proceedings of the CVPR .
+Mức kiểm chứng: Abstract. Trojan lottery ticket giữ đặc trưng backdoor trong khi khả năng phân loại ảnh sạch suy giảm. Không gán đây là biện pháp đồng bộ hay bảo vệ toàn agent.</pre></details></article><article id="s10"><h2>Misalignment</h2><p class="muted">pages/execution-threats/06-misalignment.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Misalignment
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §3.2.2, trang 12, 13, 14.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=12">https://dl.acm.org/doi/pdf/10.1145/3716628#page=12</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Dữ liệu độc/thiên vị, sycophancy và hiểu môi trường chưa đầy đủ: ba nhóm survey tổng hợp; không khẳng định mô hình “biết mình sai”.
+  Nguồn: Survey §3.2.2, tr. 12, 13, 14.
+• Đèn giao thông là tình huống ToolEmu mô phỏng, không phải tai nạn ngoài đời.
+  Nguồn: Yangjun Ruan et al. (2024), mục tài liệu số 150 trong survey.
+  Vị trí kiểm tra: Survey p.14, embodied environment; ToolEmu abstract xác định sandbox mô phỏng.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+InstructGPT / RLHF — Long Ouyang et al. (2022), mục tài liệu số 130.
+Phương pháp: Học từ minh họa và xếp hạng câu trả lời của con người.
+Điểm mạnh: Người đánh giá ưu tiên InstructGPT hơn GPT-3 trên tập prompt của bài.
+Điểm yếu / giới hạn: Mô hình vẫn mắc lỗi; đánh giá tập trung vào câu trả lời.
+Phần đã đối chiếu: Abstract. Pipeline: supervised fine-tuning từ demonstrations, rồi tối ưu bằng phản hồi xếp hạng. Không phải chứng nhận an toàn khi gọi tool.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2203.02155">https://arxiv.org/abs/2203.02155</a>
+
+SafeguardGPT — Baihan Lin et al. (2023), mục tài liệu số 98.
+Phương pháp: Bốn vai: Chatbot, User, Therapist và Critic.
+Điểm mạnh: Minh họa cải thiện hội thoại qua một tình huống mô phỏng.
+Điểm yếu / giới hạn: Bằng chứng là ví dụ hội thoại, chưa phải đánh giá toàn hệ agent.
+Phần đã đối chiếu: Đã đọc §4 và Figure 2 của toàn văn. Chatbot hỏi Therapist trước khi trả lời; Critic đánh giá lịch sử. Ví dụ dùng bốn instance GPT-3.5 và chủ động gợi chatbot hành vi cần sửa.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2304.00416">https://arxiv.org/abs/2304.00416</a>
+
+TWOSOME — Weihao Tan et al. (2024), mục tài liệu số 171.
+Phương pháp: Chấm xác suất các hành động hợp lệ; cập nhật LoRA bằng PPO.
+Điểm mạnh: Gắn lựa chọn hành động với tập hành động hợp lệ của môi trường.
+Điểm yếu / giới hạn: Đánh giá trên Overcooked và VirtualHome; chưa bao phủ toàn hệ agent.
+Phần đã đối chiếu: Abstract. Actor và critic chia sẻ LLM đóng băng; LoRA được huấn luyện qua tương tác. Hành động thuộc tập hợp lệ không đồng nghĩa đã kiểm chứng an toàn.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2401.14151">https://arxiv.org/abs/2401.14151</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Yangjun Ruan, Honghua Dong, Andrew Wang, Silviu Pitis, Yongchao Zhou, Jimmy Ba, Yann Dubois, Chris J. Maddison, and Tatsunori Hashimoto (2024). Identifying the risks of LM agents with an LM-emulated sandbox.
+Bản gốc: <a href="https://arxiv.org/abs/2309.15817">https://arxiv.org/abs/2309.15817</a>
+Truy ngược survey: mục tài liệu số 150, bibliography tr. 33; xuất hiện trong nội dung survey tr. 6, 7, 14, 17, 26. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=33">https://dl.acm.org/doi/pdf/10.1145/3716628#page=33</a>
+Mục ghi trong survey: Yangjun Ruan, Honghua Dong, Andrew Wang, Silviu Pitis, Yongchao Zhou, Jimmy Ba, Yann Dubois, Chris J. Maddison, and Tatsunori Hashimoto (2024). Identifying the risks of LM agents with an LM-emulated sandbox. In Proceedings of the ICLR .
+Mức kiểm chứng: Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.
+
+Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray et al (2022). Training language models to follow instructions with human feedback.
+Bản gốc: <a href="https://arxiv.org/abs/2203.02155">https://arxiv.org/abs/2203.02155</a>
+Truy ngược survey: mục tài liệu số 130, bibliography tr. 32; xuất hiện trong nội dung survey tr. 14, 19. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=32">https://dl.acm.org/doi/pdf/10.1145/3716628#page=32</a>
+Mục ghi trong survey: Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray et al (2022). Training language models to follow instructions with human feedback. NeurIPS .
+Mức kiểm chứng: Abstract. Pipeline: supervised fine-tuning từ demonstrations, rồi tối ưu bằng phản hồi xếp hạng. Không phải chứng nhận an toàn khi gọi tool.
+
+Baihan Lin, Djallel Bouneffouf, Guillermo Cecchi, and Kush R. Varshney (2023). Towards healthy AI: large language models need therapists too.
+Bản gốc: <a href="https://arxiv.org/pdf/2304.00416">https://arxiv.org/pdf/2304.00416</a>
+Truy ngược survey: mục tài liệu số 98, bibliography tr. 31; xuất hiện trong nội dung survey tr. 6, 7, 14. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=31">https://dl.acm.org/doi/pdf/10.1145/3716628#page=31</a>
+Mục ghi trong survey: Baihan Lin, Djallel Bouneffouf, Guillermo Cecchi, and Kush R. Varshney (2023). Towards healthy AI: large language models need therapists too. Retrieved from <a href="https://arxiv.org/pdf/2304.00416">https://arxiv.org/pdf/2304.00416</a>
+Mức kiểm chứng: Đã đọc §4 và Figure 2 của toàn văn. Chatbot hỏi Therapist trước khi trả lời; Critic đánh giá lịch sử. Ví dụ dùng bốn instance GPT-3.5 và chủ động gợi chatbot hành vi cần sửa.
+
+Weihao Tan, Wentao Zhang, Shanqi Liu, Longtao Zheng, Xinrun Wang, and Bo An (2024). True knowledge comes from practice: Aligning large language models with embodied environments via reinforcement learning.
+Bản gốc: <a href="https://arxiv.org/abs/2401.14151">https://arxiv.org/abs/2401.14151</a>
+Truy ngược survey: mục tài liệu số 171, bibliography tr. 34; xuất hiện trong nội dung survey tr. 6, 7, 14. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=34">https://dl.acm.org/doi/pdf/10.1145/3716628#page=34</a>
+Mục ghi trong survey: Weihao Tan, Wentao Zhang, Shanqi Liu, Longtao Zheng, Xinrun Wang, and Bo An (2024). True knowledge comes from practice: Aligning large language models with embodied environments via reinforcement learning. In Proceedings of the ICLR .
+Mức kiểm chứng: Abstract. Actor và critic chia sẻ LLM đóng băng; LoRA được huấn luyện qua tương tác. Hành động thuộc tập hợp lệ không đồng nghĩa đã kiểm chứng an toàn.</pre></details></article><article id="s11"><h2>Hallucination</h2><p class="muted">pages/execution-threats/07-hallucination.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Hallucination
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §3.2.3, trang 14, 15.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=14">https://dl.acm.org/doi/pdf/10.1145/3716628#page=14</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Nối agent đơn giản có thể gây cascading hallucinations; đây là động cơ thiết kế MetaGPT, không phải mọi hợp tác đều làm tăng lỗi.
+  Nguồn: Sirui Hong et al. (2024), mục tài liệu số 65 trong survey.
+  Vị trí kiểm tra: Abstract, naive chaining / cascading hallucinations.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+SAFE — Jerry Wei et al. (2024), mục tài liệu số 191.
+Phương pháp: Tách câu trả lời thành các fact, kiểm tra bằng Google Search.
+Điểm mạnh: Đánh giá tính đúng của nội dung dài bằng bằng chứng tìm kiếm.
+Điểm yếu / giới hạn: Là bộ đánh giá; không tự sửa câu trả lời.
+Phần đã đối chiếu: Abstract. SAFE xác định một fact có được kết quả tìm kiếm hỗ trợ hay không. Không gọi đây là cơ chế bảo đảm mọi thông tin đúng.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2403.18802">https://arxiv.org/abs/2403.18802</a>
+
+Neural Path Hunter — Nouha Dziri et al. (2021), mục tài liệu số 43.
+Phương pháp: Fact critic tìm lỗi; truy vấn knowledge graph để sửa entity.
+Điểm mạnh: Phát hiện và sửa entity bằng tri thức từ knowledge graph.
+Điểm yếu / giới hạn: Cần knowledge graph phù hợp; phạm vi thử nghiệm là OpenDialKG.
+Phần đã đối chiếu: Đã đọc §3 của toàn văn: hai module là token-level hallucination critic và entity mention retriever. Bài đánh giá trên OpenDialKG.
+Nguồn đã dùng kiểm tra: <a href="https://aclanthology.org/2021.emnlp-main.168/">https://aclanthology.org/2021.emnlp-main.168/</a>
+
+Multi-agent debate — Yilun Du et al. (2023), mục tài liệu số 41.
+Phương pháp: Nhiều LLM đề xuất rồi phản biện đáp án qua nhiều vòng.
+Điểm mạnh: Cải thiện suy luận và factuality trong các tác vụ được thử.
+Điểm yếu / giới hạn: Kết quả thực nghiệm; không chứng nhận đồng thuận luôn đúng.
+Phần đã đối chiếu: Đã đọc §5 Limitations and Discussion của toàn văn. Tác giả ghi nhận tốn nhiều thế hệ câu trả lời hơn, khó xử lý debate dài và vẫn có thể đồng thuận về đáp án sai.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2305.14325">https://arxiv.org/abs/2305.14325</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Sirui Hong, Mingchen Zhuge, Jonathan Chen, Xiawu Zheng, Yuheng Cheng, Jinlin Wang, Ceyao Zhang, Zili Wang, Steven Ka Shing Yau, Zijuan Lin, Liyang Zhou, Chenyu Ran, Lingfeng Xiao, Chenglin Wu, and Jürgen Schmidhuber (2024). MetaGPT: Meta programming for a multi-agent collaborative framework.
+Bản gốc: <a href="https://arxiv.org/abs/2308.00352">https://arxiv.org/abs/2308.00352</a>
+Truy ngược survey: mục tài liệu số 65, bibliography tr. 29; xuất hiện trong nội dung survey tr. 21. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=29">https://dl.acm.org/doi/pdf/10.1145/3716628#page=29</a>
+Mục ghi trong survey: Sirui Hong, Mingchen Zhuge, Jonathan Chen, Xiawu Zheng, Yuheng Cheng, Jinlin Wang, Ceyao Zhang, Zili Wang, Steven Ka Shing Yau, Zijuan Lin, Liyang Zhou, Chenyu Ran, Lingfeng Xiao, Chenglin Wu, and Jürgen Schmidhuber (2024). MetaGPT: Meta programming for a multi-agent collaborative framework. In Proceedings of the ICLR .
+Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.
+
+Jerry Wei, Chengrun Yang, Xinying Song, Yifeng Lu, Nathan Hu, Dustin Tran, Daiyi Peng, Ruibo Liu, Da Huang, Cosmo Du et al (2024). Long-form factuality in large language models.
+Bản gốc: <a href="https://arxiv.org/pdf/2403.18802">https://arxiv.org/pdf/2403.18802</a>
+Truy ngược survey: mục tài liệu số 191, bibliography tr. 34; xuất hiện trong nội dung survey tr. 15. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=34">https://dl.acm.org/doi/pdf/10.1145/3716628#page=34</a>
+Mục ghi trong survey: Jerry Wei, Chengrun Yang, Xinying Song, Yifeng Lu, Nathan Hu, Dustin Tran, Daiyi Peng, Ruibo Liu, Da Huang, Cosmo Du et al (2024). Long-form factuality in large language models. Retrieved from <a href="https://arxiv.org/pdf/2403.18802">https://arxiv.org/pdf/2403.18802</a>
+Mức kiểm chứng: Abstract. SAFE xác định một fact có được kết quả tìm kiếm hỗ trợ hay không. Không gọi đây là cơ chế bảo đảm mọi thông tin đúng.
+
+Nouha Dziri, Andrea Madotto, Osmar Zaïane, and Avishek Joey Bose (2021). Neural path hunter: Reducing hallucination in dialogue systems via path grounding.
+Bản gốc: <a href="https://aclanthology.org/2021.emnlp-main.168/">https://aclanthology.org/2021.emnlp-main.168/</a>
+Truy ngược survey: mục tài liệu số 43, bibliography tr. 29; xuất hiện trong nội dung survey tr. 15. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=29">https://dl.acm.org/doi/pdf/10.1145/3716628#page=29</a>
+Mục ghi trong survey: Nouha Dziri, Andrea Madotto, Osmar Zaïane, and Avishek Joey Bose (2021). Neural path hunter: Reducing hallucination in dialogue systems via path grounding. In Proceedings of the EMNLP .
+Mức kiểm chứng: Đã đọc §3 của toàn văn: hai module là token-level hallucination critic và entity mention retriever. Bài đánh giá trên OpenDialKG.
+
+Yilun Du, Shuang Li, Antonio Torralba, Joshua B. Tenenbaum, and Igor Mordatch (2023). Improving factuality and reasoning in language models through multiagent debate.
+Bản gốc: <a href="https://arxiv.org/pdf/2305.14325">https://arxiv.org/pdf/2305.14325</a>
+Truy ngược survey: mục tài liệu số 41, bibliography tr. 28; xuất hiện trong nội dung survey tr. 6, 7, 15. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=28">https://dl.acm.org/doi/pdf/10.1145/3716628#page=28</a>
+Mục ghi trong survey: Yilun Du, Shuang Li, Antonio Torralba, Joshua B. Tenenbaum, and Igor Mordatch (2023). Improving factuality and reasoning in language models through multiagent debate. Retrieved from <a href="https://arxiv.org/pdf/2305.14325">https://arxiv.org/pdf/2305.14325</a>
+Mức kiểm chứng: Đã đọc §5 Limitations and Discussion của toàn văn. Tác giả ghi nhận tốn nhiều thế hệ câu trả lời hơn, khó xử lý debate dài và vẫn có thể đồng thuận về đáp án sai.</pre></details></article><article id="s12"><h2>Planning Threat</h2><p class="muted">pages/execution-threats/08-planning-threat.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Planning Threat
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §3.2.4; Figure 4, trang 15, 16.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=15">https://dl.acm.org/doi/pdf/10.1145/3716628#page=15</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Lỗi trung gian có thể lan truyền trong planning; bốn cấu trúc vẽ lại từ Figure 4.
+  Nguồn: Survey §3.2.4; Figure 4, tr. 15, 16.
+• Chain-of-Thought là phương pháp suy luận từng bước; bài gốc không được dùng làm bằng chứng tấn công.
+  Nguồn: Jason Wei et al. (2022), mục tài liệu số 190 trong survey.
+  Vị trí kiểm tra: Abstract: intermediate reasoning steps.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+TrustAgent — W. Hua et al. (2024), mục tài liệu số 70.
+Phương pháp: Dùng Agent Constitution trước, trong và sau lập kế hoạch.
+Điểm mạnh: Báo cáo cải thiện safety và helpfulness trong sandbox mô phỏng.
+Điểm yếu / giới hạn: Khả năng tuân thủ phụ thuộc năng lực suy luận của LLM.
+Phần đã đối chiếu: Đã đọc §3 và §3.1 của toàn văn. Quy tắc Agent Constitution được đưa vào ba giai đoạn planning. GPT-4 mô phỏng thực thi tool trong sandbox, không phải thử nghiệm an toàn của mọi tool thật.
+Nguồn đã dùng kiểm tra: <a href="https://aclanthology.org/2024.findings-emnlp.585/">https://aclanthology.org/2024.findings-emnlp.585/</a>
+
+Formal-LLM — Zelong Li et al. (2024), mục tài liệu số 94.
+Phương pháp: Automaton giám sát quá trình sinh kế hoạch dựa trên stack.
+Điểm mạnh: Ràng buộc kế hoạch theo yêu cầu hình thức đã khai báo.
+Điểm yếu / giới hạn: Phạm vi bảo đảm là các ràng buộc được biểu diễn.
+Phần đã đối chiếu: Đã đọc §4.1 của toàn văn. PDA ràng buộc tính hợp lệ và khả năng thực thi theo constraints; tác giả nêu rõ không bảo đảm performance hay optimality.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2402.00798">https://arxiv.org/abs/2402.00798</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed Chi, Quoc V Le, Denny Zhou et al (2022). Chain-of-thought prompting elicits reasoning in large language models.
+Bản gốc: <a href="https://arxiv.org/abs/2201.11903">https://arxiv.org/abs/2201.11903</a>
+Truy ngược survey: mục tài liệu số 190, bibliography tr. 34; xuất hiện trong nội dung survey tr. 11. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=34">https://dl.acm.org/doi/pdf/10.1145/3716628#page=34</a>
+Mục ghi trong survey: Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed Chi, Quoc V Le, Denny Zhou et al (2022). Chain-of-thought prompting elicits reasoning in large language models. NeurIPS .
+Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.
+
+W. Hua, X. Yang, M. Jin, Z. Li, W. Cheng, R. Tang, and Y. Zhang (2024). TrustAgent: Towards Safe and Trustworthy LLM-based Agents.
+Bản gốc: <a href="https://aclanthology.org/2024.findings-emnlp.585/">https://aclanthology.org/2024.findings-emnlp.585/</a>
+Truy ngược survey: mục tài liệu số 70, bibliography tr. 30; xuất hiện trong nội dung survey tr. 16, 26. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=30">https://dl.acm.org/doi/pdf/10.1145/3716628#page=30</a>
+Mục ghi trong survey: W. Hua, X. Yang, M. Jin, Z. Li, W. Cheng, R. Tang, and Y. Zhang (2024). November. Trustagent: Towards safe and trustworthy llm-based agents. In Findings of the Association for Computational Linguistics: EMNLP 2024 . 10000–10016.
+Mức kiểm chứng: Đã đọc §3 và §3.1 của toàn văn. Quy tắc Agent Constitution được đưa vào ba giai đoạn planning. GPT-4 mô phỏng thực thi tool trong sandbox, không phải thử nghiệm an toàn của mọi tool thật.
+
+Zelong Li, Wenyue Hua, Hao Wang, He Zhu, and Yongfeng Zhang (2024). Formal-LLM: Integrating formal language and natural language for controllable LLM-based agents.
+Bản gốc: <a href="https://arxiv.org/pdf/2402.00798">https://arxiv.org/pdf/2402.00798</a>
+Truy ngược survey: mục tài liệu số 94, bibliography tr. 31; xuất hiện trong nội dung survey tr. 16. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=31">https://dl.acm.org/doi/pdf/10.1145/3716628#page=31</a>
+Mục ghi trong survey: Zelong Li, Wenyue Hua, Hao Wang, He Zhu, and Yongfeng Zhang (2024). Formal-LLM: Integrating formal language and natural language for controllable LLM-based agents. Retrieved from <a href="https://arxiv.org/pdf/2402.00798">https://arxiv.org/pdf/2402.00798</a>
+Mức kiểm chứng: Đã đọc §4.1 của toàn văn. PDA ràng buộc tính hợp lệ và khả năng thực thi theo constraints; tác giả nêu rõ không bảo đảm performance hay optimality.</pre></details></article><article id="s13"><h2>Action: sai lệnh hay sai công cụ?</h2><p class="muted">pages/execution-threats/09-action.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Action: sai lệnh hay sai công cụ?
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §3.3; Figure 3, trang 7, 16, 17, 18.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=7">https://dl.acm.org/doi/pdf/10.1145/3716628#page=7</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Agent2Tool và supply-chain là hai nhóm rủi ro hành động trong survey.
+  Nguồn: Survey §3.3; Figure 3, tr. 7, 16, 17, 18.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s14"><h2>Agent2Tool &amp; Supply Chain</h2><p class="muted">pages/execution-threats/10-agent2tool-supply-chain.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Agent2Tool &amp; Supply Chain
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §3.3.1–§3.3.2, trang 17, 18.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=17">https://dl.acm.org/doi/pdf/10.1145/3716628#page=17</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Webpage độc điều khiển web agent: WIPI.
+  Nguồn: Fangzhou Wu et al. (2024), mục tài liệu số 200 trong survey.
+  Vị trí kiểm tra: Abstract: publicly accessible webpages.
+• YouTube transcript chèn chỉ dẫn đổi hành vi.
+  Nguồn: Embrace The Red (2023), mục tài liệu số 147 trong survey.
+  Vị trí kiểm tra: Bài demo chính tác giả, mục Proof of Concept; survey Table 1 p.6.
+• Dữ liệu web độc qua WebPilot gây rò rỉ lịch sử bằng Markdown image; plugin không nhất thiết là độc hại.
+  Nguồn: Embrace The Red (2023), mục tài liệu số 45 trong survey.
+  Vị trí kiểm tra: Bài demo chính tác giả, Untrusted Data and Markdown Injection / Proof of Concept.
+• Nguồn 147 và 45 là báo cáo demo kỹ thuật, không gọi là paper bình duyệt.
+  Nguồn: Survey §3.3.1–§3.3.2, tr. 17, 18.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+ToolEmu — Yangjun Ruan et al. (2024), mục tài liệu số 150.
+Phương pháp: LLM mô phỏng thực thi tool; evaluator tìm hành vi rủi ro.
+Điểm mạnh: Tạo tình huống rủi ro để đánh giá tool mà không dựng tool thật.
+Điểm yếu / giới hạn: Mô phỏng chưa phản ánh hoàn toàn việc thực thi tool thật.
+Phần đã đối chiếu: Abstract. ToolEmu giúp tạo tình huống rủi ro mà không dựng tool thật. Kiểm tra bằng người cho thấy emulator không phải bản sao hoàn hảo của thực tế.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2309.15817">https://arxiv.org/abs/2309.15817</a>
+
+PrivacyAsst — Xinyu Zhang et al. (2024), mục tài liệu số 225.
+Phương pháp: Hai hướng: mã hóa đồng cấu và trộn thuộc tính đầu vào.
+Điểm mạnh: Cung cấp hai cách bảo vệ dữ liệu khi tương tác với tool.
+Điểm yếu / giới hạn: Mới minh họa bằng hai case study; phải chọn cách theo tác vụ.
+Phần đã đối chiếu: Nguồn đã đọc: README chính thức, phần Introduction và New Components; PDF công khai chưa tải thành công. Giải pháp shuffling kết hợp attribute forgery và attribute shuffling; bỏ nhận định tăng chi phí chưa đối chiếu.
+Nguồn đã dùng kiểm tra: <a href="https://github.com/Eyr3/PrivacyAsst">https://github.com/Eyr3/PrivacyAsst</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Fangzhou Wu, Shutong Wu, Yulong Cao, and Chaowei Xiao (2024). WIPI: A new web threat for LLM-driven web agents.
+Bản gốc: <a href="https://arxiv.org/pdf/2402.16965">https://arxiv.org/pdf/2402.16965</a>
+Truy ngược survey: mục tài liệu số 200, bibliography tr. 35; xuất hiện trong nội dung survey tr. 6, 7, 17, 18. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=35">https://dl.acm.org/doi/pdf/10.1145/3716628#page=35</a>
+Mục ghi trong survey: Fangzhou Wu, Shutong Wu, Yulong Cao, and Chaowei Xiao (2024). WIPI: A new web threat for LLM-driven web agents. Retrieved from <a href="https://arxiv.org/pdf/2402.16965">https://arxiv.org/pdf/2402.16965</a>
+Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.
+
+Embrace The Red (2023). Indirect Prompt Injection via YouTube Transcripts.
+Bản gốc: <a href="https://embracethered.com/blog/posts/2023/chatgpt-plugin-youtube-indirect-prompt-injection/">https://embracethered.com/blog/posts/2023/chatgpt-plugin-youtube-indirect-prompt-injection/</a>
+Truy ngược survey: mục tài liệu số 147, bibliography tr. 33; xuất hiện trong nội dung survey tr. 6, 7. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=33">https://dl.acm.org/doi/pdf/10.1145/3716628#page=33</a>
+Mục ghi trong survey: Embrace The Red (2023). Indirect Prompt Injection via YouTube Transcripts · Embrace The Red—embracethered.com. Retrieved from <a href="https://embracethered.com/blog/posts/2023/chatgpt-plugin-youtube-indirect-prompt-injection/">https://embracethered.com/blog/posts/2023/chatgpt-plugin-youtube-indirect-prompt-injection/</a>
+Mức kiểm chứng: Đã đọc báo cáo demo kỹ thuật của tác giả; đây là blog nghiên cứu, không phải paper bình duyệt.
+Khác biệt phiên bản/định danh: Survey Table 1 p.6 trỏ mục 147 cho YouTube transcript; đoạn thân bài p.18 trỏ mục 68 khác. Dùng mục 147 và demo gốc để định danh ví dụ.
+
+Embrace The Red (2023). ChatGPT Plugins: Data Exfiltration Via Images &amp; Cross Plugin Request Forgery.
+Bản gốc: <a href="https://embracethered.com/blog/posts/2023/chatgpt-webpilot-data-exfil-via-markdown-injection/">https://embracethered.com/blog/posts/2023/chatgpt-webpilot-data-exfil-via-markdown-injection/</a>
+Truy ngược survey: mục tài liệu số 45, bibliography tr. 29; xuất hiện trong nội dung survey tr. 6, 7, 18. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=29">https://dl.acm.org/doi/pdf/10.1145/3716628#page=29</a>
+Mục ghi trong survey: Embrace The Red (2023). ChatGPT Plugins: Data Exfiltration Via Images &amp; Cross Plugin Request Forgery. Retrieved from <a href="https://embracethered.com/blog/posts/2023/chatgpt-webpilot-data-exfil-via-markdown-injection/">https://embracethered.com/blog/posts/2023/chatgpt-webpilot-data-exfil-via-markdown-injection/</a>
+Mức kiểm chứng: Đã đọc báo cáo demo kỹ thuật của tác giả; đây là blog nghiên cứu, không phải paper bình duyệt.
+Khác biệt phiên bản/định danh: Survey gọi ví dụ này là malicious plugin; báo cáo gốc mô tả malicious retrieved data. Slide theo nguồn gốc, không cáo buộc bản thân WebPilot là plugin độc.
+
+Yangjun Ruan, Honghua Dong, Andrew Wang, Silviu Pitis, Yongchao Zhou, Jimmy Ba, Yann Dubois, Chris J. Maddison, and Tatsunori Hashimoto (2024). Identifying the risks of LM agents with an LM-emulated sandbox.
+Bản gốc: <a href="https://arxiv.org/abs/2309.15817">https://arxiv.org/abs/2309.15817</a>
+Truy ngược survey: mục tài liệu số 150, bibliography tr. 33; xuất hiện trong nội dung survey tr. 6, 7, 14, 17, 26. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=33">https://dl.acm.org/doi/pdf/10.1145/3716628#page=33</a>
+Mục ghi trong survey: Yangjun Ruan, Honghua Dong, Andrew Wang, Silviu Pitis, Yongchao Zhou, Jimmy Ba, Yann Dubois, Chris J. Maddison, and Tatsunori Hashimoto (2024). Identifying the risks of LM agents with an LM-emulated sandbox. In Proceedings of the ICLR .
+Mức kiểm chứng: Abstract. ToolEmu giúp tạo tình huống rủi ro mà không dựng tool thật. Kiểm tra bằng người cho thấy emulator không phải bản sao hoàn hảo của thực tế.
+
+Xinyu Zhang, Huiyu Xu, Zhongjie Ba, Zhibo Wang, Yuan Hong, Jian Liu, Zhan Qin, and Kui Ren (2024). PrivacyAsst: Safeguarding User Privacy in Tool-Using Large Language Model Agents.
+Bản gốc: <a href="https://ieeexplore.ieee.org/document/10458329">https://ieeexplore.ieee.org/document/10458329</a>
+Truy ngược survey: mục tài liệu số 225, bibliography tr. 36; xuất hiện trong nội dung survey tr. 17, 26. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=36">https://dl.acm.org/doi/pdf/10.1145/3716628#page=36</a>
+Mục ghi trong survey: Xinyu Zhang, Huiyu Xu, Zhongjie Ba, Zhibo Wang, Yuan Hong, Jian Liu, Zhan Qin, and Kui Ren (2024). PrivacyAsst: Safeguarding user privacy in tool-using large language model agents. IEEE Transactions on Dependable and Secure Computing 21, 6 (2024), 5242–5258.
+Mức kiểm chứng: Nguồn đã đọc: README chính thức, phần Introduction và New Components; PDF công khai chưa tải thành công. Giải pháp shuffling kết hợp attribute forgery và attribute shuffling; bỏ nhận định tăng chi phí chưa đối chiếu.</pre></details></article><article id="s15"><h2>Environment: rủi ro từ bên ngoài</h2><p class="muted">pages/interaction-threats/01-environment.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Environment: rủi ro từ bên ngoài
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §4.1; Figure 3, trang 7, 18, 19, 20, 21.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=7">https://dl.acm.org/doi/pdf/10.1145/3716628#page=7</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Các môi trường natural language, RL, simulation, computing resources, physical theo survey.
+  Nguồn: Survey §4.1; Figure 3, tr. 7, 18, 19, 20, 21.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s16"><h2>Agent2Environment</h2><p class="muted">pages/interaction-threats/02-agent-environment.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Agent2Environment
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §4.1; §4.1.3; §4.1.5, trang 18, 19, 20, 21.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=18">https://dl.acm.org/doi/pdf/10.1145/3716628#page=18</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Tương tác có hai chiều: hành động tác động môi trường và phản hồi tác động agent. Agent2Tool cũng có thể mang rủi ro từ phản hồi.
+  Nguồn: Survey §4.1; §4.1.3; §4.1.5, tr. 18, 19, 20, 21.
+• Môi trường mô phỏng/vật lý có nguy cơ bị thao túng hoặc lạm dụng; các ví dụ là tóm tắt survey.
+  Nguồn: Survey §4.1; §4.1.3; §4.1.5, tr. 18, 19, 20, 21.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+Misuse analysis — Lukas Pöhler et al. (2024), mục tài liệu số 140.
+Phương pháp: Xây dựng ba kịch bản lạm dụng công nghệ AI sẵn có.
+Điểm mạnh: Phân tích điểm có thể kiểm soát để hạn chế lạm dụng.
+Điểm yếu / giới hạn: Phân tích tình huống; không phải benchmark bộ lọc.
+Phần đã đối chiếu: Abstract. Các kịch bản thuộc an ninh chính trị, số và vật lý. Hàng cũ đã diễn giải thành một phương pháp phát hiện được đánh giá; đã bỏ diễn giải đó.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2403.15325">https://arxiv.org/abs/2403.15325</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Lukas Pöhler, Valentin Schrader, Alexander Ladwein, and Florian von Keller (2024). A technological perspective on misuse of available AI.
+Bản gốc: <a href="https://arxiv.org/pdf/2403.15325">https://arxiv.org/pdf/2403.15325</a>
+Truy ngược survey: mục tài liệu số 140, bibliography tr. 32; xuất hiện trong nội dung survey tr. 2, 20. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=32">https://dl.acm.org/doi/pdf/10.1145/3716628#page=32</a>
+Mục ghi trong survey: Lukas Pöhler, Valentin Schrader, Alexander Ladwein, and Florian von Keller (2024). A technological perspective on misuse of available AI. Retrieved from <a href="https://arxiv.org/pdf/2403.15325">https://arxiv.org/pdf/2403.15325</a>
+Mức kiểm chứng: Abstract. Các kịch bản thuộc an ninh chính trị, số và vật lý. Hàng cũ đã diễn giải thành một phương pháp phát hiện được đánh giá; đã bỏ diễn giải đó.</pre></details></article><article id="s17"><h2>Indirect Prompt Injection</h2><p class="muted">pages/interaction-threats/03-indirect-prompt-injection.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Indirect Prompt Injection
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §4.1.1, trang 18, 19.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=18">https://dl.acm.org/doi/pdf/10.1145/3716628#page=18</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Chỉ dẫn độc nằm trong dữ liệu agent truy xuất, vượt ranh giới dữ liệu/chỉ dẫn.
+  Nguồn: Kai Greshake et al. (2023), mục tài liệu số 56 trong survey.
+  Vị trí kiểm tra: Abstract: injecting prompts into data likely to be retrieved.
+• Sơ đồ website/email là minh họa luồng tấn công; cần agent đọc và làm theo payload.
+  Nguồn: Survey §4.1.1, tr. 18, 19.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+Self-reminder — Chun Fai Chan et al. (2023), mục tài liệu số 17.
+Phương pháp: Nhắc lại chỉ dẫn ban đầu mỗi lần gửi prompt tới trợ lý.
+Điểm mạnh: Đưa lại chỉ dẫn gốc vào mỗi lượt để nhắc phạm vi nhiệm vụ.
+Điểm yếu / giới hạn: Prompt dài hơn làm tăng chi phí; thử nghiệm trên GPT-3.5.
+Phần đã đối chiếu: §IV.C, §V, §VI/Table II. Bài đánh giá Self-Reminder dựa trên ý tưởng của Xie et al.; không phải nghiên cứu riêng về nội dung web độc hại.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2401.00994">https://arxiv.org/abs/2401.00994</a>
+
+Spotlighting — Keegan Hines et al. (2024), mục tài liệu số 64.
+Phương pháp: Biến đổi dữ liệu để đánh dấu nguồn đầu vào không tin cậy.
+Điểm mạnh: Giảm thành công của indirect injection trong các thử nghiệm GPT.
+Điểm yếu / giới hạn: Bằng chứng thuộc mô hình và tập tấn công được thử.
+Phần đã đối chiếu: Abstract. Điểm cốt lõi là cung cấp tín hiệu nguồn gốc xuyên suốt dữ liệu, thay vì để LLM coi mọi đoạn văn là cùng mức tin cậy.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2403.14720">https://arxiv.org/abs/2403.14720</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Kai Greshake, Sahar Abdelnabi, Shailesh Mishra, Christoph Endres, Thorsten Holz, and Mario Fritz (2023). Not what you’ve signed up for: Compromising real-world LLM-integrated applications with indirect prompt injection.
+Bản gốc: <a href="https://arxiv.org/abs/2302.12173">https://arxiv.org/abs/2302.12173</a>
+Truy ngược survey: mục tài liệu số 56, bibliography tr. 29; xuất hiện trong nội dung survey tr. 3, 5, 6, 7, 8, 18. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=29">https://dl.acm.org/doi/pdf/10.1145/3716628#page=29</a>
+Mục ghi trong survey: Kai Greshake, Sahar Abdelnabi, Shailesh Mishra, Christoph Endres, Thorsten Holz, and Mario Fritz (2023). Not what you’ve signed up for: Compromising real-world LLM-integrated applications with indirect prompt injection. In Proceedings of the AISec . 79–90.
+Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.
+
+Chun Fai Chan, Daniel Wankit Yip, and Aysan Esmradi (2023). Detection and defense against prominent attacks on preconditioned LLM-integrated virtual assistants.
+Bản gốc: <a href="https://arxiv.org/abs/2401.00994">https://arxiv.org/abs/2401.00994</a>
+Truy ngược survey: mục tài liệu số 17, bibliography tr. 27; xuất hiện trong nội dung survey tr. 6, 7, 19, 27. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=27">https://dl.acm.org/doi/pdf/10.1145/3716628#page=27</a>
+Mục ghi trong survey: Chun Fai Chan, Daniel Wankit Yip, and Aysan Esmradi (2023). Detection and defense against prominent attacks on preconditioned LLM-integrated virtual assistants. In Proceedings of the CSDE . IEEE.
+Mức kiểm chứng: §IV.C, §V, §VI/Table II. Bài đánh giá Self-Reminder dựa trên ý tưởng của Xie et al.; không phải nghiên cứu riêng về nội dung web độc hại.
+
+Keegan Hines, Gary Lopez, Matthew Hall, Federico Zarfati, Yonatan Zunger, and Emre Kiciman (2024). Defending against indirect prompt injection attacks with spotlighting.
+Bản gốc: <a href="https://arxiv.org/pdf/2403.14720">https://arxiv.org/pdf/2403.14720</a>
+Truy ngược survey: mục tài liệu số 64, bibliography tr. 29; xuất hiện trong nội dung survey tr. 18, 19. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=29">https://dl.acm.org/doi/pdf/10.1145/3716628#page=29</a>
+Mục ghi trong survey: Keegan Hines, Gary Lopez, Matthew Hall, Federico Zarfati, Yonatan Zunger, and Emre Kiciman (2024). Defending against indirect prompt injection attacks with spotlighting. Retrieved from <a href="https://arxiv.org/pdf/2403.14720">https://arxiv.org/pdf/2403.14720</a>
+Mức kiểm chứng: Abstract. Điểm cốt lõi là cung cấp tín hiệu nguồn gốc xuyên suốt dữ liệu, thay vì để LLM coi mọi đoạn văn là cùng mức tin cậy.</pre></details></article><article id="s18"><h2>RL Environment</h2><p class="muted">pages/interaction-threats/04-rl-environment.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — RL Environment
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §4.1.2, trang 19.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=19">https://dl.acm.org/doi/pdf/10.1145/3716628#page=19</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Đầu độc phản hồi/điểm thưởng có thể làm lệch policy; đây là một loại tấn công RL, không phải duy nhất.
+  Nguồn: Survey §4.1.2, tr. 19.
+• Inverse RL suy ra hàm thưởng từ hành vi; kiến thức nền, không tự nó là một exploit.
+  Nguồn: Saurabh Arora et al. (2021), mục tài liệu số 9 trong survey.
+  Vị trí kiểm tra: Survey p.19; nguồn là survey về inverse RL.
+• ERNIE nghiên cứu robust multi-agent RL; không trình bày là đã chặn reward poisoning trong LLM agent.
+  Nguồn: Survey §4.1.2, tr. 19.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+ERNIE — Alexander Bukharin et al. (2023), mục tài liệu số 15.
+Phương pháp: Adversarial regularization cho policy trong multi-agent RL.
+Điểm mạnh: Đưa regularization vào policy để xử lý nhiễu và hành động đối kháng.
+Điểm yếu / giới hạn: Thử trên traffic và particle environments; chưa đánh giá LLM agent.
+Phần đã đối chiếu: Abstract; proceedings NeurIPS 2023. Regularization thúc đẩy tính liên tục Lipschitz; tác giả dùng Stackelberg game để giảm bất ổn huấn luyện. Không gán đây là thử nghiệm reward poisoning trên LLM agent.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2310.10810">https://arxiv.org/abs/2310.10810</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Saurabh Arora and Prashant Doshi (2021). A survey of inverse reinforcement learning: Challenges, methods and progress.
+Bản gốc: <a href="https://arxiv.org/abs/1806.06877">https://arxiv.org/abs/1806.06877</a>
+Truy ngược survey: mục tài liệu số 9, bibliography tr. 27; xuất hiện trong nội dung survey tr. 19, 27. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=27">https://dl.acm.org/doi/pdf/10.1145/3716628#page=27</a>
+Mục ghi trong survey: Saurabh Arora and Prashant Doshi (2021). A survey of inverse reinforcement learning: Challenges, methods and progress. Artific. Intell. 297 (Aug. 2021), 103500.
+Mức kiểm chứng: Dẫn qua survey; chưa đọc toàn văn bài gốc. Chỉ dùng cho khẳng định hẹp được ghi trong slide-sources.json.
+
+Alexander Bukharin, Yan Li, Yue Yu, Qingru Zhang, Zhehui Chen, Simiao Zuo, Chao Zhang, Songan Zhang, and Tuo Zhao (2023). Robust multi-agent reinforcement learning via adversarial regularization: Theoretical foundation and stable algorithms.
+Bản gốc: <a href="https://arxiv.org/abs/2310.10810">https://arxiv.org/abs/2310.10810</a>
+Truy ngược survey: mục tài liệu số 15, bibliography tr. 27; xuất hiện trong nội dung survey tr. 19, 27. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=27">https://dl.acm.org/doi/pdf/10.1145/3716628#page=27</a>
+Mục ghi trong survey: Alexander Bukharin, Yan Li, Yue Yu, Qingru Zhang, Zhehui Chen, Simiao Zuo, Chao Zhang, Songan Zhang, and Tuo Zhao (2024). Robust multi-agent reinforcement learning via adversarial regularization: Theoretical foundation and stable algorithms. NeurIPS (2024).
+Mức kiểm chứng: Abstract; proceedings NeurIPS 2023. Regularization thúc đẩy tính liên tục Lipschitz; tác giả dùng Stackelberg game để giảm bất ổn huấn luyện. Không gán đây là thử nghiệm reward poisoning trên LLM agent.
+Khác biệt phiên bản/định danh: Survey ghi 2024; bài thuộc proceedings NeurIPS 2023. Slide dùng năm hội nghị 2023.</pre></details></article><article id="s19"><h2>Computing Resources</h2><p class="muted">pages/interaction-threats/05-computing-resources.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Computing Resources
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §4.1.4, trang 20.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=20">https://dl.acm.org/doi/pdf/10.1145/3716628#page=20</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Bốn nguy cơ: resource exhaustion, inefficient allocation, insufficient isolation, unmonitored usage; tổng hợp survey p.20.
+  Nguồn: Survey §4.1.4, tr. 20.
+• Thiếu quota, ưu tiên, cách ly, metrics là diễn giải vận hành của nhóm; không gán cho một paper DevOps.
+  Nguồn: Survey §4.1.4, tr. 20.
+• Bảng phân biệt nghiên cứu tấn công, phát hiện DDoS và tối ưu lượt hỏi LLM; không coi cả ba là cơ chế cách ly CPU/GPU.
+  Nguồn: Survey §4.1.4, tr. 20.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+LLM coercion — Jonas Geiping et al. (2024), mục tài liệu số 52.
+Phương pháp: Nghiên cứu tấn công ép LLM thực hiện hành vi ngoài ý muốn.
+Điểm mạnh: Phân tích các kiểu tấn công, gồm denial of service.
+Điểm yếu / giới hạn: Nghiên cứu tấn công; không phải cơ chế quota.
+Phần đã đối chiếu: Abstract. Không gán các cơ chế DevOps cho bài này.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2402.14020">https://arxiv.org/abs/2402.14020</a>
+
+LLM-based DDoS detection — Michael Guastalla et al. (2024), mục tài liệu số 58.
+Phương pháp: Dùng few-shot learning hoặc fine-tuning để phát hiện DDoS.
+Điểm mạnh: Áp dụng LLM cho nhận diện DDoS bằng few-shot hoặc fine-tuning.
+Điểm yếu / giới hạn: Bằng chứng trên hai bộ dữ liệu mạng; chưa đánh giá cách ly agent.
+Phần đã đối chiếu: Abstract trên trang nhà xuất bản. SmartSP 2023; kỷ yếu xuất bản năm 2024.
+Nguồn đã dùng kiểm tra: <a href="https://eudl.eu/doi/10.1007/978-3-031-51630-6_6">https://eudl.eu/doi/10.1007/978-3-031-51630-6_6</a>
+
+When2Ask — Bin Hu et al. (2023), mục tài liệu số 69.
+Phương pháp: Dùng RL để học khi nào agent cần hỏi LLM.
+Điểm mạnh: Giảm tương tác dư thừa trên MiniGrid và Habitat.
+Điểm yếu / giới hạn: Tối ưu việc gọi LLM; không phải lập lịch CPU/GPU.
+Phần đã đối chiếu: Abstract. Tác nhân học cách tránh hỏi dư thừa và cập nhật kế hoạch khi môi trường thay đổi.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2306.03604">https://arxiv.org/abs/2306.03604</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Jonas Geiping, Alex Stein, Manli Shu, Khalid Saifullah, Yuxin Wen, and Tom Goldstein (2024). Coercing LLMs to do and reveal (almost) anything.
+Bản gốc: <a href="https://arxiv.org/abs/2402.14020">https://arxiv.org/abs/2402.14020</a>
+Truy ngược survey: mục tài liệu số 52, bibliography tr. 29; xuất hiện trong nội dung survey tr. 5, 6, 7, 8, 20. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=29">https://dl.acm.org/doi/pdf/10.1145/3716628#page=29</a>
+Mục ghi trong survey: Jonas Geiping, Alex Stein, Manli Shu, Khalid Saifullah, Yuxin Wen, and Tom Goldstein (2024). Coercing LLMs to do and reveal (almost) anything. Retrieved from <a href="https://arxiv.org/abs/2402.14020">https://arxiv.org/abs/2402.14020</a>
+Mức kiểm chứng: Abstract. Không gán các cơ chế DevOps cho bài này.
+
+Michael Guastalla, Yiyi Li, Arvin Hekmati, and Bhaskar Krishnamachari (2024). Application of large language models to DDoS attack detection.
+Bản gốc: <a href="https://doi.org/10.1007/978-3-031-51630-6_6">https://doi.org/10.1007/978-3-031-51630-6_6</a>
+Truy ngược survey: mục tài liệu số 58, bibliography tr. 29; xuất hiện trong nội dung survey tr. 20. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=29">https://dl.acm.org/doi/pdf/10.1145/3716628#page=29</a>
+Mục ghi trong survey: Michael Guastalla, Yiyi Li, Arvin Hekmati, and Bhaskar Krishnamachari (2023). Application of large language models to DDoS attack detection. In Proceedings of the SmartSP .
+Mức kiểm chứng: Abstract trên trang nhà xuất bản. SmartSP 2023; kỷ yếu xuất bản năm 2024.
+Khác biệt phiên bản/định danh: Survey ghi năm hội thảo 2023; trang Springer ghi xuất bản kỷ yếu ngày 5-2-2024. Slide dùng năm xuất bản 2024.
+
+Bin Hu, Chenyang Zhao, Pu Zhang, Zihao Zhou, Yuanhang Yang, Zenglin Xu, and Bin Liu (2023). Enabling intelligent interactions between an agent and an LLM: A reinforcement learning approach.
+Bản gốc: <a href="https://arxiv.org/pdf/2306.03604">https://arxiv.org/pdf/2306.03604</a>
+Truy ngược survey: mục tài liệu số 69, bibliography tr. 30; xuất hiện trong nội dung survey tr. 6, 7, 14, 15, 20. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=30">https://dl.acm.org/doi/pdf/10.1145/3716628#page=30</a>
+Mục ghi trong survey: Bin Hu, Chenyang Zhao, Pu Zhang, Zihao Zhou, Yuanhang Yang, Zenglin Xu, and Bin Liu (2023). Enabling intelligent interactions between an agent and an LLM: A reinforcement learning approach. Retrieved from <a href="https://arxiv.org/">https://arxiv.org/</a> pdf/2306.03604
+Mức kiểm chứng: Abstract. Tác nhân học cách tránh hỏi dư thừa và cập nhật kế hoạch khi môi trường thay đổi.</pre></details></article><article id="s20"><h2>Agent2Agent: sai lệch lan truyền</h2><p class="muted">pages/interaction-threats/06-agent-agent.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Agent2Agent: sai lệch lan truyền
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §4.2; Figure 3, trang 7, 21, 22.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=7">https://dl.acm.org/doi/pdf/10.1145/3716628#page=7</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Hai nhánh hợp tác và cạnh tranh; sơ đồ và ví dụ nhóm cùng tin thông tin sai là minh họa.
+  Nguồn: Survey §4.2; Figure 3, tr. 7, 21, 22.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s21"><h2>Cooperative &amp; Competitive</h2><p class="muted">pages/interaction-threats/07-cooperative-competitive.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Cooperative &amp; Competitive
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §4.2.1–§4.2.2, trang 21, 22.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=21">https://dl.acm.org/doi/pdf/10.1145/3716628#page=21</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Morris II: self-replicating prompts lan qua hệ ứng dụng dùng RAG; không tự lây trong mọi hệ.
+  Nguồn: Stav Cohen et al. (2024), mục tài liệu số 28 trong survey.
+  Vị trí kiểm tra: Abstract: RAG-based inference / email assistants.
+• Thông đồng qua kênh giao tiếp công khai là rủi ro được survey mô tả.
+  Nguồn: Sumeet Ramesh Motwani et al. (2023), mục tài liệu số 122 trong survey.
+  Vị trí kiểm tra: Survey pp.21–22, steganography/collusion; bản gốc bị chặn truy cập khi kiểm tra.
+• Hallucination có thể lan qua chuỗi agent đơn giản.
+  Nguồn: Sirui Hong et al. (2024), mục tài liệu số 65 trong survey.
+  Vị trí kiểm tra: Abstract: cascading hallucinations.
+• Cicero phối hợp ngôn ngữ và strategic reasoning trong Diplomacy; không dùng nó làm bằng chứng học lừa dối.
+  Nguồn: Meta Fundamental AI Research Diplomacy Team (FAIR) et al. (2022), mục tài liệu số 47 trong survey.
+  Vị trí kiểm tra: Survey p.22; tên bài gốc và mô tả hệ thống.
+• Tạo đầu vào đối kháng và câu hỏi mở về phòng thủ cạnh tranh là nhận định của survey (2025), không phải khảo sát cập nhật đến 2026.
+  Nguồn: Survey §4.2.1–§4.2.2, tr. 21, 22.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+AutoDefense — Yifan Zeng et al. (2024), mục tài liệu số 221.
+Phương pháp: Nhiều agent phân vai để lọc câu trả lời có hại của LLM.
+Điểm mạnh: Giảm jailbreak thành công trong các thí nghiệm của bài.
+Điểm yếu / giới hạn: Phòng thủ ở câu trả lời; không đánh giá mọi rủi ro đa agent.
+Phần đã đối chiếu: Abstract. Cơ chế response filtering là phần chính; bài không chứng minh ngăn thông đồng hay worm trong mọi hệ.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2403.04783">https://arxiv.org/abs/2403.04783</a>
+
+Reference architecture — Qinghua Lu et al. (2024), mục tài liệu số 108.
+Phương pháp: Kiến trúc gồm planning, execution, giám sát và guardrail.
+Điểm mạnh: Tổ chức rõ các thành phần giám sát và guardrail trong thiết kế.
+Điểm yếu / giới hạn: Là hướng dẫn kiến trúc; chưa chứng nhận hiệu quả ngăn tấn công.
+Phần đã đối chiếu: Abstract; §§3.3–3.5 của bản v3. Bản v1 có tên Building the Future of Responsible AI; v3 đổi thành Towards Responsible Generative AI. Bỏ khẳng định rằng bài đã kiểm chứng chặn lệnh không đảo ngược.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2311.13148v3">https://arxiv.org/abs/2311.13148v3</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Stav Cohen, Ron Bitton, and Ben Nassi (2024). Here comes the AI worm: Unleashing zero-click worms that target GenAI-powered applications.
+Bản gốc: <a href="https://arxiv.org/pdf/2403.02817">https://arxiv.org/pdf/2403.02817</a>
+Truy ngược survey: mục tài liệu số 28, bibliography tr. 28; xuất hiện trong nội dung survey tr. 5, 6, 7, 21, 24. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=28">https://dl.acm.org/doi/pdf/10.1145/3716628#page=28</a>
+Mục ghi trong survey: Stav Cohen, Ron Bitton, and Ben Nassi (2024). Here comes the AI worm: Unleashing zero-click worms that target GenAI-powered applications. Retrieved from <a href="https://arxiv.org/pdf/2403.02817">https://arxiv.org/pdf/2403.02817</a>
+Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.
+
+Sumeet Ramesh Motwani, Mikhail Baranchuk, Lewis Hammond, and Christian Schroeder de Witt (2023). A perfect collusion benchmark: How can AI agents be prevented from colluding with information-theoretic undetectability?.
+Bản gốc: <a href="https://openreview.net/forum?id=FXZFrOvIoc">https://openreview.net/forum?id=FXZFrOvIoc</a>
+Truy ngược survey: mục tài liệu số 122, bibliography tr. 32; xuất hiện trong nội dung survey tr. 6, 7, 21. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=32">https://dl.acm.org/doi/pdf/10.1145/3716628#page=32</a>
+Mục ghi trong survey: Sumeet Ramesh Motwani, Mikhail Baranchuk, Lewis Hammond, and Christian Schroeder de Witt (2023). A perfect collusion benchmark: How can AI agents be prevented from colluding with information-theoretic undetectability?. In Proceedings of the NeurIPS Workshop .
+Mức kiểm chứng: Dẫn qua survey pp.21–22. Trang OpenReview yêu cầu xác minh trình duyệt; chưa xác nhận nội dung toàn văn gốc.
+
+Sirui Hong, Mingchen Zhuge, Jonathan Chen, Xiawu Zheng, Yuheng Cheng, Jinlin Wang, Ceyao Zhang, Zili Wang, Steven Ka Shing Yau, Zijuan Lin, Liyang Zhou, Chenyu Ran, Lingfeng Xiao, Chenglin Wu, and Jürgen Schmidhuber (2024). MetaGPT: Meta programming for a multi-agent collaborative framework.
+Bản gốc: <a href="https://arxiv.org/abs/2308.00352">https://arxiv.org/abs/2308.00352</a>
+Truy ngược survey: mục tài liệu số 65, bibliography tr. 29; xuất hiện trong nội dung survey tr. 21. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=29">https://dl.acm.org/doi/pdf/10.1145/3716628#page=29</a>
+Mục ghi trong survey: Sirui Hong, Mingchen Zhuge, Jonathan Chen, Xiawu Zheng, Yuheng Cheng, Jinlin Wang, Ceyao Zhang, Zili Wang, Steven Ka Shing Yau, Zijuan Lin, Liyang Zhou, Chenyu Ran, Lingfeng Xiao, Chenglin Wu, and Jürgen Schmidhuber (2024). MetaGPT: Meta programming for a multi-agent collaborative framework. In Proceedings of the ICLR .
+Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.
+
+Meta Fundamental AI Research Diplomacy Team (FAIR)., Anton Bakhtin, Noam Brown, Emily Dinan, Gabriele Farina, Colin Flaherty, Daniel Fried, et al (2022). Human-level play in the game of Diplomacy by combining language models with strategic reasoning.
+Bản gốc: <a href="https://doi.org/10.1126/science.ade9097">https://doi.org/10.1126/science.ade9097</a>
+Truy ngược survey: mục tài liệu số 47, bibliography tr. 29; xuất hiện trong nội dung survey tr. 22. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=29">https://dl.acm.org/doi/pdf/10.1145/3716628#page=29</a>
+Mục ghi trong survey: Meta Fundamental AI Research Diplomacy Team (FAIR)., Anton Bakhtin, Noam Brown, Emily Dinan, Gabriele Farina, Colin Flaherty, Daniel Fried, et al (2022). Human-level play in the game of Diplomacy by combining language models with strategic reasoning. Science 378, 6624 (2022), 1067–1074.
+Mức kiểm chứng: Dẫn qua survey p.22 cho mô tả Cicero. DOI nhà xuất bản bị chặn khi kiểm tra; không suy ra thực nghiệm lừa dối.
+
+Yifan Zeng, Yiran Wu, Xiao Zhang, Huazheng Wang, and Qingyun Wu (2024). AutoDefense: Multi-agent LLM defense against jailbreak attacks.
+Bản gốc: <a href="https://arxiv.org/pdf/2403.04783">https://arxiv.org/pdf/2403.04783</a>
+Truy ngược survey: mục tài liệu số 221, bibliography tr. 36; xuất hiện trong nội dung survey tr. 22. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=36">https://dl.acm.org/doi/pdf/10.1145/3716628#page=36</a>
+Mục ghi trong survey: Yifan Zeng, Yiran Wu, Xiao Zhang, Huazheng Wang, and Qingyun Wu (2024). AutoDefense: Multi-agent LLM defense against jailbreak attacks. Retrieved from <a href="https://arxiv.org/pdf/2403.04783">https://arxiv.org/pdf/2403.04783</a>
+Mức kiểm chứng: Abstract. Cơ chế response filtering là phần chính; bài không chứng minh ngăn thông đồng hay worm trong mọi hệ.
+
+Qinghua Lu, Liming Zhu, Xiwei Xu, Zhenchang Xing, Stefan Harrer, and Jon Whittle (2024). Towards Responsible Generative AI: A Reference Architecture for Designing Foundation Model based Agents.
+Bản gốc: <a href="https://arxiv.org/abs/2311.13148v3">https://arxiv.org/abs/2311.13148v3</a>
+Truy ngược survey: mục tài liệu số 108, bibliography tr. 31; xuất hiện trong nội dung survey tr. 22. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=31">https://dl.acm.org/doi/pdf/10.1145/3716628#page=31</a>
+Mục ghi trong survey: Qinghua Lu, Liming Zhu, Xiwei Xu, Zhenchang Xing, Stefan Harrer, and Jon Whittle (2023). Building the future of responsible AI: A reference architecture for designing large language model based agents. Retrieved from https: //arxiv.org/pdf/2311.13148
+Mức kiểm chứng: Abstract; §§3.3–3.5 của bản v3. Bản v1 có tên Building the Future of Responsible AI; v3 đổi thành Towards Responsible Generative AI. Bỏ khẳng định rằng bài đã kiểm chứng chặn lệnh không đảo ngược.
+Khác biệt phiên bản/định danh: Survey dẫn bản 2023 “Building the future of responsible AI…”. Nội dung kiến trúc đã đối chiếu bản v3 (3-4-2024), tên mới như trên; cùng arXiv:2311.13148.</pre></details></article><article id="s22"><h2>Agent2Memory: lỗi được giữ lại</h2><p class="muted">pages/interaction-threats/08-memory.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Agent2Memory: lỗi được giữ lại
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §4.3; Figure 3, trang 7, 23, 24.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=7">https://dl.acm.org/doi/pdf/10.1145/3716628#page=7</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Long-term/short-term memory và nhóm rủi ro theo taxonomy Figure 3. Ví dụ địa chỉ sai là minh họa.
+  Nguồn: Survey §4.3; Figure 3, tr. 7, 23, 24.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s23"><h2>Long-term Memory</h2><p class="muted">pages/interaction-threats/09-long-term-memory.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Long-term Memory
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §4.3.2, trang 23, 24.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=23">https://dl.acm.org/doi/pdf/10.1145/3716628#page=23</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• PoisonedRAG: năm văn bản độc cho mỗi câu hỏi mục tiêu, 90% ASR trong thiết lập của bài; không phải một con số chung cho mọi RAG.
+  Nguồn: Wei Zou et al. (2024), mục tài liệu số 235 trong survey.
+  Vị trí kiểm tra: Abstract: five malicious texts for each target question.
+• Truy vấn làm rò rỉ dữ liệu từ kho truy xuất.
+  Nguồn: Shenglai Zeng et al. (2024), mục tài liệu số 220 trong survey.
+  Vị trí kiểm tra: Abstract: privacy of retrieved data.
+• Khôi phục văn bản từ sentence embeddings.
+  Nguồn: Haoran Li et al. (2023), mục tài liệu số 91 trong survey; John Morris et al. (2023), mục tài liệu số 120 trong survey.
+  Vị trí kiểm tra: Survey p.24, embedding inversion; original abstracts.
+• Dữ liệu mâu thuẫn/lỗi thời là rủi ro survey nêu. Ví dụ Trái Đất tròn/phẳng là minh họa, không phải thí nghiệm PoisonedRAG.
+  Nguồn: Survey §4.3.2, tr. 23, 24.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+PoisonedRAG — Wei Zou et al. (2024), mục tài liệu số 235.
+Phương pháp: Chèn văn bản độc để RAG trả lời theo mục tiêu kẻ tấn công.
+Điểm mạnh: Làm rõ điểm yếu của RAG bằng tấn công và thử nghiệm phòng thủ.
+Điểm yếu / giới hạn: Các defense được thử chưa đủ; kết quả gắn với thiết lập của bài.
+Phần đã đối chiếu: Abstract. Năm văn bản độc là cho mỗi câu hỏi mục tiêu; kết quả 90% thuộc thiết lập thực nghiệm trên kho hàng triệu văn bản, không phải mọi RAG.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2402.07867">https://arxiv.org/abs/2402.07867</a>
+
+RAG privacy — Shenglai Zeng et al. (2024), mục tài liệu số 220.
+Phương pháp: Dùng truy vấn tấn công để khảo sát rò rỉ dữ liệu truy xuất.
+Điểm mạnh: Phân biệt rò rỉ từ kho truy xuất và từ dữ liệu huấn luyện.
+Điểm yếu / giới hạn: Là nghiên cứu rủi ro; chưa cung cấp bảo đảm riêng tư tổng quát.
+Phần đã đối chiếu: Abstract. Phân biệt hai nguồn riêng tư: dữ liệu trong kho truy xuất và dữ liệu từng dùng huấn luyện LLM.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2402.16893">https://arxiv.org/abs/2402.16893</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Wei Zou, Runpeng Geng, Binghui Wang, and Jinyuan Jia (2024). PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models.
+Bản gốc: <a href="https://arxiv.org/pdf/2402.07867">https://arxiv.org/pdf/2402.07867</a>
+Truy ngược survey: mục tài liệu số 235, bibliography tr. 36; xuất hiện trong nội dung survey tr. 6, 7, 24, 26. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=36">https://dl.acm.org/doi/pdf/10.1145/3716628#page=36</a>
+Mục ghi trong survey: Wei Zou, Runpeng Geng, Binghui Wang, and Jinyuan Jia (2024). PoisonedRAG: Knowledge poisoning attacks to retrieval-augmented generation of large language models. Retrieved from <a href="https://arxiv.org/pdf/2402.07867">https://arxiv.org/pdf/2402.07867</a>
+Mức kiểm chứng: Abstract. Năm văn bản độc là cho mỗi câu hỏi mục tiêu; kết quả 90% thuộc thiết lập thực nghiệm trên kho hàng triệu văn bản, không phải mọi RAG.
+Khác biệt phiên bản/định danh: Tên trong survey: “Knowledge poisoning attacks…”. Trang arXiv hiện dùng “Knowledge Corruption Attacks…”. Cùng arXiv:2402.07867; số liệu 5 văn bản/câu hỏi và 90% đã đối chiếu abstract.
+
+Shenglai Zeng, Jiankun Zhang, Pengfei He, Yue Xing, Yiding Liu, Han Xu, Jie Ren, Shuaiqiang Wang, Dawei Yin, Yi Chang et al (2024). The good and the bad: Exploring privacy issues in retrieval-augmented generation (RAG).
+Bản gốc: <a href="https://arxiv.org/pdf/2402.16893">https://arxiv.org/pdf/2402.16893</a>
+Truy ngược survey: mục tài liệu số 220, bibliography tr. 36; xuất hiện trong nội dung survey tr. 6, 7, 24. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=36">https://dl.acm.org/doi/pdf/10.1145/3716628#page=36</a>
+Mục ghi trong survey: Shenglai Zeng, Jiankun Zhang, Pengfei He, Yue Xing, Yiding Liu, Han Xu, Jie Ren, Shuaiqiang Wang, Dawei Yin, Yi Chang et al (2024). The good and the bad: Exploring privacy issues in retrieval-augmented generation (RAG). Retrieved from <a href="https://arxiv.org/pdf/2402.16893">https://arxiv.org/pdf/2402.16893</a>
+Mức kiểm chứng: Abstract. Phân biệt hai nguồn riêng tư: dữ liệu trong kho truy xuất và dữ liệu từng dùng huấn luyện LLM.
+
+Haoran Li, Mingshi Xu, and Yangqiu Song (2023). Sentence embedding leaks more information than you expect: Generative embedding inversion attack to recover the whole sentence.
+Bản gốc: <a href="https://aclanthology.org/2023.findings-acl.881/">https://aclanthology.org/2023.findings-acl.881/</a>
+Truy ngược survey: mục tài liệu số 91, bibliography tr. 31; xuất hiện trong nội dung survey tr. 24. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=31">https://dl.acm.org/doi/pdf/10.1145/3716628#page=31</a>
+Mục ghi trong survey: Haoran Li, Mingshi Xu, and Yangqiu Song (2023). Sentence embedding leaks more information than you expect: Generative embedding inversion attack to recover the whole sentence. In Proceedings of the ACL .
+Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.
+
+John Morris, Volodymyr Kuleshov, Vitaly Shmatikov, and Alexander Rush (2023). Text embeddings reveal (almost) as much as text.
+Bản gốc: <a href="https://aclanthology.org/2023.emnlp-main.765/">https://aclanthology.org/2023.emnlp-main.765/</a>
+Truy ngược survey: mục tài liệu số 120, bibliography tr. 32; xuất hiện trong nội dung survey tr. 24. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=32">https://dl.acm.org/doi/pdf/10.1145/3716628#page=32</a>
+Mục ghi trong survey: John Morris, Volodymyr Kuleshov, Vitaly Shmatikov, and Alexander Rush (2023). Text embeddings reveal (almost) as much as text. In Proceedings of the EMNLP .
+Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.</pre></details></article><article id="s24"><h2>Short-term Memory</h2><p class="muted">pages/interaction-threats/10-short-term-memory.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Short-term Memory
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §4.3.1, trang 23.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=23">https://dl.acm.org/doi/pdf/10.1145/3716628#page=23</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Context hữu hạn và thiếu đồng bộ có thể gây mất thông tin; phụ thuộc thiết kế hệ thống.
+  Nguồn: Survey §4.3.1, tr. 23.
+• LongRoPE, multi-robot planning và CoT-Influx là hướng liên quan đến context/phối hợp; không phải ba phòng thủ an ninh đã được chứng nhận.
+  Nguồn: Survey §4.3.1, tr. 23.
+
+PHƯƠNG PHÁP — ĐIỂM MẠNH — ĐIỂM YẾU / GIỚI HẠN
+
+LongRoPE — Yiran Ding et al. (2024), mục tài liệu số 37.
+Phương pháp: Tìm positional interpolation và mở rộng context theo giai đoạn.
+Điểm mạnh: Mở rộng context tới 2.048.000 token trong thí nghiệm.
+Điểm yếu / giới hạn: Đánh giá trên LLaMA2/Mistral; chưa kiểm chứng an toàn bộ nhớ.
+Phần đã đối chiếu: Abstract. Mở rộng vị trí token và fine-tuning theo giai đoạn; đây là cải thiện context, không phải cơ chế chống dữ liệu độc trong memory.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2402.13753">https://arxiv.org/abs/2402.13753</a>
+
+Multi-robot planning — Yongchao Chen et al. (2023), mục tài liệu số 23.
+Phương pháp: So sánh phối hợp tập trung, phân tán và hai dạng kết hợp.
+Điểm mạnh: Một dạng kết hợp có hiệu quả và khả năng mở rộng tốt hơn.
+Điểm yếu / giới hạn: Bốn tác vụ 2D và mô phỏng 3D; không chứng nhận đồng bộ bộ nhớ.
+Phần đã đối chiếu: Abstract và §I. State-action history dùng trạng thái/hành động để kiểm soát độ dài context. Hàng Memory synchronization trước đây mô tả sai trọng tâm của bài.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/html/2309.15943v2">https://arxiv.org/html/2309.15943v2</a>
+
+CoT-Influx — Xijie Huang et al. (2023), mục tài liệu số 72.
+Phương pháp: Chọn ví dụ CoT và cắt token ít quan trọng để vừa context.
+Điểm mạnh: Đánh giá cải thiện suy luận trên năm bộ dữ liệu toán.
+Điểm yếu / giới hạn: Nén ví dụ trong prompt; không tóm tắt lịch sử agent.
+Phần đã đối chiếu: Abstract: CoT-Influx dùng pruning hai mức (ví dụ và token), đánh giá suy luận trên năm bộ dữ liệu toán. Không phải tóm tắt lịch sử hội thoại.
+Nguồn đã dùng kiểm tra: <a href="https://arxiv.org/abs/2312.08901">https://arxiv.org/abs/2312.08901</a>
+
+Cách diễn giải giới hạn: phạm vi dữ liệu/mô hình được thử không chứng minh phương pháp thất bại ở nơi khác. Giới hạn phạm vi và thiếu bảo đảm toàn hệ là nhận xét về bằng chứng, không phải số đo mới.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Yiran Ding, Li Lyna Zhang, Chengruidong Zhang, Yuanyuan Xu, Ning Shang, Jiahang Xu, Fan Yang, and Mao Yang (2024). LongRoPE: Extending LLM context window beyond 2 million tokens.
+Bản gốc: <a href="https://arxiv.org/pdf/2402.13753">https://arxiv.org/pdf/2402.13753</a>
+Truy ngược survey: mục tài liệu số 37, bibliography tr. 28; xuất hiện trong nội dung survey tr. 23. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=28">https://dl.acm.org/doi/pdf/10.1145/3716628#page=28</a>
+Mục ghi trong survey: Yiran Ding, Li Lyna Zhang, Chengruidong Zhang, Yuanyuan Xu, Ning Shang, Jiahang Xu, Fan Yang, and Mao Yang (2024). LongRoPE: Extending LLM context window beyond 2 million tokens. Retrieved from <a href="https://arxiv.org/pdf/2402.">https://arxiv.org/pdf/2402.</a> 13753
+Mức kiểm chứng: Abstract. Mở rộng vị trí token và fine-tuning theo giai đoạn; đây là cải thiện context, không phải cơ chế chống dữ liệu độc trong memory.
+
+Yongchao Chen, Jacob Arkin, Yang Zhang, Nicholas Roy, and Chuchu Fan (2023). Scalable multi-robot collaboration with large language models: Centralized or decentralized systems?
+Bản gốc: <a href="https://arxiv.org/html/2309.15943v2">https://arxiv.org/html/2309.15943v2</a>
+Truy ngược survey: mục tài liệu số 23, bibliography tr. 28; xuất hiện trong nội dung survey tr. 23. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=28">https://dl.acm.org/doi/pdf/10.1145/3716628#page=28</a>
+Mục ghi trong survey: Yongchao Chen, Jacob Arkin, Yang Zhang, Nicholas Roy, and Chuchu Fan (2023). Scalable multi-robot collaboration with large language models: Centralized or decentralized systems? Retrieved from <a href="https://arxiv.org/html/2309.">https://arxiv.org/html/2309.</a> 15943v2
+Mức kiểm chứng: Abstract và §I. State-action history dùng trạng thái/hành động để kiểm soát độ dài context. Hàng Memory synchronization trước đây mô tả sai trọng tâm của bài.
+
+Xijie Huang, Li Lyna Zhang, Kwang-Ting Cheng, and Mao Yang (2023). Fewer is More: Boosting LLM Reasoning with Reinforced Context Pruning.
+Bản gốc: <a href="https://arxiv.org/pdf/2312.08901">https://arxiv.org/pdf/2312.08901</a>
+Truy ngược survey: mục tài liệu số 72, bibliography tr. 30; xuất hiện trong nội dung survey tr. 23. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=30">https://dl.acm.org/doi/pdf/10.1145/3716628#page=30</a>
+Mục ghi trong survey: Xijie Huang, Li Lyna Zhang, Kwang-Ting Cheng, and Mao Yang (2023). Boosting LLM reasoning: Push the limits of few-shot learning with reinforced in-context pruning. Retrieved from <a href="https://arxiv.org/pdf/2312.08901">https://arxiv.org/pdf/2312.08901</a>
+Mức kiểm chứng: Abstract: CoT-Influx dùng pruning hai mức (ví dụ và token), đánh giá suy luận trên năm bộ dữ liệu toán. Không phải tóm tắt lịch sử hội thoại.
+Khác biệt phiên bản/định danh: Survey dùng tên “Boosting LLM reasoning: Push the limits of few-shot learning with reinforced in-context pruning”. Trang gốc hiện mang tên “Fewer is More…”, cùng arXiv:2312.08901. Giữ năm bản thảo 2023 như survey.</pre></details></article><article id="s25"><h2>Bảy hướng nghiên cứu</h2><p class="muted">pages/discussion/01-research-directions.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Bảy hướng nghiên cứu
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §5; Figure 5, trang 24, 25, 26, 27.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=24">https://dl.acm.org/doi/pdf/10.1145/3716628#page=24</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Bảy hướng nghiên cứu tổng hợp từ Figure 5 và §5.
+  Nguồn: Survey §5; Figure 5, tr. 24, 25, 26, 27.
+• Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.
+  Nguồn: Survey §5; Figure 5, tr. 24, 25, 26, 27.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s26"><h2>1. Kiểm tra đầu vào nhanh và chính xác</h2><p class="muted">pages/discussion/02-input-inspection.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 1. Kiểm tra đầu vào nhanh và chính xác
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §5: Efficient and effective input inspection, trang 24.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=24">https://dl.acm.org/doi/pdf/10.1145/3716628#page=24</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Khoảng trống tốc độ/độ chính xác và hướng kiểm tra tự động; không dùng ASR của Maatphor làm độ chính xác detector.
+  Nguồn: Survey §5: Efficient and effective input inspection, tr. 24.
+• Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.
+  Nguồn: Survey §5: Efficient and effective input inspection, tr. 24.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s27"><h2>2. Giảm thiên vị, tăng công bằng</h2><p class="muted">pages/discussion/03-bias-and-fairness.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 2. Giảm thiên vị, tăng công bằng
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §5: Bias and fairness in AI agents, trang 25.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=25">https://dl.acm.org/doi/pdf/10.1145/3716628#page=25</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Thiên vị, benchmark và đánh giá con người là hướng nghiên cứu survey đề xuất.
+  Nguồn: Survey §5: Bias and fairness in AI agents, tr. 25.
+• Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.
+  Nguồn: Survey §5: Bias and fairness in AI agents, tr. 25.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s28"><h2>3. Kiểm toán việc dùng công cụ</h2><p class="muted">pages/discussion/04-tool-use-auditing.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 3. Kiểm toán việc dùng công cụ
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §5: Strict tool use auditing, trang 25, 26.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=25">https://dl.acm.org/doi/pdf/10.1145/3716628#page=25</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Kiểm toán truy cập/call/log và chi phí triển khai theo survey.
+  Nguồn: Survey §5: Strict tool use auditing, tr. 25, 26.
+• Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.
+  Nguồn: Survey §5: Strict tool use auditing, tr. 25, 26.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s29"><h2>4. Đánh giá an toàn cho toàn bộ agent</h2><p class="muted">pages/discussion/05-safety-evaluation.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 4. Đánh giá an toàn cho toàn bộ agent
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §5: Sound safety evaluation baselines, trang 26.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=26">https://dl.acm.org/doi/pdf/10.1145/3716628#page=26</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Đánh giá end-to-end và tiêu chí an toàn là hướng của survey năm 2025.
+  Nguồn: Survey §5: Sound safety evaluation baselines, tr. 26.
+• Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.
+  Nguồn: Survey §5: Sound safety evaluation baselines, tr. 26.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s30"><h2>5. Chính sách phát triển và triển khai</h2><p class="muted">pages/discussion/06-development-deployment-policy.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 5. Chính sách phát triển và triển khai
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §5: Solid agent development and deployment policy, trang 26.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=26">https://dl.acm.org/doi/pdf/10.1145/3716628#page=26</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Minh bạch, trách nhiệm, riêng tư và hướng dẫn triển khai theo survey.
+  Nguồn: Survey §5: Solid agent development and deployment policy, tr. 26.
+• Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.
+  Nguồn: Survey §5: Solid agent development and deployment policy, tr. 26.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s31"><h2>6. Thiết kế tương tác giữa các agent</h2><p class="muted">pages/discussion/07-interaction-architectures.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 6. Thiết kế tương tác giữa các agent
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §5: Optimal interaction architectures, trang 26.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=26">https://dl.acm.org/doi/pdf/10.1145/3716628#page=26</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Giao tiếp, phụ thuộc và quyền truy cập cần được thiết kế/kiểm soát theo survey.
+  Nguồn: Survey §5: Optimal interaction architectures, tr. 26.
+• Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.
+  Nguồn: Survey §5: Optimal interaction architectures, tr. 26.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s32"><h2>7. Quản lý bộ nhớ an toàn</h2><p class="muted">pages/discussion/08-memory-management.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 7. Quản lý bộ nhớ an toàn
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §5: Robust memory management, trang 26, 27.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=26">https://dl.acm.org/doi/pdf/10.1145/3716628#page=26</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Benchmark và truy xuất bộ nhớ an toàn theo survey.
+  Nguồn: Survey §5: Robust memory management, tr. 26, 27.
+• Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.
+  Nguồn: Survey §5: Robust memory management, tr. 26, 27.
+• Ghi chú thuyết trình nhắc lại PoisonedRAG từ phần long-term memory để minh họa dữ liệu truy xuất bị đầu độc.
+  Nguồn: Wei Zou et al. (2024), mục tài liệu số 235 trong survey.
+  Vị trí kiểm tra: Abstract; survey §4.3.2, pp.23–24; liên hệ hướng quản lý bộ nhớ ở §5.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+
+Wei Zou, Runpeng Geng, Binghui Wang, and Jinyuan Jia (2024). PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models.
+Bản gốc: <a href="https://arxiv.org/pdf/2402.07867">https://arxiv.org/pdf/2402.07867</a>
+Truy ngược survey: mục tài liệu số 235, bibliography tr. 36; xuất hiện trong nội dung survey tr. 6, 7, 24, 26. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=36">https://dl.acm.org/doi/pdf/10.1145/3716628#page=36</a>
+Mục ghi trong survey: Wei Zou, Runpeng Geng, Binghui Wang, and Jinyuan Jia (2024). PoisonedRAG: Knowledge poisoning attacks to retrieval-augmented generation of large language models. Retrieved from <a href="https://arxiv.org/pdf/2402.07867">https://arxiv.org/pdf/2402.07867</a>
+Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.
+Khác biệt phiên bản/định danh: Tên trong survey: “Knowledge poisoning attacks…”. Trang arXiv hiện dùng “Knowledge Corruption Attacks…”. Cùng arXiv:2402.07867; số liệu 5 văn bản/câu hỏi và 90% đã đối chiếu abstract.</pre></details></article><article id="s33"><h2>Kết luận</h2><p class="muted">pages/discussion/09-conclusion.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Kết luận
+Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
+
+NGUỒN TỔNG QUAN
+Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. <a href="https://doi.org/10.1145/3716628">https://doi.org/10.1145/3716628</a>
+Vị trí: §5–§6; Figure 3, trang 7, 24, 25, 26, 27.
+Mở PDF: <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=7">https://dl.acm.org/doi/pdf/10.1145/3716628#page=7</a>
+
+NỘI DUNG / VÍ DỤ / SƠ ĐỒ
+• Ba thông điệp là tổng hợp của người trình bày từ survey: bảo vệ quá trình, chọn theo rủi ro, đánh giá an toàn/tác vụ/chi phí. Không phải ba kết luận thực nghiệm độc lập.
+  Nguồn: Survey §5–§6; Figure 3, tr. 7, 24, 25, 26, 27.
+• Các câu hỏi nghiên cứu được diễn đạt lại để thảo luận; không phải kết quả đã được chứng minh.
+  Nguồn: Survey §5–§6; Figure 3, tr. 7, 24, 25, 26, 27.
+
+THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><script>document.getElementById('search').addEventListener('input',e=>{const q=e.target.value.toLocaleLowerCase();document.querySelectorAll('article').forEach(a=>a.hidden=!a.textContent.toLocaleLowerCase().includes(q));});</script></html>

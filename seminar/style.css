@@ -43,6 +43,12 @@
   letter-spacing: normal;
 }
 
+.defense-citation a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 .jailbreak-overview {
   display: grid;
   grid-template-columns: 1fr;
@@ -64,6 +70,12 @@
 }
 
 /* Seminar compositions: editable diagrams, cards, and shared palette. */
+.complete-references .alpha-references__item {
+  margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
 .seminar-content {
   font-family: Arial, sans-serif;
   font-size: 18px;

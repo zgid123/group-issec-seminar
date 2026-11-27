@@ -18,10 +18,10 @@ transition: slide-left
   <Takeaway v-click="3">
     <strong>Vì sao điều này quan trọng:</strong>
     <div>
-      - Khi chatbot bị lừa, nó nói sai.
+      - Với chatbot chỉ sinh văn bản, sai sót nằm ở câu trả lời.
     </div>
     <div>
-      - Khi agent bị lừa, nó <strong>làm sai thật:</strong> gửi email, xóa file, chạy lệnh, lộ dữ liệu.
+      - Khi agent có quyền dùng tool, sai sót có thể thành <strong>hành động:</strong> gửi email, xóa file, chạy lệnh, lộ dữ liệu.
     </div>
   </Takeaway>
 </div>
@@ -56,9 +56,11 @@ transition: slide-left
 </style>
 
 <!--
+GHI CHÚ THUYẾT TRÌNH
+
 [click]
 
-Chatbot chủ yếu trả lời yêu cầu của người dùng.
+Ở đây so sánh chatbot chỉ sinh văn bản với agent có quyền gọi công cụ và hành động.
 
 [click]
 
