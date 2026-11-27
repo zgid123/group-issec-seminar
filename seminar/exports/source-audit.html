@@ -1,20 +1,4 @@
-<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kiểm chứng nguồn — AI Agent Security</title><style>body{font:17px/1.65 system-ui,sans-serif;color:#12213b;background:#f5f7fa;max-width:1100px;margin:40px auto;padding:0 24px}h1{font-size:32px}article{background:white;padding:28px;margin:24px 0;border:1px solid #d5deea;border-radius:14px}a{color:#006ca8}input{box-sizing:border-box;width:100%;padding:14px;font:inherit;border:1px solid #9bacbf;border-radius:8px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}summary{cursor:pointer;font-weight:700}.muted{color:#52647b}nav a{display:inline-block;margin:4px 10px 4px 0} @media print{input,nav{display:none}article{break-before:page}details{display:block}}</style><h1>Kiểm chứng nội dung và tài liệu</h1><p>Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. https://doi.org/10.1145/3716628</p><p><a href="https://doi.org/10.1145/3716628">Survey</a> · <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=1">PDF survey</a> · 34 slide nội dung · 49 nguồn bổ trợ · 32 hàng so sánh.</p><p class="muted">Đối chiếu ngày 2026-11-26. Phân biệt nguồn gốc đã đọc, abstract, README tác giả và nội dung chỉ dẫn qua survey. Không tuyên bố đã đọc toàn văn mọi bài hoặc tái lập thí nghiệm. Các trang references chỉ chứa nguồn thực sự dùng ở nội dung bên dưới. Hai nguồn là báo cáo demo kỹ thuật, được ghi rõ trong notes.</p><input id="search" placeholder="Tìm tên slide, paper, tác giả hoặc phương pháp…" aria-label="Tìm nguồn"><nav><a href="#s0">Chatbot và AI agent</a><a href="#s1">Cấu trúc AI agent</a><a href="#s2">Bốn khoảng trống bảo mật</a><a href="#s3">Bản đồ an ninh AI Agent</a><a href="#s4">Threat models: ví dụ trong survey</a><a href="#s5">Perception: dữ liệu thành mệnh lệnh</a><a href="#s6">Prompt Injection Attack</a><a href="#s7">Jailbreak</a><a href="#s8">Brain: quyết định sai từ đâu?</a><a href="#s9">Backdoor Attack</a><a href="#s10">Misalignment</a><a href="#s11">Hallucination</a><a href="#s12">Planning Threat</a><a href="#s13">Action: sai lệnh hay sai công cụ?</a><a href="#s14">Agent2Tool &amp; Supply Chain</a><a href="#s15">Environment: rủi ro từ bên ngoài</a><a href="#s16">Agent2Environment</a><a href="#s17">Indirect Prompt Injection</a><a href="#s18">RL Environment</a><a href="#s19">Computing Resources</a><a href="#s20">Agent2Agent: sai lệch lan truyền</a><a href="#s21">Cooperative &amp; Competitive</a><a href="#s22">Agent2Memory: lỗi được giữ lại</a><a href="#s23">Long-term Memory</a><a href="#s24">Short-term Memory</a><a href="#s25">Bảy hướng nghiên cứu</a><a href="#s26">1. Kiểm tra đầu vào nhanh và chính xác</a><a href="#s27">2. Giảm thiên vị, tăng công bằng</a><a href="#s28">3. Kiểm toán việc dùng công cụ</a><a href="#s29">4. Đánh giá an toàn cho toàn bộ agent</a><a href="#s30">5. Chính sách phát triển và triển khai</a><a href="#s31">6. Thiết kế tương tác giữa các agent</a><a href="#s32">7. Quản lý bộ nhớ an toàn</a><a href="#s33">Kết luận</a></nav><article id="s0"><h2>Chatbot và AI agent</h2><p class="muted">pages/overview/01-chatbot-vs-agent.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Ở đây so sánh chatbot chỉ sinh văn bản với agent có quyền gọi công cụ và hành động.
-
-[click]
-
-Agent còn gọi công cụ và thực hiện công việc. Sau mỗi bước, nó xem kết quả rồi quyết định làm gì tiếp.
-
-[click]
-
-Trả lời sai và làm sai có hậu quả khác nhau. Với agent, sai sót có thể dẫn đến gửi nhầm email, xóa file hoặc làm lộ dữ liệu.
-
----
-
-KIỂM CHỨNG NGUỒN — Chatbot và AI agent
+<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kiểm chứng nguồn — AI Agent Security</title><style>body{font:17px/1.65 system-ui,sans-serif;color:#12213b;background:#f5f7fa;max-width:1100px;margin:40px auto;padding:0 24px}h1{font-size:32px}article{background:white;padding:28px;margin:24px 0;border:1px solid #d5deea;border-radius:14px}a{color:#006ca8}input{box-sizing:border-box;width:100%;padding:14px;font:inherit;border:1px solid #9bacbf;border-radius:8px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}summary{cursor:pointer;font-weight:700}.muted{color:#52647b}nav a{display:inline-block;margin:4px 10px 4px 0} @media print{input,nav{display:none}article{break-before:page}details{display:block}}</style><h1>Kiểm chứng nội dung và tài liệu</h1><p>Zehang Deng, Yongjian Guo, Changzhou Han, Wanlun Ma, Junwu Xiong, Sheng Wen, Yang Xiang (2025). AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways. ACM Computing Surveys 57(7), Article 182, February 2025. https://doi.org/10.1145/3716628</p><p><a href="https://doi.org/10.1145/3716628">Survey</a> · <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=1">PDF survey</a> · 34 slide nội dung · 49 nguồn bổ trợ · 32 hàng so sánh.</p><p class="muted">Đối chiếu ngày 2026-11-26. Phân biệt nguồn gốc đã đọc, abstract, README tác giả và nội dung chỉ dẫn qua survey. Không tuyên bố đã đọc toàn văn mọi bài hoặc tái lập thí nghiệm. Các trang references chỉ chứa nguồn thực sự dùng ở nội dung bên dưới. Hai nguồn là báo cáo demo kỹ thuật, được ghi rõ trong notes.</p><input id="search" placeholder="Tìm tên slide, paper, tác giả hoặc phương pháp…" aria-label="Tìm nguồn"><nav><a href="#s0">Chatbot và AI agent</a><a href="#s1">Cấu trúc AI agent</a><a href="#s2">Bốn khoảng trống bảo mật</a><a href="#s3">Bản đồ an ninh AI Agent</a><a href="#s4">Threat models: ví dụ trong survey</a><a href="#s5">Perception: dữ liệu thành mệnh lệnh</a><a href="#s6">Prompt Injection Attack</a><a href="#s7">Jailbreak</a><a href="#s8">Brain: quyết định sai từ đâu?</a><a href="#s9">Backdoor Attack</a><a href="#s10">Misalignment</a><a href="#s11">Hallucination</a><a href="#s12">Planning Threat</a><a href="#s13">Action: sai lệnh hay sai công cụ?</a><a href="#s14">Agent2Tool &amp; Supply Chain</a><a href="#s15">Environment: rủi ro từ bên ngoài</a><a href="#s16">Agent2Environment</a><a href="#s17">Indirect Prompt Injection</a><a href="#s18">RL Environment</a><a href="#s19">Computing Resources</a><a href="#s20">Agent2Agent: sai lệch lan truyền</a><a href="#s21">Cooperative &amp; Competitive</a><a href="#s22">Agent2Memory: lỗi được giữ lại</a><a href="#s23">Long-term Memory</a><a href="#s24">Short-term Memory</a><a href="#s25">Bảy hướng nghiên cứu</a><a href="#s26">1. Kiểm tra đầu vào nhanh và chính xác</a><a href="#s27">2. Giảm thiên vị, tăng công bằng</a><a href="#s28">3. Kiểm toán việc dùng công cụ</a><a href="#s29">4. Đánh giá an toàn cho toàn bộ agent</a><a href="#s30">5. Chính sách phát triển và triển khai</a><a href="#s31">6. Thiết kế tương tác giữa các agent</a><a href="#s32">7. Quản lý bộ nhớ an toàn</a><a href="#s33">Kết luận</a></nav><article id="s0"><h2>Chatbot và AI agent</h2><p class="muted">pages/overview/01-chatbot-vs-agent.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Chatbot và AI agent
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -27,17 +11,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §1; §2.1, tr. 1, 2, 4, 5.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s1"><h2>Cấu trúc AI agent</h2><p class="muted">pages/overview/02-agent-workflow.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Đi từ trái sang phải: Perception nhận đầu vào, Brain suy luận và lập kế hoạch, Action gọi công cụ để thực hiện. Kết quả lại trở thành đầu vào cho vòng tiếp theo.
-
-Bên dưới là ba nơi agent trao đổi thông tin: agent khác, bộ nhớ và môi trường. Phần sau sẽ lần lượt xét rủi ro ở từng vị trí này.
-
----
-
-KIỂM CHỨNG NGUỒN — Cấu trúc AI agent
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s1"><h2>Cấu trúc AI agent</h2><p class="muted">pages/overview/02-agent-workflow.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Cấu trúc AI agent
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -50,19 +24,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §2.1; Figure 2, tr. 4, 5.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s2"><h2>Bốn khoảng trống bảo mật</h2><p class="muted">pages/overview/03-security-gaps.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Có bốn điểm khó kiểm soát: đầu vào thay đổi qua nhiều lượt; xử lý bên trong phức tạp; môi trường vận hành thay đổi; và dữ liệu bên ngoài có thể không đáng tin.
-
-[click]
-
-Trên sơ đồ, chỉ từng vị trí tương ứng. Một yêu cầu ban đầu bình thường vẫn có thể dẫn đến hành động sai sau vài lần trao đổi.
-
----
-
-KIỂM CHỨNG NGUỒN — Bốn khoảng trống bảo mật
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s2"><h2>Bốn khoảng trống bảo mật</h2><p class="muted">pages/overview/03-security-gaps.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Bốn khoảng trống bảo mật
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -75,17 +37,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §2.2; Figure 1, tr. 3, 5.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s3"><h2>Bản đồ an ninh AI Agent</h2><p class="muted">pages/overview/04-taxonomy.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Sơ đồ chia rủi ro thành hai nhánh: xử lý bên trong agent và tương tác với bên ngoài. Mỗi nhánh có ba nhóm.
-
-Đây là cách phân loại, không phải thứ tự các bước. Một cuộc tấn công có thể đi qua nhiều nhóm: lệnh độc từ web ảnh hưởng suy luận, được lưu vào bộ nhớ rồi dẫn đến gọi tool sai. Màu chỉ để phân biệt nhóm.
-
----
-
-KIỂM CHỨNG NGUỒN — Bản đồ an ninh AI Agent
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s3"><h2>Bản đồ an ninh AI Agent</h2><p class="muted">pages/overview/04-taxonomy.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Bản đồ an ninh AI Agent
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -98,17 +50,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey Figure 3, tr. 7.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s4"><h2>Threat models: ví dụ trong survey</h2><p class="muted">pages/overview/05-threat-model-map.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Risk Source cho biết rủi ro nằm ở đâu. Threat Model cho biết bên tấn công hoặc bối cảnh được nghiên cứu.
-
-Bốn hàng đầu là các bên có thể cố tình gây hại. Hai hàng deployment là bối cảnh triển khai, không phải hai loại kẻ tấn công. Bảng tổng hợp nhiều nghiên cứu; không có nghĩa một đối thủ làm được tất cả những việc này cùng lúc.
-
----
-
-KIỂM CHỨNG NGUỒN — Threat models: ví dụ trong survey
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s4"><h2>Threat models: ví dụ trong survey</h2><p class="muted">pages/overview/05-threat-model-map.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Threat models: ví dụ trong survey
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -121,17 +63,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey Table 1, tr. 6.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s5"><h2>Perception: dữ liệu thành mệnh lệnh</h2><p class="muted">pages/execution-threats/01-perception.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Ở đầu vào, agent có thể nhầm dữ liệu với chỉ dẫn cần làm theo.
-
-Phân biệt hai kiểu: prompt injection làm lệch nhiệm vụ; jailbreak tìm cách vượt ràng buộc an toàn. Hai kiểu có thể chồng lấn. Lệnh độc nằm trong trang web hay tài liệu truy xuất là indirect injection, sẽ nói ở phần tương tác với môi trường.
-
----
-
-KIỂM CHỨNG NGUỒN — Perception: dữ liệu thành mệnh lệnh
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s5"><h2>Perception: dữ liệu thành mệnh lệnh</h2><p class="muted">pages/execution-threats/01-perception.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Perception: dữ liệu thành mệnh lệnh
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -144,25 +76,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §3.1; Figure 3, tr. 5, 7, 8.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s6"><h2>Prompt Injection Attack</h2><p class="muted">pages/execution-threats/02-prompt-injection-attack.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Goal hijacking và prompt leakage là hai mục tiêu tấn công.
-
-RCE hoặc API-key theft là hậu quả phụ thuộc quyền và lỗi ứng dụng.
-
-Rò rỉ prompt hoặc chi tiết API của hệ RAG.
-
-Sơ đồ chèn lệnh là ví dụ minh họa; câu “ignore…” không bảo đảm khai thác thành công.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Prompt Injection Attack
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s6"><h2>Prompt Injection Attack</h2><p class="muted">pages/execution-threats/02-prompt-injection-attack.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Prompt Injection Attack
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -238,21 +152,7 @@ Gabriel Alon and Michael Kamfonas (2023). Detecting language model attacks with 
 Bản gốc: <a href="https://arxiv.org/pdf/2308.14132">https://arxiv.org/pdf/2308.14132</a>
 Truy ngược survey: mục tài liệu số 6, bibliography tr. 27; xuất hiện trong nội dung survey tr. 9, 27. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=27">https://dl.acm.org/doi/pdf/10.1145/3716628#page=27</a>
 Mục ghi trong survey: Gabriel Alon and Michael Kamfonas (2023). Detecting language model attacks with perplexity. Retrieved from https: //arxiv.org/pdf/2308.14132
-Mức kiểm chứng: Abstract: LightGBM kết hợp perplexity và độ dài nhằm giảm báo nhầm của ngưỡng perplexity đơn lẻ. Không gán hạn chế của baseline cho bộ phân loại được đề xuất.</pre></details></article><article id="s7"><h2>Jailbreak</h2><p class="muted">pages/execution-threats/03-jailbreak.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Lây jailbreak giữa agent qua ảnh: Agent Smith; chỉ áp dụng trong thiết lập trao đổi của bài.
-
-Đầu vào đa phương thức và hậu quả vật lý: nhóm nguy cơ được survey tổng hợp, không phải khả năng của mọi agent.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Jailbreak
+Mức kiểm chứng: Abstract: LightGBM kết hợp perplexity và độ dài nhằm giảm báo nhầm của ngưỡng perplexity đơn lẻ. Không gán hạn chế của baseline cho bộ phân loại được đề xuất.</pre></details></article><article id="s7"><h2>Jailbreak</h2><p class="muted">pages/execution-threats/03-jailbreak.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Jailbreak
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -316,17 +216,7 @@ Steffi Chern, Zhen Fan, and Andy Liu (2024). Combating adversarial attacks with 
 Bản gốc: <a href="https://arxiv.org/pdf/2401.05998">https://arxiv.org/pdf/2401.05998</a>
 Truy ngược survey: mục tài liệu số 25, bibliography tr. 28; xuất hiện trong nội dung survey tr. 6, 7, 10, 11. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=28">https://dl.acm.org/doi/pdf/10.1145/3716628#page=28</a>
 Mục ghi trong survey: Steffi Chern, Zhen Fan, and Andy Liu (2024). Combating adversarial attacks with multi-agent debate. Retrieved from <a href="https://arxiv.org/pdf/2401.05998">https://arxiv.org/pdf/2401.05998</a>
-Mức kiểm chứng: Đã đối chiếu abstract và phần kết quả của toàn văn: hiệu quả giảm toxicity phụ thuộc mô hình cùng tranh luận. Kết quả không áp dụng đồng đều cho mọi nhóm agent.</pre></details></article><article id="s8"><h2>Brain: quyết định sai từ đâu?</h2><p class="muted">pages/execution-threats/04-brain.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Đầu vào hợp lệ chưa chắc dẫn đến quyết định đúng. Phần Brain có bốn nhóm chính: backdoor, misalignment, hallucination và lỗi lập kế hoạch.
-
-Backdoor có điều kiện kích hoạt đã được cài vào mô hình hoặc thành phần liên quan. Các lỗi còn lại có thể xảy ra ngay cả khi không có người tấn công. Tiếp theo sẽ xem từng nhóm và cách phòng thủ.
-
----
-
-KIỂM CHỨNG NGUỒN — Brain: quyết định sai từ đâu?
+Mức kiểm chứng: Đã đối chiếu abstract và phần kết quả của toàn văn: hiệu quả giảm toxicity phụ thuộc mô hình cùng tranh luận. Kết quả không áp dụng đồng đều cho mọi nhóm agent.</pre></details></article><article id="s8"><h2>Brain: quyết định sai từ đâu?</h2><p class="muted">pages/execution-threats/04-brain.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Brain: quyết định sai từ đâu?
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -339,23 +229,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §3.2; Figure 3, tr. 7, 11, 12.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s9"><h2>Backdoor Attack</h2><p class="muted">pages/execution-threats/05-backdoor-attack.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Hai loại backdoor: đổi kết quả cuối hoặc chỉ đổi quá trình trung gian.
-
-Sơ đồ email chèn link: plugin Trojan; không gán việc này cho LLM đã bị cài backdoor.
-
-Februus và Quarantine nghiên cứu mô hình thị giác; không suy ra đã bảo vệ toàn hệ LLM agent.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Backdoor Attack
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s9"><h2>Backdoor Attack</h2><p class="muted">pages/execution-threats/05-backdoor-attack.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Backdoor Attack
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -415,21 +289,7 @@ Tianlong Chen, Zhenyu Zhang, Yihua Zhang, Shiyu Chang, Sijia Liu, and Zhangyang 
 Bản gốc: <a href="https://arxiv.org/abs/2205.11819">https://arxiv.org/abs/2205.11819</a>
 Truy ngược survey: mục tài liệu số 21, bibliography tr. 28; xuất hiện trong nội dung survey tr. 12. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=28">https://dl.acm.org/doi/pdf/10.1145/3716628#page=28</a>
 Mục ghi trong survey: Tianlong Chen, Zhenyu Zhang, Yihua Zhang, Shiyu Chang, Sijia Liu, and Zhangyang Wang (2022). Quarantine: Sparsity can uncover the trojan attack trigger for free. In Proceedings of the CVPR .
-Mức kiểm chứng: Abstract. Trojan lottery ticket giữ đặc trưng backdoor trong khi khả năng phân loại ảnh sạch suy giảm. Không gán đây là biện pháp đồng bộ hay bảo vệ toàn agent.</pre></details></article><article id="s10"><h2>Misalignment</h2><p class="muted">pages/execution-threats/06-misalignment.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Dữ liệu độc/thiên vị, sycophancy và hiểu môi trường chưa đầy đủ: ba nhóm survey tổng hợp; không khẳng định mô hình “biết mình sai”.
-
-Đèn giao thông là tình huống ToolEmu mô phỏng, không phải tai nạn ngoài đời.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Misalignment
+Mức kiểm chứng: Abstract. Trojan lottery ticket giữ đặc trưng backdoor trong khi khả năng phân loại ảnh sạch suy giảm. Không gán đây là biện pháp đồng bộ hay bảo vệ toàn agent.</pre></details></article><article id="s10"><h2>Misalignment</h2><p class="muted">pages/execution-threats/06-misalignment.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Misalignment
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -493,19 +353,7 @@ Weihao Tan, Wentao Zhang, Shanqi Liu, Longtao Zheng, Xinrun Wang, and Bo An (202
 Bản gốc: <a href="https://arxiv.org/abs/2401.14151">https://arxiv.org/abs/2401.14151</a>
 Truy ngược survey: mục tài liệu số 171, bibliography tr. 34; xuất hiện trong nội dung survey tr. 6, 7, 14. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=34">https://dl.acm.org/doi/pdf/10.1145/3716628#page=34</a>
 Mục ghi trong survey: Weihao Tan, Wentao Zhang, Shanqi Liu, Longtao Zheng, Xinrun Wang, and Bo An (2024). True knowledge comes from practice: Aligning large language models with embodied environments via reinforcement learning. In Proceedings of the ICLR .
-Mức kiểm chứng: Abstract. Actor và critic chia sẻ LLM đóng băng; LoRA được huấn luyện qua tương tác. Hành động thuộc tập hợp lệ không đồng nghĩa đã kiểm chứng an toàn.</pre></details></article><article id="s11"><h2>Hallucination</h2><p class="muted">pages/execution-threats/07-hallucination.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Nối agent đơn giản có thể gây cascading hallucinations; đây là động cơ thiết kế MetaGPT, không phải mọi hợp tác đều làm tăng lỗi.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Hallucination
+Mức kiểm chứng: Abstract. Actor và critic chia sẻ LLM đóng băng; LoRA được huấn luyện qua tương tác. Hành động thuộc tập hợp lệ không đồng nghĩa đã kiểm chứng an toàn.</pre></details></article><article id="s11"><h2>Hallucination</h2><p class="muted">pages/execution-threats/07-hallucination.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Hallucination
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -567,21 +415,7 @@ Yilun Du, Shuang Li, Antonio Torralba, Joshua B. Tenenbaum, and Igor Mordatch (2
 Bản gốc: <a href="https://arxiv.org/pdf/2305.14325">https://arxiv.org/pdf/2305.14325</a>
 Truy ngược survey: mục tài liệu số 41, bibliography tr. 28; xuất hiện trong nội dung survey tr. 6, 7, 15. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=28">https://dl.acm.org/doi/pdf/10.1145/3716628#page=28</a>
 Mục ghi trong survey: Yilun Du, Shuang Li, Antonio Torralba, Joshua B. Tenenbaum, and Igor Mordatch (2023). Improving factuality and reasoning in language models through multiagent debate. Retrieved from <a href="https://arxiv.org/pdf/2305.14325">https://arxiv.org/pdf/2305.14325</a>
-Mức kiểm chứng: Đã đọc §5 Limitations and Discussion của toàn văn. Tác giả ghi nhận tốn nhiều thế hệ câu trả lời hơn, khó xử lý debate dài và vẫn có thể đồng thuận về đáp án sai.</pre></details></article><article id="s12"><h2>Planning Threat</h2><p class="muted">pages/execution-threats/08-planning-threat.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Lỗi trung gian có thể lan truyền trong planning; bốn cấu trúc vẽ lại từ Figure 4.
-
-Chain-of-Thought là phương pháp suy luận từng bước; bài gốc không được dùng làm bằng chứng tấn công.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Planning Threat
+Mức kiểm chứng: Đã đọc §5 Limitations and Discussion của toàn văn. Tác giả ghi nhận tốn nhiều thế hệ câu trả lời hơn, khó xử lý debate dài và vẫn có thể đồng thuận về đáp án sai.</pre></details></article><article id="s12"><h2>Planning Threat</h2><p class="muted">pages/execution-threats/08-planning-threat.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Planning Threat
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -632,17 +466,7 @@ Zelong Li, Wenyue Hua, Hao Wang, He Zhu, and Yongfeng Zhang (2024). Formal-LLM: 
 Bản gốc: <a href="https://arxiv.org/pdf/2402.00798">https://arxiv.org/pdf/2402.00798</a>
 Truy ngược survey: mục tài liệu số 94, bibliography tr. 31; xuất hiện trong nội dung survey tr. 16. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=31">https://dl.acm.org/doi/pdf/10.1145/3716628#page=31</a>
 Mục ghi trong survey: Zelong Li, Wenyue Hua, Hao Wang, He Zhu, and Yongfeng Zhang (2024). Formal-LLM: Integrating formal language and natural language for controllable LLM-based agents. Retrieved from <a href="https://arxiv.org/pdf/2402.00798">https://arxiv.org/pdf/2402.00798</a>
-Mức kiểm chứng: Đã đọc §4.1 của toàn văn. PDA ràng buộc tính hợp lệ và khả năng thực thi theo constraints; tác giả nêu rõ không bảo đảm performance hay optimality.</pre></details></article><article id="s13"><h2>Action: sai lệnh hay sai công cụ?</h2><p class="muted">pages/execution-threats/09-action.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Action là lúc quyết định trở thành hành động thật. Cần xét cả lệnh agent gửi đi lẫn công cụ nhận lệnh.
-
-Agent2Tool tập trung vào rủi ro khi dùng công cụ; supply chain xét công cụ hoặc thành phần phụ thuộc bị lỗi, bị xâm phạm. Tool báo chạy thành công chưa có nghĩa công việc đã được thực hiện an toàn.
-
----
-
-KIỂM CHỨNG NGUỒN — Action: sai lệnh hay sai công cụ?
+Mức kiểm chứng: Đã đọc §4.1 của toàn văn. PDA ràng buộc tính hợp lệ và khả năng thực thi theo constraints; tác giả nêu rõ không bảo đảm performance hay optimality.</pre></details></article><article id="s13"><h2>Action: sai lệnh hay sai công cụ?</h2><p class="muted">pages/execution-threats/09-action.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Action: sai lệnh hay sai công cụ?
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -655,25 +479,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §3.3; Figure 3, tr. 7, 16, 17, 18.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s14"><h2>Agent2Tool &amp; Supply Chain</h2><p class="muted">pages/execution-threats/10-agent2tool-supply-chain.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Webpage độc điều khiển web agent: WIPI.
-
-YouTube transcript chèn chỉ dẫn đổi hành vi.
-
-Dữ liệu web độc qua WebPilot gây rò rỉ lịch sử bằng Markdown image; plugin không nhất thiết là độc hại.
-
-Nguồn 147 và 45 là báo cáo demo kỹ thuật, không gọi là paper bình duyệt.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Agent2Tool &amp; Supply Chain
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s14"><h2>Agent2Tool &amp; Supply Chain</h2><p class="muted">pages/execution-threats/10-agent2tool-supply-chain.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Agent2Tool &amp; Supply Chain
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -744,17 +550,7 @@ Xinyu Zhang, Huiyu Xu, Zhongjie Ba, Zhibo Wang, Yuan Hong, Jian Liu, Zhan Qin, a
 Bản gốc: <a href="https://ieeexplore.ieee.org/document/10458329">https://ieeexplore.ieee.org/document/10458329</a>
 Truy ngược survey: mục tài liệu số 225, bibliography tr. 36; xuất hiện trong nội dung survey tr. 17, 26. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=36">https://dl.acm.org/doi/pdf/10.1145/3716628#page=36</a>
 Mục ghi trong survey: Xinyu Zhang, Huiyu Xu, Zhongjie Ba, Zhibo Wang, Yuan Hong, Jian Liu, Zhan Qin, and Kui Ren (2024). PrivacyAsst: Safeguarding user privacy in tool-using large language model agents. IEEE Transactions on Dependable and Secure Computing 21, 6 (2024), 5242–5258.
-Mức kiểm chứng: Nguồn đã đọc: README chính thức, phần Introduction và New Components; PDF công khai chưa tải thành công. Giải pháp shuffling kết hợp attribute forgery và attribute shuffling; bỏ nhận định tăng chi phí chưa đối chiếu.</pre></details></article><article id="s15"><h2>Environment: rủi ro từ bên ngoài</h2><p class="muted">pages/interaction-threats/01-environment.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-RL là học tăng cường từ phản hồi/phần thưởng. Anthropomorphic attachment là gắn bó có hại do xem agent như con người; misuse là dùng agent vào mục đích gây hại.
-
-Bốn nhánh tài nguyên là cạn kiệt tài nguyên, phân bổ kém, cách ly kém và thiếu giám sát. Các lỗi phân bổ/giám sát không nhất thiết cần kẻ tấn công. Nêu tên nhóm ngắn gọn rồi chuyển sang ví dụ ở các slide tiếp theo.
-
----
-
-KIỂM CHỨNG NGUỒN — Environment: rủi ro từ bên ngoài
+Mức kiểm chứng: Nguồn đã đọc: README chính thức, phần Introduction và New Components; PDF công khai chưa tải thành công. Giải pháp shuffling kết hợp attribute forgery và attribute shuffling; bỏ nhận định tăng chi phí chưa đối chiếu.</pre></details></article><article id="s15"><h2>Environment: rủi ro từ bên ngoài</h2><p class="muted">pages/interaction-threats/01-environment.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Environment: rủi ro từ bên ngoài
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -767,21 +563,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §4.1; Figure 3, tr. 7, 18, 19, 20, 21.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s16"><h2>Agent2Environment</h2><p class="muted">pages/interaction-threats/02-agent-environment.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Tương tác có hai chiều: hành động tác động môi trường và phản hồi tác động agent. Agent2Tool cũng có thể mang rủi ro từ phản hồi.
-
-Môi trường mô phỏng/vật lý có nguy cơ bị thao túng hoặc lạm dụng; các ví dụ là tóm tắt survey.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Agent2Environment
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s16"><h2>Agent2Environment</h2><p class="muted">pages/interaction-threats/02-agent-environment.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Agent2Environment
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -812,21 +594,7 @@ Lukas Pöhler, Valentin Schrader, Alexander Ladwein, and Florian von Keller (202
 Bản gốc: <a href="https://arxiv.org/pdf/2403.15325">https://arxiv.org/pdf/2403.15325</a>
 Truy ngược survey: mục tài liệu số 140, bibliography tr. 32; xuất hiện trong nội dung survey tr. 2, 20. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=32">https://dl.acm.org/doi/pdf/10.1145/3716628#page=32</a>
 Mục ghi trong survey: Lukas Pöhler, Valentin Schrader, Alexander Ladwein, and Florian von Keller (2024). A technological perspective on misuse of available AI. Retrieved from <a href="https://arxiv.org/pdf/2403.15325">https://arxiv.org/pdf/2403.15325</a>
-Mức kiểm chứng: Abstract. Các kịch bản thuộc an ninh chính trị, số và vật lý. Hàng cũ đã diễn giải thành một phương pháp phát hiện được đánh giá; đã bỏ diễn giải đó.</pre></details></article><article id="s17"><h2>Indirect Prompt Injection</h2><p class="muted">pages/interaction-threats/03-indirect-prompt-injection.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Chỉ dẫn độc nằm trong dữ liệu agent truy xuất, vượt ranh giới dữ liệu/chỉ dẫn.
-
-Sơ đồ website/email là minh họa luồng tấn công; cần agent đọc và làm theo payload.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Indirect Prompt Injection
+Mức kiểm chứng: Abstract. Các kịch bản thuộc an ninh chính trị, số và vật lý. Hàng cũ đã diễn giải thành một phương pháp phát hiện được đánh giá; đã bỏ diễn giải đó.</pre></details></article><article id="s17"><h2>Indirect Prompt Injection</h2><p class="muted">pages/interaction-threats/03-indirect-prompt-injection.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Indirect Prompt Injection
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -877,23 +645,7 @@ Keegan Hines, Gary Lopez, Matthew Hall, Federico Zarfati, Yonatan Zunger, and Em
 Bản gốc: <a href="https://arxiv.org/pdf/2403.14720">https://arxiv.org/pdf/2403.14720</a>
 Truy ngược survey: mục tài liệu số 64, bibliography tr. 29; xuất hiện trong nội dung survey tr. 18, 19. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=29">https://dl.acm.org/doi/pdf/10.1145/3716628#page=29</a>
 Mục ghi trong survey: Keegan Hines, Gary Lopez, Matthew Hall, Federico Zarfati, Yonatan Zunger, and Emre Kiciman (2024). Defending against indirect prompt injection attacks with spotlighting. Retrieved from <a href="https://arxiv.org/pdf/2403.14720">https://arxiv.org/pdf/2403.14720</a>
-Mức kiểm chứng: Abstract. Điểm cốt lõi là cung cấp tín hiệu nguồn gốc xuyên suốt dữ liệu, thay vì để LLM coi mọi đoạn văn là cùng mức tin cậy.</pre></details></article><article id="s18"><h2>RL Environment</h2><p class="muted">pages/interaction-threats/04-rl-environment.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Đầu độc phản hồi/điểm thưởng có thể làm lệch policy; đây là một loại tấn công RL, không phải duy nhất.
-
-Inverse RL suy ra hàm thưởng từ hành vi; kiến thức nền, không tự nó là một exploit.
-
-ERNIE nghiên cứu robust multi-agent RL; không trình bày là đã chặn reward poisoning trong LLM agent.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — RL Environment
+Mức kiểm chứng: Abstract. Điểm cốt lõi là cung cấp tín hiệu nguồn gốc xuyên suốt dữ liệu, thay vì để LLM coi mọi đoạn văn là cùng mức tin cậy.</pre></details></article><article id="s18"><h2>RL Environment</h2><p class="muted">pages/interaction-threats/04-rl-environment.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — RL Environment
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -934,23 +686,7 @@ Bản gốc: <a href="https://arxiv.org/abs/2310.10810">https://arxiv.org/abs/23
 Truy ngược survey: mục tài liệu số 15, bibliography tr. 27; xuất hiện trong nội dung survey tr. 19, 27. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=27">https://dl.acm.org/doi/pdf/10.1145/3716628#page=27</a>
 Mục ghi trong survey: Alexander Bukharin, Yan Li, Yue Yu, Qingru Zhang, Zhehui Chen, Simiao Zuo, Chao Zhang, Songan Zhang, and Tuo Zhao (2024). Robust multi-agent reinforcement learning via adversarial regularization: Theoretical foundation and stable algorithms. NeurIPS (2024).
 Mức kiểm chứng: Abstract; proceedings NeurIPS 2023. Regularization thúc đẩy tính liên tục Lipschitz; tác giả dùng Stackelberg game để giảm bất ổn huấn luyện. Không gán đây là thử nghiệm reward poisoning trên LLM agent.
-Khác biệt phiên bản/định danh: Survey ghi 2024; bài thuộc proceedings NeurIPS 2023. Slide dùng năm hội nghị 2023.</pre></details></article><article id="s19"><h2>Computing Resources</h2><p class="muted">pages/interaction-threats/05-computing-resources.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Bốn nguy cơ: resource exhaustion, inefficient allocation, insufficient isolation, unmonitored usage; tổng hợp survey p.20.
-
-Thiếu quota, ưu tiên, cách ly, metrics là diễn giải vận hành của nhóm; không gán cho một paper DevOps.
-
-Bảng phân biệt nghiên cứu tấn công, phát hiện DDoS và tối ưu lượt hỏi LLM; không coi cả ba là cơ chế cách ly CPU/GPU.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Computing Resources
+Khác biệt phiên bản/định danh: Survey ghi 2024; bài thuộc proceedings NeurIPS 2023. Slide dùng năm hội nghị 2023.</pre></details></article><article id="s19"><h2>Computing Resources</h2><p class="muted">pages/interaction-threats/05-computing-resources.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Computing Resources
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1010,17 +746,7 @@ Bin Hu, Chenyang Zhao, Pu Zhang, Zihao Zhou, Yuanhang Yang, Zenglin Xu, and Bin 
 Bản gốc: <a href="https://arxiv.org/pdf/2306.03604">https://arxiv.org/pdf/2306.03604</a>
 Truy ngược survey: mục tài liệu số 69, bibliography tr. 30; xuất hiện trong nội dung survey tr. 6, 7, 14, 15, 20. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=30">https://dl.acm.org/doi/pdf/10.1145/3716628#page=30</a>
 Mục ghi trong survey: Bin Hu, Chenyang Zhao, Pu Zhang, Zihao Zhou, Yuanhang Yang, Zenglin Xu, and Bin Liu (2023). Enabling intelligent interactions between an agent and an LLM: A reinforcement learning approach. Retrieved from <a href="https://arxiv.org/">https://arxiv.org/</a> pdf/2306.03604
-Mức kiểm chứng: Abstract. Tác nhân học cách tránh hỏi dư thừa và cập nhật kế hoạch khi môi trường thay đổi.</pre></details></article><article id="s20"><h2>Agent2Agent: sai lệch lan truyền</h2><p class="muted">pages/interaction-threats/06-agent-agent.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Phân biệt hợp tác vì cùng mục tiêu và cạnh tranh vì khác lợi ích. Nhiều câu trả lời đồng ý có thể dùng cùng một nguồn sai nên không độc lập.
-
-Ví dụ minh họa: agent viết và agent duyệt cùng tin một bản tóm tắt sai. Đây là minh họa, không phải phép đo. Không suy kết quả trong một trò chơi sang mọi hệ triển khai.
-
----
-
-KIỂM CHỨNG NGUỒN — Agent2Agent: sai lệch lan truyền
+Mức kiểm chứng: Abstract. Tác nhân học cách tránh hỏi dư thừa và cập nhật kế hoạch khi môi trường thay đổi.</pre></details></article><article id="s20"><h2>Agent2Agent: sai lệch lan truyền</h2><p class="muted">pages/interaction-threats/06-agent-agent.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Agent2Agent: sai lệch lan truyền
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1033,27 +759,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §4.2; Figure 3, tr. 7, 21, 22.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s21"><h2>Cooperative &amp; Competitive</h2><p class="muted">pages/interaction-threats/07-cooperative-competitive.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Morris II: self-replicating prompts lan qua hệ ứng dụng dùng RAG; không tự lây trong mọi hệ.
-
-Thông đồng qua kênh giao tiếp công khai là rủi ro được survey mô tả.
-
-Hallucination có thể lan qua chuỗi agent đơn giản.
-
-Cicero phối hợp ngôn ngữ và strategic reasoning trong Diplomacy; không dùng nó làm bằng chứng học lừa dối.
-
-Tạo đầu vào đối kháng và câu hỏi mở về phòng thủ cạnh tranh là nhận định của survey (2025), không phải khảo sát cập nhật đến 2026.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Cooperative &amp; Competitive
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s21"><h2>Cooperative &amp; Competitive</h2><p class="muted">pages/interaction-threats/07-cooperative-competitive.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Cooperative &amp; Competitive
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1132,19 +838,7 @@ Bản gốc: <a href="https://arxiv.org/abs/2311.13148v3">https://arxiv.org/abs/
 Truy ngược survey: mục tài liệu số 108, bibliography tr. 31; xuất hiện trong nội dung survey tr. 22. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=31">https://dl.acm.org/doi/pdf/10.1145/3716628#page=31</a>
 Mục ghi trong survey: Qinghua Lu, Liming Zhu, Xiwei Xu, Zhenchang Xing, Stefan Harrer, and Jon Whittle (2023). Building the future of responsible AI: A reference architecture for designing large language model based agents. Retrieved from https: //arxiv.org/pdf/2311.13148
 Mức kiểm chứng: Abstract; §§3.3–3.5 của bản v3. Bản v1 có tên Building the Future of Responsible AI; v3 đổi thành Towards Responsible Generative AI. Bỏ khẳng định rằng bài đã kiểm chứng chặn lệnh không đảo ngược.
-Khác biệt phiên bản/định danh: Survey dẫn bản 2023 “Building the future of responsible AI…”. Nội dung kiến trúc đã đối chiếu bản v3 (3-4-2024), tên mới như trên; cùng arXiv:2311.13148.</pre></details></article><article id="s22"><h2>Agent2Memory: lỗi được giữ lại</h2><p class="muted">pages/interaction-threats/08-memory.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Trình bày long-term trước short-term theo Hình 3; văn bản survey đi theo thứ tự ngược lại.
-
-Long-term dùng qua nhiều phiên: có thể lưu và truy xuất thông tin độc, cũ hoặc riêng tư. Short-term dùng trong phiên: có thể mất ngữ cảnh, tóm tắt thiếu hoặc giữ trạng thái không nhất quán.
-
-Lưu được và tìm thấy thông tin không chứng minh thông tin đúng hoặc được phép tiết lộ. Ví dụ minh họa: địa chỉ sai được lưu lại và dùng lần sau.
-
----
-
-KIỂM CHỨNG NGUỒN — Agent2Memory: lỗi được giữ lại
+Khác biệt phiên bản/định danh: Survey dẫn bản 2023 “Building the future of responsible AI…”. Nội dung kiến trúc đã đối chiếu bản v3 (3-4-2024), tên mới như trên; cùng arXiv:2311.13148.</pre></details></article><article id="s22"><h2>Agent2Memory: lỗi được giữ lại</h2><p class="muted">pages/interaction-threats/08-memory.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Agent2Memory: lỗi được giữ lại
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1157,25 +851,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §4.3; Figure 3, tr. 7, 23, 24.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s23"><h2>Long-term Memory</h2><p class="muted">pages/interaction-threats/09-long-term-memory.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-PoisonedRAG: năm văn bản độc cho mỗi câu hỏi mục tiêu, 90% ASR trong thiết lập của bài; không phải một con số chung cho mọi RAG.
-
-Truy vấn làm rò rỉ dữ liệu từ kho truy xuất.
-
-Khôi phục văn bản từ sentence embeddings.
-
-Dữ liệu mâu thuẫn/lỗi thời là rủi ro survey nêu. Ví dụ Trái Đất tròn/phẳng là minh họa, không phải thí nghiệm PoisonedRAG.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Long-term Memory
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s23"><h2>Long-term Memory</h2><p class="muted">pages/interaction-threats/09-long-term-memory.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Long-term Memory
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1239,21 +915,7 @@ John Morris, Volodymyr Kuleshov, Vitaly Shmatikov, and Alexander Rush (2023). Te
 Bản gốc: <a href="https://aclanthology.org/2023.emnlp-main.765/">https://aclanthology.org/2023.emnlp-main.765/</a>
 Truy ngược survey: mục tài liệu số 120, bibliography tr. 32; xuất hiện trong nội dung survey tr. 24. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=32">https://dl.acm.org/doi/pdf/10.1145/3716628#page=32</a>
 Mục ghi trong survey: John Morris, Volodymyr Kuleshov, Vitaly Shmatikov, and Alexander Rush (2023). Text embeddings reveal (almost) as much as text. In Proceedings of the EMNLP .
-Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.</pre></details></article><article id="s24"><h2>Short-term Memory</h2><p class="muted">pages/interaction-threats/10-short-term-memory.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Context hữu hạn và thiếu đồng bộ có thể gây mất thông tin; phụ thuộc thiết kế hệ thống.
-
-LongRoPE, multi-robot planning và CoT-Influx là hướng liên quan đến context/phối hợp; không phải ba phòng thủ an ninh đã được chứng nhận.
-
-[click]
-
-Bảng tiếp theo giới thiệu phương pháp, điểm mạnh và điểm yếu / giới hạn. Với mỗi hàng, giải thích cơ chế trước, sau đó nêu kết quả hoặc khả năng đã được mô tả, rồi chốt phạm vi bằng chứng. Giới hạn đánh giá không đồng nghĩa phương pháp thất bại ở mọi bối cảnh. Các chi tiết và nguồn kiểm tra nằm bên dưới.
-
----
-
-KIỂM CHỨNG NGUỒN — Short-term Memory
+Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.</pre></details></article><article id="s24"><h2>Short-term Memory</h2><p class="muted">pages/interaction-threats/10-short-term-memory.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Short-term Memory
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1311,25 +973,7 @@ Bản gốc: <a href="https://arxiv.org/pdf/2312.08901">https://arxiv.org/pdf/23
 Truy ngược survey: mục tài liệu số 72, bibliography tr. 30; xuất hiện trong nội dung survey tr. 23. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=30">https://dl.acm.org/doi/pdf/10.1145/3716628#page=30</a>
 Mục ghi trong survey: Xijie Huang, Li Lyna Zhang, Kwang-Ting Cheng, and Mao Yang (2023). Boosting LLM reasoning: Push the limits of few-shot learning with reinforced in-context pruning. Retrieved from <a href="https://arxiv.org/pdf/2312.08901">https://arxiv.org/pdf/2312.08901</a>
 Mức kiểm chứng: Abstract: CoT-Influx dùng pruning hai mức (ví dụ và token), đánh giá suy luận trên năm bộ dữ liệu toán. Không phải tóm tắt lịch sử hội thoại.
-Khác biệt phiên bản/định danh: Survey dùng tên “Boosting LLM reasoning: Push the limits of few-shot learning with reinforced in-context pruning”. Trang gốc hiện mang tên “Fewer is More…”, cùng arXiv:2312.08901. Giữ năm bản thảo 2023 như survey.</pre></details></article><article id="s25"><h2>Bảy hướng nghiên cứu</h2><p class="muted">pages/discussion/01-research-directions.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Từ các rủi ro vừa xem, survey đề xuất bảy hướng nghiên cứu:
-
-1. Kiểm tra đầu vào vừa chính xác vừa nhanh.
-2. Giảm thiên vị trong quyết định của agent.
-3. Theo dõi và kiểm toán việc gọi công cụ.
-4. Đánh giá an toàn của cả hệ, không chỉ từng phần.
-5. Đặt quy định rõ khi phát triển và triển khai.
-6. Kiểm soát quyền và dữ liệu trao đổi giữa các agent.
-7. Quản lý bộ nhớ để tránh dùng lại dữ liệu độc.
-
-Tiếp theo, mình sẽ đi vào khoảng trống và câu hỏi chính của từng hướng.
-
----
-
-KIỂM CHỨNG NGUỒN — Bảy hướng nghiên cứu
+Khác biệt phiên bản/định danh: Survey dùng tên “Boosting LLM reasoning: Push the limits of few-shot learning with reinforced in-context pruning”. Trang gốc hiện mang tên “Fewer is More…”, cùng arXiv:2312.08901. Giữ năm bản thảo 2023 như survey.</pre></details></article><article id="s25"><h2>Bảy hướng nghiên cứu</h2><p class="muted">pages/discussion/01-research-directions.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Bảy hướng nghiên cứu
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1344,15 +988,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §5; Figure 5, tr. 24, 25, 26, 27.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s26"><h2>1. Kiểm tra đầu vào nhanh và chính xác</h2><p class="muted">pages/discussion/02-input-inspection.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Hướng nghiên cứu là cải thiện cả độ chính xác lẫn tốc độ kiểm tra đầu vào. Một cơ chế kiểm tra cần phát hiện được lệnh độc nhưng vẫn xử lý được yêu cầu hợp lệ với chi phí phù hợp. Đây là hướng nghiên cứu survey đề xuất, không phải kết quả của một detector cụ thể.
-
----
-
-KIỂM CHỨNG NGUỒN — 1. Kiểm tra đầu vào nhanh và chính xác
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s26"><h2>1. Kiểm tra đầu vào nhanh và chính xác</h2><p class="muted">pages/discussion/02-input-inspection.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 1. Kiểm tra đầu vào nhanh và chính xác
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1367,15 +1003,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §5: Efficient and effective input inspection, tr. 24.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s27"><h2>2. Giảm thiên vị, tăng công bằng</h2><p class="muted">pages/discussion/03-bias-and-fairness.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Không chỉ xem câu trả lời có thiên vị hay không. Cần xét các quyết định agent đưa ra trong quá trình làm việc. Survey đề nghị có đánh giá của con người và benchmark phù hợp với agent.
-
----
-
-KIỂM CHỨNG NGUỒN — 2. Giảm thiên vị, tăng công bằng
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s27"><h2>2. Giảm thiên vị, tăng công bằng</h2><p class="muted">pages/discussion/03-bias-and-fairness.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 2. Giảm thiên vị, tăng công bằng
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1390,15 +1018,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §5: Bias and fairness in AI agents, tr. 25.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s28"><h2>3. Kiểm toán việc dùng công cụ</h2><p class="muted">pages/discussion/04-tool-use-auditing.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Cần biết agent đã gọi tool nào, làm gì và trao đổi dữ liệu gì. Survey nhấn mạnh bài toán chi phí: cơ chế kiểm toán phải đủ nhẹ để dùng được trong thực tế.
-
----
-
-KIỂM CHỨNG NGUỒN — 3. Kiểm toán việc dùng công cụ
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s28"><h2>3. Kiểm toán việc dùng công cụ</h2><p class="muted">pages/discussion/04-tool-use-auditing.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 3. Kiểm toán việc dùng công cụ
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1413,15 +1033,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §5: Strict tool use auditing, tr. 25, 26.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s29"><h2>4. Đánh giá an toàn cho toàn bộ agent</h2><p class="muted">pages/discussion/05-safety-evaluation.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Theo survey (2025), các cách đánh giá còn bao phủ từng phần. Câu hỏi nghiên cứu là đánh giá toàn bộ agent, không chỉ một câu trả lời hay một lần gọi tool. Khi trình bày, phân biệt nhận biết rủi ro với thực sự hành động an toàn.
-
----
-
-KIỂM CHỨNG NGUỒN — 4. Đánh giá an toàn cho toàn bộ agent
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s29"><h2>4. Đánh giá an toàn cho toàn bộ agent</h2><p class="muted">pages/discussion/05-safety-evaluation.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 4. Đánh giá an toàn cho toàn bộ agent
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1436,15 +1048,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §5: Sound safety evaluation baselines, tr. 26.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s30"><h2>5. Chính sách phát triển và triển khai</h2><p class="muted">pages/discussion/06-development-deployment-policy.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Hướng này nói về quy trình phát triển và triển khai, không chỉ một kỹ thuật phòng thủ. Survey đề nghị quy định rõ trách nhiệm, minh bạch và bảo vệ dữ liệu, nhất là khi agent tương tác với môi trường bên ngoài.
-
----
-
-KIỂM CHỨNG NGUỒN — 5. Chính sách phát triển và triển khai
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s30"><h2>5. Chính sách phát triển và triển khai</h2><p class="muted">pages/discussion/06-development-deployment-policy.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 5. Chính sách phát triển và triển khai
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1459,15 +1063,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §5: Solid agent development and deployment policy, tr. 26.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s31"><h2>6. Thiết kế tương tác giữa các agent</h2><p class="muted">pages/discussion/07-interaction-architectures.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Survey nêu ví dụ một agent gửi thông tin cá nhân cho agent khác chỉ để hỏi thời tiết. Giao tiếp giúp hoàn thành việc nhưng cũng có thể truyền thừa dữ liệu. Cần xét cả quyền của từng agent và sự phụ thuộc giữa chúng.
-
----
-
-KIỂM CHỨNG NGUỒN — 6. Thiết kế tương tác giữa các agent
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s31"><h2>6. Thiết kế tương tác giữa các agent</h2><p class="muted">pages/discussion/07-interaction-architectures.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 6. Thiết kế tương tác giữa các agent
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1482,15 +1078,7 @@ NỘI DUNG / VÍ DỤ / SƠ ĐỒ
   Nguồn: Survey §5: Optimal interaction architectures, tr. 26.
 
 THÔNG TIN ĐẦY ĐỦ CỦA TỪNG NGUỒN DÙNG TRÊN SLIDE
-Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s32"><h2>7. Quản lý bộ nhớ an toàn</h2><p class="muted">pages/discussion/08-memory-management.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Lưu được nhiều thông tin chưa đủ; phải kiểm soát những gì được lấy ra dùng lại. Dữ liệu truy xuất bị đầu độc có thể ảnh hưởng câu trả lời, như ví dụ PoisonedRAG ở phần long-term memory. Survey cũng đặt vấn đề chênh lệch thông tin giữa các agent.
-
----
-
-KIỂM CHỨNG NGUỒN — 7. Quản lý bộ nhớ an toàn
+Slide này tổng hợp trực tiếp survey; không sử dụng paper gốc riêng để minh chứng kết quả.</pre></details></article><article id="s32"><h2>7. Quản lý bộ nhớ an toàn</h2><p class="muted">pages/discussion/08-memory-management.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — 7. Quản lý bộ nhớ an toàn
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
@@ -1514,15 +1102,7 @@ Bản gốc: <a href="https://arxiv.org/pdf/2402.07867">https://arxiv.org/pdf/24
 Truy ngược survey: mục tài liệu số 235, bibliography tr. 36; xuất hiện trong nội dung survey tr. 6, 7, 24, 26. <a href="https://dl.acm.org/doi/pdf/10.1145/3716628#page=36">https://dl.acm.org/doi/pdf/10.1145/3716628#page=36</a>
 Mục ghi trong survey: Wei Zou, Runpeng Geng, Binghui Wang, and Jinyuan Jia (2024). PoisonedRAG: Knowledge poisoning attacks to retrieval-augmented generation of large language models. Retrieved from <a href="https://arxiv.org/pdf/2402.07867">https://arxiv.org/pdf/2402.07867</a>
 Mức kiểm chứng: Đã đối chiếu abstract gốc; không phải kiểm tra toàn văn hoặc tái lập thí nghiệm.
-Khác biệt phiên bản/định danh: Tên trong survey: “Knowledge poisoning attacks…”. Trang arXiv hiện dùng “Knowledge Corruption Attacks…”. Cùng arXiv:2402.07867; số liệu 5 văn bản/câu hỏi và 90% đã đối chiếu abstract.</pre></details></article><article id="s33"><h2>Kết luận</h2><p class="muted">pages/discussion/09-conclusion.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>GHI CHÚ THUYẾT TRÌNH
-
-[click]
-
-Bảy hướng vừa trình bày đều quay về ba việc: bảo vệ cả quá trình, kiểm soát đúng điểm rủi ro và cân bằng an toàn với hiệu quả làm việc. Survey (2025) chỉ ra phòng thủ còn phân mảnh; cần kết hợp nhiều lớp bảo vệ.
-
----
-
-KIỂM CHỨNG NGUỒN — Kết luận
+Khác biệt phiên bản/định danh: Tên trong survey: “Knowledge poisoning attacks…”. Trang arXiv hiện dùng “Knowledge Corruption Attacks…”. Cùng arXiv:2402.07867; số liệu 5 văn bản/câu hỏi và 90% đã đối chiếu abstract.</pre></details></article><article id="s33"><h2>Kết luận</h2><p class="muted">pages/discussion/09-conclusion.md</p><details open><summary>Nội dung, điểm mạnh/giới hạn và nguồn chi tiết</summary><pre>KIỂM CHỨNG NGUỒN — Kết luận
 Cập nhật: 2026-11-26. Số trang dưới đây là trang PDF của survey, tương ứng 182:n; không phải số slide.
 
 NGUỒN TỔNG QUAN
